@@ -36,7 +36,7 @@
 
 設計書
 ====
-<img width="967" alt="スクリーンショット 2024-03-30 13 38 05" src="https://github.com/makoto-niko/pf/assets/156491237/562026a1-c00a-45ab-83f3-2082593f64f6">
+<img width="998" alt="スクリーンショット 2024-03-30 22 50 37" src="https://github.com/makoto-niko/pf/assets/156491237/82e119f4-dd4a-417a-9384-29dc9b010b66">
 
 開発環境
 ====
