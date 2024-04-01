@@ -1,0 +1,2 @@
+class BoardPost < ApplicationRecord
+end

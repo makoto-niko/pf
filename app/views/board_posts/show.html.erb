@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Board:</strong>
+  <%= @board_post.board_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @board_post.user_id %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @board_post.content %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @board_post.created_at %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @board_post.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_board_post_path(@board_post) %> |
+<%= link_to 'Back', board_posts_path %>
