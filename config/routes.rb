@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  
+  root to: 'public/homes#top'
+  get '/about', to: 'public/homes#about', as: 'about'
+ 
   devise_for :users
+  
   namespace :public, path: '' do
-    get 'homes/top'
-    get 'homes/about'
     resources :users, only: [:index, :show, :create, :update, :destroy]
     resources :posts, only: [:index, :show, :create, :update, :destroy]
     resources :comments, only: [:index, :create, :destroy]

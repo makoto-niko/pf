@@ -16,6 +16,11 @@ class Public::CustomersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get my_page" do
+    get public_customers_my_page_url
+    assert_response :success
+  end
+
   test "should get unsubscribe" do
     get public_customers_unsubscribe_url
     assert_response :success

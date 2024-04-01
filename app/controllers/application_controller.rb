@@ -1,3 +1,10 @@
 class ApplicationController < ActionController::Base
-  # 必要な設定やフィルターなどをここに追加
+ before_action :authenticate_user!
+
+  protected
+
+  def configure_permitted_parameters
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name])
+  end
 end
