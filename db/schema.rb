@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_01_043843) do
+ActiveRecord::Schema.define(version: 2024_04_01_061805) do
 
   create_table "admins", force: :cascade do |t|
     t.string "username", null: false
@@ -97,6 +97,12 @@ ActiveRecord::Schema.define(version: 2024_04_01_043843) do
     t.boolean "is_public"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "name"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

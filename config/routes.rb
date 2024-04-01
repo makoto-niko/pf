@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-  namespace :public do
+  devise_for :users
+  namespace :public, path: '' do
     get 'homes/top'
     get 'homes/about'
     resources :users, only: [:index, :show, :create, :update, :destroy]
