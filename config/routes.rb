@@ -1,99 +1,32 @@
 Rails.application.routes.draw do
   
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-  end
-  namespace :admin do
-    get 'sessions/new'
-    get 'sessions/create'
-    get 'sessions/destroy'
-  end
-  namespace :admin do
-    get 'board_comments/index'
-    get 'board_comments/delete'
-  end
-  namespace :admin do
-    get 'board_posts/index'
-    get 'board_posts/show'
-    get 'board_posts/delete'
-  end
-  namespace :admin do
-    get 'groups/index'
-    get 'groups/show'
-    get 'groups/create'
-    get 'groups/update'
-    get 'groups/delete'
-  end
-  namespace :admin do
-    get 'comments/index'
-    get 'comments/delete'
-  end
-  namespace :admin do
-    get 'posts/delete'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/unsubscribe'
-    get 'customers/withdraw'
-  end
-  namespace :public do
-    get 'sessions/new'
-    get 'sessions/create'
-    get 'sessions/destroy'
-  end
-  namespace :public do
-    get 'registrations/new'
-    get 'registrations/create'
-  end
-  namespace :public do
-    get 'board_comments/index'
-    get 'board_comments/create'
-    get 'board_comments/delete'
-  end
-  namespace :public do
-    get 'board_posts/index'
-    get 'board_posts/show'
-    get 'board_posts/create'
-    get 'board_posts/update'
-    get 'board_posts/delete'
-  end
-  namespace :public do
-    get 'groups/index'
-    get 'groups/show'
-    get 'groups/create'
-    get 'groups/update'
-    get 'groups/delete'
-  end
-  namespace :public do
-    get 'comments/index'
-    get 'comments/create'
-    get 'comments/delete'
-  end
-  namespace :public do
-    get 'posts/index'
-    get 'posts/show'
-    get 'posts/create'
-    get 'posts/update'
-    get 'posts/delete'
-  end
-  namespace :public do
-    get 'users/index'
-    get 'users/show'
-    get 'users/create'
-    get 'users/update'
-    get 'users/delete'
-  end
   namespace :public do
     get 'homes/top'
     get 'homes/about'
+    resources :users, only: [:index, :show, :create, :update, :destroy]
+    resources :posts, only: [:index, :show, :create, :update, :destroy]
+    resources :comments, only: [:index, :create, :destroy]
+    resources :groups, only: [:index, :show, :create, :update, :destroy]
+    resources :board_posts, only: [:index, :show, :create, :update, :destroy]
+    resources :board_comments, only: [:index, :create, :destroy]
+    resources :registrations, only: [:new, :create]
+    resources :sessions, only: [:new, :create, :destroy]
+    resources :customers, only: [:show, :edit, :update] do
+      collection do
+        get 'unsubscribe'
+        patch 'withdraw'
+      end
+    end
   end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  namespace :admin do
+    resources :posts, only: [:destroy]
+    resources :comments, only: [:index, :destroy]
+    resources :groups, only: [:index, :show, :create, :update, :destroy]
+    resources :board_posts, only: [:index, :show, :destroy]
+    resources :board_comments, only: [:index, :destroy]
+    resources :sessions, only: [:new, :create, :destroy]
+    resources :customers, only: [:index, :show, :edit, :update]
+    get 'homes/top'
+  end
 end
