@@ -1,2 +1,51 @@
-<h1>Public::BoardPosts#index</h1>
-<p>Find me in app/views/public/board_posts/index.html.erb</p>
+<div class="container mt-5">
+  <% if @group.present? %>
+    <h3 class="mt-5 mb-3 text-center"><%= @group.name %>の投稿一覧</h3>
+    
+    <%= form_with(model: @board_post, url: public_board_posts_path, local: true) do |form| %>
+      <%= form.hidden_field :group_id, value: @group.id %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%= form.text_area :content, size: "3x3", class: 'form-control' %>
+      <%= form.submit "投稿", class: "btn btn-success mt-2" %>
+    <% end %>
+    
+    <% @board_posts.each do |board_post| %>
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <p class="col-2"><%= board_post.user.username %>より：</p>
+            <p class="col-5"><%= board_post.created_at.strftime("%Y年%m月%d日 %H時%M分") %></p>
+          </div>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= board_post.content %></li>
+          <li class="list-group-item">
+            <% if current_user.id == board_post.user_id %>
+              <%= link_to "削除", public_board_post_path(board_post), method: :delete, class: "btn btn-danger" %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  <% else %>
+    <h4>すべての投稿</h4>
+    <% @board_posts.each do |board_post| %>
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <p class="col-2"><%= board_post.user.username %>より：</p>
+            <p class="col-5"><%= board_post.created_at.strftime("%Y年%m月%d日 %H時%M分") %></p>
+          </div>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= board_post.content %></li>
+          <li class="list-group-item">
+            <% if current_user.id == board_post.user_id %>
+              <%= link_to "削除", public_board_post_path(board_post), method: :delete, class: "btn btn-danger" %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
+  <% end %>
+</div>

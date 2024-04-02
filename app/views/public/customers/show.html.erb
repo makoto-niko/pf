@@ -1,2 +1,21 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4 class="my-5">マイページ</h4>
+        <div class="d-flex align-items-center">
+          <h3><b>登録情報</b></h3>
+          <%= link_to "編集する", public_edit_information_path, class:"btn btn-success ml-3" %>
+        </div>
+          <table class="table table-bordered">
+            <tr>
+              <td class="bg-light">ユーザー名</td>
+              <td><%= @customer.username %></td>
+            </tr>
+
+            <tr>
+              <td class="bg-light">メールアドレス</td>
+              <td><%= @customer.email %></td>
+            </tr>
+    </div>
+  </div>
+</div>
