@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_user!, only: [:show, :edit, :update, :unsubscribe, :withdraw]
   def show
   end
 

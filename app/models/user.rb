@@ -10,4 +10,6 @@ class User < ApplicationRecord
   has_many :groups, through: :group_members
   has_many :group_messages
   has_many :board_posts
+   
+  validates :name, presence: true
 end
