@@ -8,12 +8,18 @@
     <script src="https://kit.fontawesome.com/99f9963ced.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'custom_styles', media: 'all' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column h-100">
     <%= render 'layouts/header' %>
-    <%= yield %>
-     </main>
-      <%= render 'layouts/footer' %>
+    
+    <main class="flex-shrink-0">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </main>
+    
+    <%= render 'layouts/footer' %>
   </body>
 </html>
