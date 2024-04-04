@@ -1,1 +1,43 @@
+<div class="container">
+  <div class='row'>
+    <div class="col-md-3 mt-5">
+      <h3>コミュニティ作成</h3>
+
+      <%= form_with(model: @group, url: admin_groups_path) do |f| %>
+        <%= f.hidden_field :admin_id %>
+        <div>
+          <%= f.label :name, "コミュニティ名" %><br />
+          <%= f.text_field :name, size: 30, class: 'form-control' %>
+        </div>
+
+        <div>
+          <%= f.label :description, "説明" %><br />
+          <%= f.text_area :description, size: "30x5", class: 'form-control' %>
+        </div>
+
+        <div>
+          <%= f.submit "作成する", class: "btn btn-sm btn-success px-5 mb-2 mt-2" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-8 offset-md-1 mt-5">
+      <h3>グループ一覧</h3>
+      <table class="table">
+        <tr>
+          <th class="col-4">グループ名</th>
+          <th class="col-7">説明</th>
+          <th class="col-1"></th>
+        </tr>
+        <% @groups.each do |group| %>
+          <tr>
+            <td class="col-4"><%= link_to group.name, admin_group_path(group) %></td>
+            <td class="col-7"><%= truncate(group.description length: 100) %></td>
+            <td><%= link_to "一覧", admin_group_board_posts_path(group) %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
 

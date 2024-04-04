@@ -11,7 +11,7 @@
     <% @board_posts.each do |board_post| %>
       <tr>
         <td><%= board_post.user.name %></td>
-        <td><%= board_post.body %></td>
+        <td><%= board_post.description %></td>
         <td><%= board_post.created_at.strftime("%Y年%m月%d日 %H時%M分") %></td>
         <td>
           <%= link_to '削除', admin_group_board_post_path(board_post.group_id, board_post), method: :delete, data: { confirm: '本当に削除しますか?' }, class: "btn btn-sm btn-danger" %>

@@ -11,7 +11,7 @@
       <% @groups.each do |group| %>
         <tr>
           <td class="col-4"><%= group.name %></td>
-          <td><%= group.explanation %></td>
+          <td><%= group.description %></td>
           <td><%= link_to "掲示板へ", group_board_posts_path(group) %></td>
         </tr>
       <% end %>
