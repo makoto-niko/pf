@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2024_04_03_072830) do
   create_table "board_posts", force: :cascade do |t|
     t.integer "board_id", null: false
     t.integer "user_id", null: false
+    t.integer "group_id", null: false
     t.string "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -109,6 +110,7 @@ ActiveRecord::Schema.define(version: 2024_04_03_072830) do
     t.string "description", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "admin_id"
   end
 
   create_table "post_images", force: :cascade do |t|
