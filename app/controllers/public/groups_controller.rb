@@ -1,5 +1,5 @@
 class Public::GroupsController < ApplicationController
-   def index
+  def index
     @groups = Group.all
   end
   
@@ -16,7 +16,7 @@ class Public::GroupsController < ApplicationController
       #flash.now[:alert] = "グループの作成に失敗しました。"
       #render :new
     #end
-  #end
+  end
   
   def show
     #group_id = params[:id]
@@ -30,5 +30,3 @@ class Public::GroupsController < ApplicationController
     params.require(:group).permit(:name, :explanation)
   end
 end
-
- 

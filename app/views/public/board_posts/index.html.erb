@@ -1,9 +1,10 @@
 <div class="container mt-5">
   <h4><%= @group.name %>への投稿はこちら！</h4>
   
-  <%= form_with(model:@board_post,url: public_boards_post_path(@group), local: true) do |form| %>
+  <%= form_with(model: @board_post, url: public_group_board_posts_path(@group), local: true) do |form| %>
     <%= form.hidden_field :group_id,value: @group.id %>
     <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :board_id, value: @board.id %> 
     <%= form.text_area :description, size: "3x3", class: 'form-control' %>
     <%= form.submit "投稿", class:"btn btn-success mt-2" %>
   <% end %>
