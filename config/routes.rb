@@ -16,12 +16,13 @@ Rails.application.routes.draw do
     patch 'customers/information' => 'customers#update', as: 'update_information'
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
-    
+  
     resources :users, only: [:index, :show, :create, :update, :destroy]
     resources :posts, only: [:new, :create, :index, :show]
     resources :comments, only: [:index, :create, :destroy]
-    resources :groups, only: [:new, :create]
-    resources :board_posts, only: [:index, :show, :create, :update, :destroy]
+    resources :groups, only: [:new, :create] do
+      resources :board_posts, only: [:index, :show, :create, :update, :destroy],as: 'group_board_posts'
+    end
     resources :board_comments, only: [:index, :create, :destroy]
   end
 

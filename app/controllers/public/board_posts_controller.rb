@@ -1,11 +1,13 @@
 class Public::BoardPostsController < ApplicationController
   before_action :authenticate_user!
-  def index
-    @group = Group.find(params[:group_id])
-    @board_post = Board_post.new
-    @board_posts = @group.post_boards
-    @users = User.all
-  end
+
+ def index
+  @group = Group.find(params[:group_id])
+  @board_post = BoardPost.new
+  @board_posts = @group.board_posts
+  @users = User.all
+ end
+
   
   def new
     #@board_post = BoardPost.new
