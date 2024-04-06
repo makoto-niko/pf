@@ -68,13 +68,6 @@ ActiveRecord::Schema.define(version: 2024_04_06_063242) do
     t.datetime "created_at", precision: 6, null: false
   end
 
-  create_table "customers", force: :cascade do |t|
-    t.string "name", null: false
-    t.boolean "is_deleted", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "group_members", force: :cascade do |t|
     t.integer "group_member_id"
     t.integer "group_id", null: false
