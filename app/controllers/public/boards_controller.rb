@@ -19,7 +19,7 @@ class Public::BoardsController < ApplicationController
       
       if @board.save
         flash[:notice] = "登録に成功しました。"
-        redirect_to public_group_board_path(@group.id, @board.id)
+        redirect_to public_group_boards_path(@group)
       else
         render :index 
       end
@@ -27,6 +27,7 @@ class Public::BoardsController < ApplicationController
   
   def show
       @board = Board.find(params[:id])
+      @Comment = Comment.new
   end
 
 

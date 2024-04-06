@@ -2,8 +2,10 @@
   <h4><%= @group.name %>への投稿はこちら！</h4>
   
   <%= form_with(model: @board, url: public_group_boards_path(@group), local: true) do |form| %>
-    <%= form.text_area :title, size: "3x3", class: "form-control" %>
-    <%= form.text_area :description, size: "3x3", class: 'form-control' %>
+    <%= form.label :title, "タイトル" %>
+    <%= form.text_area :title, size: "100x5", class: "form-control" %>
+    <%= form.label :description, "内容" %>
+    <%= form.text_area :description, size: "100x10", class: 'form-control' %>
     <%= form.submit "投稿", class:"btn btn-success mt-2" %>
   <% end %>
 
@@ -17,15 +19,22 @@
           <p class="col-6"><%= board.created_at.strftime("%Y年%m月%d日 %H時%M分") %></p>
         </div>
       </div>
-    </div>
-    <ul class="list-group list-group-flush">
+      <ul class="list-group list-group-flush">
         <li class="list-group-item"><%= board.description %></li>
         <li class="list-group-item">
         <% if current_user.id == board.user_id %> <!-- ログインユーザーが投稿のユーザーと一致しているかチェック -->
           <%= link_to "削除", public_group_board_path(board.group_id, board.id), method: :delete, class:"btn btn-danger" %> <!-- 削除リクエストを送るためのリンクを作成 -->
         <% end %>
         </li>
-    </ul>
+        <!-- コメント一覧の表示 -->
+        <li class="list-group-item">
+          <%= render "comments/index", board: board %>
+        </li>
+        <!-- コメント投稿フォーム -->
+        <li class="list-group-item">
+          <%= render "comments/form", board: board, comment: Comment.new %>
+        </li>
+      </ul>
+    </div>
   <% end %>
-
 </div>
