@@ -4,8 +4,8 @@
 
       <h2 class="mt-5">会員情報編集</h2>
       
-      <%= form_with(model: @customer, url: admin_customer_path(@customer), local: true) do |form| %>
-        <%= render "public/shared/error_messages", resource: @customer %>
+      <%= form_with(model: @user, url: admin_user_path(@user), local: true) do |form| %>
+        <%= render "public/shared/error_messages", resource: @user %>
         
         <table class="form-group d-flex align-items-center mt-4">
           <thead>
@@ -17,7 +17,7 @@
           <tbody>
             <tr>
               <th class="nowrap col-md-4">会員ID</th>
-              <td><%= @customer.id %></td>
+              <td><%= @user.id %></td>
             </tr>
         
              <tr>

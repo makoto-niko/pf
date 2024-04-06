@@ -11,13 +11,12 @@ Rails.application.routes.draw do
   get '/about', to: 'public/homes#about', as: 'about'
 
     namespace :public, path: '' do
-    get 'customers/my_page' => 'customers#show', as: 'my_page'
-    get 'customers/information/edit' => 'customers#edit', as: 'edit_information'
-    patch 'customers/information' => 'customers#update', as: 'update_information'
-    get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-    patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
-    
-    resources :users, only: [:index, :show, :create, :update, :destroy]
+    resources :users do
+      collection  do
+        get :unsubscribe
+        patch :withdraw
+      end
+    end
     resources :groups, only: [:index, :show] do
       resources :boards
       #resources :board_posts, only: [:index, :show, :create, :update, :destroy]
@@ -34,6 +33,6 @@ Rails.application.routes.draw do
         resources :board_comments, only: [:index, :destroy]
       end
     end
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update]
   end
 end

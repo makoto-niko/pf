@@ -52,16 +52,6 @@ ActiveRecord::Schema.define(version: 2024_04_06_063242) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "board_posts", force: :cascade do |t|
-    t.integer "board_id", null: false
-    t.integer "user_id", null: false
-    t.integer "group_id", null: false
-    t.string "content", null: false
-    t.text "description", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "boards", force: :cascade do |t|
     t.string "title", null: false
     t.string "description", null: false
@@ -72,7 +62,7 @@ ActiveRecord::Schema.define(version: 2024_04_06_063242) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "post_id", null: false
+    t.integer "board_id", null: false
     t.integer "user_id", null: false
     t.string "content", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -83,11 +73,6 @@ ActiveRecord::Schema.define(version: 2024_04_06_063242) do
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
   create_table "group_members", force: :cascade do |t|
@@ -95,15 +80,6 @@ ActiveRecord::Schema.define(version: 2024_04_06_063242) do
     t.integer "group_id", null: false
     t.integer "member_user_id", null: false
     t.boolean "is_group_admin"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "group_messages", force: :cascade do |t|
-    t.integer "group_id", null: false
-    t.integer "user_id", null: false
-    t.string "content", null: false
-    t.datetime "sent_at", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -116,33 +92,6 @@ ActiveRecord::Schema.define(version: 2024_04_06_063242) do
     t.integer "admin_id"
   end
 
-  create_table "post_images", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "post_id", null: false
-    t.text "content"
-    t.string "image"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_post_images_on_post_id"
-    t.index ["user_id"], name: "index_post_images_on_user_id"
-  end
-
-  create_table "post_tags", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "tag_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "title", null: false
-    t.string "content", null: false
-    t.boolean "is_public", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -153,7 +102,7 @@ ActiveRecord::Schema.define(version: 2024_04_06_063242) do
     t.string "username", null: false
     t.string "email", null: false
     t.boolean "is_admin"
-    t.boolean "is_public"
+    t.boolean "is_active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "encrypted_password", default: "", null: false
@@ -165,6 +114,4 @@ ActiveRecord::Schema.define(version: 2024_04_06_063242) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "post_images", "posts"
-  add_foreign_key "post_images", "users"
 end

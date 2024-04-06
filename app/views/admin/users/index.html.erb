@@ -14,13 +14,13 @@
       </thead>
 
       <tbody>
-        <% @customers.each do |customer| %>
+        <% @users.each do |user| %>
         <tr>
-          <td><%= customer.id %></td>
-          <td><%= link_to "#{customer.username} ",admin_customer_path(customer.id) %></td>
-          <td><%= customer.email %></td>
+          <td><%= user.id %></td>
+          <td><%= link_to "#{user.username} ",admin_user_path(user.id) %></td>
+          <td><%= user.email %></td>
           <td>
-          <% if customer.is_active %>
+          <% if user.is_active %>
           <span class='text-success'>有効</span>
           <% else %>
           <span class='text-secondary'>退会</span>
@@ -31,7 +31,7 @@
       </tbody>
       </table>
       <div class="d-flex justify-content-center" style="margin-top: 50px;">
-      <%= paginate @customers %>
+      <%= paginate @users %>
       </div>
   </div>
 </div>
