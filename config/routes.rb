@@ -18,11 +18,9 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw', as: 'withdraw'
     
     resources :users, only: [:index, :show, :create, :update, :destroy]
-    resources :posts, only: [:new, :create, :index, :show]
-    resources :comments, only: [:index, :create, :destroy]
-    
     resources :groups, only: [:index, :show] do
-      resources :board_posts, only: [:index, :show, :create, :update, :destroy]
+      resources :boards
+      #resources :board_posts, only: [:index, :show, :create, :update, :destroy]
     end
     
     resources :board_comments, only: [:index, :create, :destroy]
@@ -31,10 +29,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
-    resources :posts, only: [:destroy]
-    resources :comments, only: [:index, :destroy]
     resources :groups, only: [:index, :show, :edit, :create, :update, :destroy] do
-      resources :board_posts, only: [:index, :show, :destroy] do
+      resources :board, only: [:index, :show, :destroy] do
         resources :board_comments, only: [:index, :destroy]
       end
     end

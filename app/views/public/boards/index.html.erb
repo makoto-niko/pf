@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <h4><%= @group.name %>への投稿はこちら！</h4>
+  
+  <%= form_with(model: @board, url: public_group_boards_path(@group), local: true) do |form| %>
+    <%= form.text_area :title, size: "3x3", class: "form-control" %>
+    <%= form.text_area :description, size: "3x3", class: 'form-control' %>
+    <%= form.submit "投稿", class:"btn btn-success mt-2" %>
+  <% end %>
+
+  <h3 class="mt-5 mb-3 text-center"><%= @group.name %>の投稿一覧</h3>
+  
+  <% @boards.each do |board| %>
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <p class="col-6"><%= board.user.username %>より：</p>
+          <p class="col-6"><%= board.created_at.strftime("%Y年%m月%d日 %H時%M分") %></p>
+        </div>
+      </div>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= board.description %></li>
+        <li class="list-group-item">
+        <% if current_user.id == board.user_id %> <!-- ログインユーザーが投稿のユーザーと一致しているかチェック -->
+          <%= link_to "削除", public_group_board_path(board.group_id, board.id), method: :delete, class:"btn btn-danger" %> <!-- 削除リクエストを送るためのリンクを作成 -->
+        <% end %>
+        </li>
+    </ul>
+  <% end %>
+
+</div>
