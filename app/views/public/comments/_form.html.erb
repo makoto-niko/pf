@@ -1,4 +1,4 @@
-<%= form_with(model: [board, comment], local: true) do |form| %>
+<%= form_with(model: [board, comment], url: public_group_board_comments_path(board.group_id, board), local: true) do |form| %>
   <%= form.text_area :content, placeholder: "コメントをここに", class: "form-control" %>
   <%= form.submit "コメントする", class: "btn btn-primary" %>
 <% end %>

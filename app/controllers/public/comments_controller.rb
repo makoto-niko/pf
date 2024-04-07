@@ -6,7 +6,7 @@ class Public::CommentsController < ApplicationController
     @comment = @board.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
-      redirect_to public_group_board_path(@board.group, @board), notice: 'コメントを投稿しました。'
+       redirect_to public_group_boards_path(@board.group), notice: 'コメントを投稿しました。'
     else
       @group = @board.group
       @boards = @group.boards
@@ -19,7 +19,7 @@ class Public::CommentsController < ApplicationController
     @board = @comment.board
     if @comment.user == current_user
       @comment.destroy
-      redirect_to public_group_board_path(@board.group, @board), notice: 'コメントを削除しました。'
+      redirect_to public_group_boards_path(@board.group),notice: 'コメントを削除しました。'
     else
       redirect_to public_group_board_path(@board.group, @board), alert: '権限がありません。'
     end
