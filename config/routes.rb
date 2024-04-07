@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
- devise_for :admin, controllers: {
-  sessions: "admin/sessions"
-}
+  devise_for :admin, controllers: {
+    sessions: "admin/sessions"
+  }
   devise_for :users, controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get '/about', to: 'public/homes#about', as: 'about'
 
-    namespace :public, path: '' do
+  namespace :public, path: '' do
     resources :users do
       collection  do
         get :unsubscribe
@@ -23,10 +23,11 @@ Rails.application.routes.draw do
     end
     resources :groups, only: [:index, :show] do
       resources :boards do
-    resources :comments, only: [:index, :create, :destroy]do
+        resources :comments, only: [:index, :create, :destroy] do
+        end
+      end
     end
   end
-end
   namespace :admin do
     root to: 'homes#top'
     resources :groups, only: [:index, :show, :edit, :create, :update, :destroy] do
@@ -36,5 +37,4 @@ end
     end
     resources :users, only: [:index, :show, :edit, :update]
   end
-end
 end
