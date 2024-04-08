@@ -10,7 +10,7 @@ class Public::CommentsController < ApplicationController
     else
       @group = @board.group
       @boards = @group.boards
-      render 'public/boards/show'
+      render 'public/boards/index'
     end
   end
 

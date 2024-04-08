@@ -1,4 +1,14 @@
 <%= form_with(model: [board, comment], url: public_group_board_comments_path(board.group_id, board), local: true) do |form| %>
+ <% if @comment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@comment.errors.count, "件のエラー") %>が発生しました</h2>
+    <ul>
+    <% @comment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
   <%= form.text_area :content, placeholder: "コメントをここに", class: "form-control" %>
   <%= form.submit "コメントする", class: "btn btn-primary" %>
 <% end %>

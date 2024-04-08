@@ -2,10 +2,13 @@ ja:
   activerecord:
     models:
       board: "掲示板"
+      comment: "コメント"
     attributes:
       board:
         title: "タイトル"
         description: "内容"
+      comment:
+        content: "内容"
     errors:
       models:
         board:
@@ -16,6 +19,12 @@ ja:
             description:
               blank: "を入力してください。"
               too_long: "は%{count}文字以内で入力してください。"
+        comment:
+          attributes:
+            content:
+              blank: "を入力してください。"
+              too_long: "は20文字以内で入力してください。"
+
   enums:
     activerecord:
       errors:
