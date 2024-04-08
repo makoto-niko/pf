@@ -4,8 +4,8 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  validates :email, presence: true
-  validates :password, presence: true
-  validates :username, presence: true
+  # validates :email, presence: true
+  # validates :password, presence: true
+  # validates :username, presence: true
   has_many :groups
 end

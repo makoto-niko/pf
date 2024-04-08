@@ -21,20 +21,14 @@ class User < ApplicationRecord
     end
   end
 
-  validates :email, presence: true
-  validates :password, presence: true, length: { minimum: 6 }, on: :create
-  validates :username, presence: true
+  # validates :email, presence: true
+  # validates :password, presence: true, length: { minimum: 6 }, on: :create
+  # validates :username, presence: true
  
   def full_name
     username
   end
   
-  #def check_active_status
-     #if saved_change_to_is_active? && !is_active
-      # 顧客が退会処理を行った場合の処理
-      #self.update(is_active: false) # 退会ステータスを更新
-     #end
-  #end
   
   def customer_status
     if is_deleted == true
@@ -43,8 +37,8 @@ class User < ApplicationRecord
       "有効"
     end
   end
-   # is_deletedがfalseならtrueを返すようにしている(退会処理)
+   # (退会処理)
   def active_for_authentication?
-    super && (is_active == false)
+    super && is_active
   end
 end
