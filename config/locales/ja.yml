@@ -1,15 +1,21 @@
 ja:
   activerecord:
+    models:
+      board: "掲示板"
+    attributes:
+      board:
+        title: "タイトル"
+        description: "内容"
     errors:
       models:
         board:
           attributes:
             title:
-              blank: "タイトルを入力してください。"
-              too_long: "タイトルは%{count}文字以内で入力してください。"
+              blank: "を入力してください。"
+              too_long: "は%{count}文字以内で入力してください。"
             description:
-              blank: "内容を入力してください。"
-              too_long: "内容は%{count}文字以内で入力してください。"
+              blank: "を入力してください。"
+              too_long: "は%{count}文字以内で入力してください。"
   enums:
     activerecord:
       errors:

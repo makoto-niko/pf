@@ -5,7 +5,6 @@ class Board < ApplicationRecord
       # タイトルが空でないこと、文字数が50文字以内であることを検証
   validates :title, presence: true, length: { maximum: 50 }
   
-  # 説明が空でないこと、文字数が200文字以内であることを検証
-  validates :description, presence: true, length: { maximum: 200 }
-
+  # 説明が空でないこと、文字数が100文字以内であることを検証
+  validates :description, presence: true, length: { maximum: 100 }
 end
