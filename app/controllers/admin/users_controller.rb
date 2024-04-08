@@ -1,4 +1,4 @@
-  class Admin::UsersController < ApplicationController
+class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   def index
     @user = User.all
@@ -16,7 +16,7 @@
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-       redirect_to edit_admin_user_path(@user), notice: "会員情報が正常に更新されました"
+       redirect_to admin_users_path, notice: "会員情報が正常に更新されました"
     else
       render :edit
     end
@@ -25,7 +25,6 @@
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :is_active)
+    params.require(:user).permit(:username, :email, :is_active,:is_admin)
   end
-
 end

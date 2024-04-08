@@ -1,20 +1,22 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
   before_action :ensure_guest_user, only: [:edit]
- def show
+  def show
     @user = User.find(current_user.id)
   end
   
   def edit
-     @user = User.find(current_user.id)
+    #byebug
+    @user = User.find(current_user.id)
   end
   
   def update
     @user = User.find(current_user.id)
     #updated_params = user_params
     #updated_params.delete(:password) if updated_params[:password].blank?
+    #byebug
     if @user.update(user_params)
-      redirect_to edit_public_user_path(@user), notice: "会員情報を更新しました。"
+      redirect_to public_user_path(@user), notice: "会員情報を更新しました。"
     else
       flash.now[:alert] = "会員情報は更新できませんでした"
       redirect_to root_path

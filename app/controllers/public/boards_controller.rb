@@ -5,6 +5,7 @@ class Public::BoardsController < ApplicationController
   @group = Group.find(params[:group_id])
   @board = Board.new()
   @boards = @group.boards
+  @comment = Comment.new
  end
 
   

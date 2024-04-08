@@ -24,7 +24,20 @@ end
   #   super
   # end
 
-  # protected
+  #protected
+  
+  #def update_resource(resource, params)
+    #if params[:password].blank? && params[:password_confirmation].blank?
+      #resource.update_without_password(params.except(:current_password))
+   # else
+      #resource.update_with_password(params)
+    #end
+    
+  #def configure_permitted_parameters
+     #devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email, :is_active, :is_deleted])
+  #end
+  
+  #end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
