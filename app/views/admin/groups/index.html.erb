@@ -1,20 +1,26 @@
 <div class="container">
   <div class='row'>
     <div class="col-md-3 mt-5">
-<% if flash[:notice] %>
-  <div class="alert alert-success"><%= flash[:notice] %></div>
-<% end %>
-
-<% if flash[:alert] %>
-  <div class="alert alert-danger"><%= flash[:alert] %></div>
-<% end %>
-
+      <% if flash[:notice] %>
+        <div class="alert alert-success"><%= flash[:notice] %></div>
+      <% end %>
       <h3>グループ作成</h3>
 
       <%= form_with(model: @group, url: admin_groups_path) do |f| %>
         <%= f.hidden_field :admin_id %>
+        
+        <% if @group.errors.any? %>
+          <div class="alert alert-danger">
+            <ul>
+              <% @group.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
         <div>
-          <%= f.label :name, "コミュニティ名" %><br />
+          <%= f.label :name, "グループ名" %><br />
           <%= f.text_field :name, size: 30, class: 'form-control' %>
         </div>
 
@@ -41,7 +47,7 @@
           <tr>
             <td class="col-4"><%= link_to group.name, admin_group_path(group) %></td>
             <td class="col-7"><%= truncate(group.description, length: 100) %></td>
-            <td><%= link_to "一覧", admin_group_path(group) %></td>
+            <td><!--%= link_to "一覧", admin_group_path(group) %--></td>
           </tr>
         <% end %>
       </table>

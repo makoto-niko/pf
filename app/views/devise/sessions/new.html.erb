@@ -1,4 +1,9 @@
 <h2>Log in</h2>
+<% flash.each do |key, value| %>
+  <% if key == "notice" %>  
+    <div class="alert alert-success"><%= value %></div>
+  <% end %>
+<% end %>
 
 <%= form_with model: resource, url: session_path(resource_name) do |f| %>
   <div class="field">

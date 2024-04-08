@@ -1,6 +1,7 @@
 ja:
   activerecord:
     models:
+      group: "グループ"
       board: "掲示板"
       comment: "コメント"
     attributes:
@@ -9,6 +10,9 @@ ja:
         description: "内容"
       comment:
         content: "内容"
+      group:
+        name: "グループ名"
+        description: "説明"
     errors:
       models:
         board:
@@ -24,7 +28,14 @@ ja:
             content:
               blank: "を入力してください。"
               too_long: "は20文字以内で入力してください。"
-
+        group:
+          attributes:
+            name:
+              blank: "を入力してください。"
+              too_long: "は%{count}文字以内で入力してください。"
+            description:
+              blank: "を入力してください。"
+              too_long: "は%{count}文字以内で入力してください。"
   enums:
     activerecord:
       errors:
