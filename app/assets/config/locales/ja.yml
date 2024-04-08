@@ -1,12 +1,24 @@
 ja:
+  activerecord:
+    errors:
+      models:
+        board:
+          attributes:
+            title:
+              blank: "タイトルを入力してください。"
+              too_long: "タイトルは%{count}文字以内で入力してください。"
+            description:
+              blank: "内容を入力してください。"
+              too_long: "内容は%{count}文字以内で入力してください。"
   enums:
     activerecord:
-     errors:
-      messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
-        restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
+      errors:
+        messages:
+          record_invalid: 'バリデーションに失敗しました: %{errors}'
+          restrict_dependent_destroy:
+            has_one: "%{record}が存在しているので削除できません"
+            has_many: "%{record}が存在しているので削除できません"
+
   date:
     abbr_day_names:
     - 日

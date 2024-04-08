@@ -16,11 +16,11 @@ class Public::BoardsController < ApplicationController
       @board = Board.new(board_params)
       @board.user_id = current_user.id
       @board.group_id = @group.id
-      
       if @board.save
         flash[:notice] = "登録に成功しました。"
         redirect_to public_group_boards_path(@group)
       else
+        @boards = @group.boards
         render :index 
       end
   end

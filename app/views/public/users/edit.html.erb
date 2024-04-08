@@ -2,9 +2,21 @@
   <div class="row">
    <div class="mx-auto">
     <div class="col-md-8">
+      
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %>が原因でこの記事を保存できませんでした</h2>
+          <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
       <h4 class="my-5 text-center">会員情報編集</h4>
       <table class="table table-borderless">
-        <%= form_with model: [:public, @user], method: :patch do |f| %>
+       <%= form_with model: @user, scope: :public, url: public_user_path(@user), method: :patch, local: true do |f| %>
         <tr>
           <td class="text-center">ニックネーム</td>
           <td class="text-center"><%= f.text_field :username, class: "form-control" %></td>

@@ -26,12 +26,13 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  #protected
+ # protected
+  
     private
     
-      def prevent_logged_in_access
-        redirect_to root_path if user_signed_in?
-      end
+  def prevent_logged_in_access
+       redirect_to root_path if user_signed_in?
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])

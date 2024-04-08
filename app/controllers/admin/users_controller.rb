@@ -15,8 +15,8 @@
 
   def update
     @user = User.find(params[:id])
-    if @user.update(customer_params)
-      redirect_to admin_customer_path(@user), notice: "会員情報が正常に更新されました"
+    if @user.update(user_params)
+       redirect_to edit_admin_user_path(@user), notice: "会員情報が正常に更新されました"
     else
       render :edit
     end
@@ -24,7 +24,7 @@
 
   private
 
-  def customer_params
+  def user_params
     params.require(:user).permit(:username, :email, :is_active)
   end
 

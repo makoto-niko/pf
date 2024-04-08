@@ -42,8 +42,15 @@ class Public::RegistrationsController < Devise::RegistrationsController
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+  
+  # パスワードなしでユーザー情報を更新できるようにします。
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  # アカウント更新時に許可されるパラメータを指定します。
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:account_update, keys: [:username, :email])
   end
 
   # If you have extra params to permit, append them to the sanitizer.

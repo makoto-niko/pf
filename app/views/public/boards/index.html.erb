@@ -1,4 +1,15 @@
 <div class="container mt-5">
+  <% if @board.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@board.errors.count, "件のエラー") %>が原因でこの投稿を保存できませんでした：</h2>
+    <ul>
+    <% @board.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
   <h4><%= @group.name %>への投稿はこちら！</h4>
   
   <%= form_with(model: @board, url: public_group_boards_path(@group), local: true) do |form| %>

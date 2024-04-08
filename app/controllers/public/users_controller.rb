@@ -2,31 +2,35 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
   before_action :ensure_guest_user, only: [:edit]
  def show
-    @user = current_user
+    @user = User.find(current_user.id)
   end
   
   def edit
-    @user = current_user
+     @user = User.find(current_user.id)
   end
   
   def update
-    @user = current_user
+    @user = User.find(current_user.id)
+    #updated_params = user_params
+    #updated_params.delete(:password) if updated_params[:password].blank?
     if @user.update(user_params)
-      redirect_to my_page_path, notice: "会員情報を更新しました。"
+      redirect_to edit_public_user_path(@user), notice: "会員情報を更新しました。"
     else
-      render :edit
+      flash.now[:alert] = "会員情報は更新できませんでした"
+      redirect_to root_path
     end
   end
 
   def withdraw
-    @user = current_user
-    @user.update(is_deleted: true)
+    @user = User.find(current_user.id)
+    @user.update(is_deleted: true, is_active: false)
     reset_session
-    redirect_to root_path, notice: "退会処理が完了しました。"
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
   end
   
   def unsubscribe
-    @user = current_user
+    @user = User
   end
   
   private
@@ -38,7 +42,7 @@ class Public::UsersController < ApplicationController
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.email == "guest@example.com"
-      redirect_to root_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+      redirect_to root_path(user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end  
 end
