@@ -13,7 +13,9 @@
           </ul>
         </div>
       <% end %>
-
+      
+     <%= render 'layouts/flash_messages' %>
+     
       <h4 class="my-5 text-center">会員情報編集</h4>
       <div>
        <%= form_with model: @user, url: public_user_path(@user), method: :patch do |f| %>

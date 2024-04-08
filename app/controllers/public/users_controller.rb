@@ -6,17 +6,14 @@ class Public::UsersController < ApplicationController
   end
   
   def edit
-    #byebug
     @user = User.find(current_user.id)
   end
   
   def update
     @user = User.find(current_user.id)
-    #updated_params = user_params
-    #updated_params.delete(:password) if updated_params[:password].blank?
-    #byebug
     if @user.update(user_params)
-      redirect_to public_user_path(@user), notice: "会員情報を更新しました。"
+      flash[:notice] = "会員情報を更新しました。"
+      render :edit
     else
       flash.now[:alert] = "会員情報は更新できませんでした"
       redirect_to root_path
