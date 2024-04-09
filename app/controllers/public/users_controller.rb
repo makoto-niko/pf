@@ -21,7 +21,7 @@ class Public::UsersController < ApplicationController
       redirect_to edit_public_user_path(@user)
     else
       flash.now[:alert] = "会員情報は更新できませんでした"
-      redirect_to edit_public_user_path(@user)
+      render 'edit'
     end
   end
 

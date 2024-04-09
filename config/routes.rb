@@ -31,9 +31,8 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     root to: 'homes#top'
-    resources :board, only: [:index]
     resources :groups, only: [:index, :show, :edit, :create, :update, :destroy] do
-      resources :board, only: [:show, :destroy] do
+      resources :board, only: [:index, :show, :destroy] do
         resources :board_comments, only: [:index, :destroy]
       end
     end
