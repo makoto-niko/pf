@@ -1,17 +1,42 @@
 class Public::BoardsController < ApplicationController
   before_action :authenticate_user!
 
- def index
-  @group = Group.find(params[:group_id])
-  @board = Board.new()
-  @boards = @group.boards
-  @comment = Comment.new
- end
+  def index
+    @group = Group.find(params[:group_id])
+    @board = Board.new()
+    @boards = @group.boards
+    @comment = Comment.new
+  end
 
+  def edit
+    @group = Group.find(params[:group_id])
+    @board = Board.find(params[:id])
+    unless @board.user_id == current_user.id
+      redirect_to public_group_boards_path(@group), alert: "編集権限がありません。"
+    end
+  end
   
   def new
   end
 
+  def show
+      @board = Board.find(params[:id])
+      @Comment = Comment.new
+  end
+  
+  def update
+    @group = Group.find(params[:group_id])
+    @board = Board.find(params[:id])
+      if @board.user_id != current_user.id
+        redirect_to public_group_boards_path(@group), alert: "更新権限がありません。"
+      elsif @board.update(board_params)
+        flash[:notice] = "更新に成功しました。"
+        redirect_to public_group_boards_path(@group) 
+      else
+        render :edit
+      end
+  end
+  
   def create
       @group = Group.find(params[:group_id])
       @board = Board.new(board_params)
@@ -26,21 +51,14 @@ class Public::BoardsController < ApplicationController
       end
   end
   
-  def show
-      @board = Board.find(params[:id])
-      @Comment = Comment.new
-  end
-
-
-
-    def destroy
-       @board = Board.find(params[:id])
+  def destroy
+    @board = Board.find(params[:id])
       if  @board.user_id == current_user.id 
          @board.destroy 
       end
-      flash[:notice] = "削除に成功しました。"
-      redirect_to public_group_boards_path(params[:group_id]) # コミュニティの投稿一覧ページにリダイレクト
-    end
+    flash[:notice] = "削除に成功しました。"
+    redirect_to public_group_boards_path(params[:group_id]) # コミュニティの投稿一覧ページにリダイレクト
+  end
     
   private
 

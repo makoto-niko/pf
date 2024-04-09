@@ -10,8 +10,13 @@
           <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to root_path, class: "nav-link text-blue" do %>
-            <i class="fa-solid fa-file-alt"></i> 投稿一覧
+          <%= link_to admin_board_index_path, class: "nav-link text-blue" do %>
+            <i class="fa-solid fa-file-alt"></i> 掲示板一覧
+          <% end %>
+        </li>
+         <li class="nav-item">
+          <%= link_to admin_comments_path, class: "nav-link text-blue" do %>
+            <i class="fa-solid fa-comments"></i> コメント一覧
           <% end %>
         </li>
         <li class="nav-item">
@@ -26,7 +31,12 @@
         </li>
       </ul>
     <% elsif user_signed_in? %>
-      <ul class="navbar-nav ml-auto">  
+     <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to about_path, class: "nav-link text-blue" do %>
+            <i class="fa-solid fa-link"></i> About
+          <% end %>
+        </li>
         <li class="nav-item">
           <%= link_to edit_public_user_path(current_user), class: "nav-link text-blue" do %>
             <i class="fa-solid fa-house"></i> マイページ 
@@ -35,6 +45,16 @@
         <li class="nav-item">
           <%= link_to public_groups_path, class: "nav-link text-blue" do %>
             <i class="fa-solid fa-book-open"></i> グループ一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to public_users_path, class: "nav-link text-blue" do %>
+            <i class="fa-solid fa-users"></i> 会員一覧
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to root_path, class: "nav-link text-blue" do %>
+            <i class="fa-solid fa-envelope"></i> お問い合わせ
           <% end %>
         </li>
         <li class="nav-item">

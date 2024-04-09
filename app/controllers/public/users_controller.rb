@@ -1,6 +1,11 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
   before_action :ensure_guest_user, only: [:edit]
+  
+  def index
+    @users = User.all
+  end
+  
   def show
     @user = User.find(current_user.id)
   end
@@ -13,10 +18,10 @@ class Public::UsersController < ApplicationController
     @user = User.find(current_user.id)
     if @user.update(user_params)
       flash[:notice] = "会員情報を更新しました。"
-      render :edit
+      redirect_to edit_public_user_path(@user)
     else
       flash.now[:alert] = "会員情報は更新できませんでした"
-      redirect_to root_path
+      redirect_to edit_public_user_path(@user)
     end
   end
 

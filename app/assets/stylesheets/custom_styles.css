@@ -24,3 +24,14 @@ main {
   list-style: none;
   padding-left: 0;
 }
+.content-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh; 
+  text-align: center; /* テキストを中央揃えに */
+}
+.p2 {
+  color: red;
+}
