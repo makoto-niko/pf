@@ -7,4 +7,5 @@ class Board < ApplicationRecord
   
   # 説明が空でないこと、文字数が100文字以内であることを検証
   validates :description, presence: true, length: { maximum: 100 }
+  
 end
