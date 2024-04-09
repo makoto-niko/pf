@@ -5,6 +5,10 @@ class Public::BoardsController < ApplicationController
     @group = Group.find(params[:group_id])
     @board = Board.new()
     @boards = @group.boards
+    if params[:keyword].present?
+      @boards = @boards.where('title LIKE(?)', "%#{params[:keyword]}%")
+             .or(@boards.where('description LIKE(?)', "%#{params[:keyword]}%"))
+    end
     @comment = Comment.new
   end
 

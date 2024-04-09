@@ -1,5 +1,20 @@
 <div class="container mt-5">
- <%= render 'layouts/error_messages', model: @board %>
+  <%= render 'layouts/error_messages', model: @board %>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <%= form_with url: public_group_boards_path(@group), method: :get do |f| %>
+          <div class="row">
+            <div class="col-sm-9 mb-2">
+              <%= f.search_field :keyword, class: "form-control" %>
+            </div>
+            <div class="col-sm-3">
+              <%= f.submit "search", class: "btn btn-primary btn-block" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <h4><%= @group.name %>への投稿はこちら！</h4>
   
   <%= form_with(model: @board, url: public_group_boards_path(@group), local: true) do |form| %>
