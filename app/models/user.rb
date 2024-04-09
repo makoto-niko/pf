@@ -39,6 +39,6 @@ class User < ApplicationRecord
   end
    # (退会処理)
   def active_for_authentication?
-    super && is_active
+    super && is_active 
   end
 end

@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 2024_04_06_063242) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
   create_table "boards", force: :cascade do |t|
