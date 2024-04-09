@@ -1,5 +1,10 @@
 ja:
   activerecord:
+    errors:
+      template:
+        header:
+          one: "1つのエラーがあるため、この%{model}を保存できませんでした:"
+          other: "%{count}つのエラーがあるため、この%{model}を保存できませんでした:"
     models:
       group: "グループ"
       board: "掲示板"
@@ -36,14 +41,14 @@ ja:
             description:
               blank: "を入力してください。"
               too_long: "は%{count}文字以内で入力してください。"
-  enums:
-    activerecord:
+    enums:
       errors:
         messages:
           record_invalid: 'バリデーションに失敗しました: %{errors}'
           restrict_dependent_destroy:
             has_one: "%{record}が存在しているので削除できません"
             has_many: "%{record}が存在しているので削除できません"
+
 
   date:
     abbr_day_names:

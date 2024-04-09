@@ -1,27 +1,38 @@
 <div class="container text-center">
   
   <h3 class="py-4">グループ詳細画面</h3>
-  
-  <div class="row justify-content-center mb-3">
-    <div class="col-sm-3 text-sm-end">グループ名:</div>
-    <div class="col-sm-9 text-start">
-      <%= @group.name %>
+   <%= render 'layouts/error_messages', model: @group %>
+
+ <%= form_with(model: @group, url: admin_group_path(@group), local: true) do |f| %>
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-3">
+        <%= f.label :name, "グループ名:", class: "col-sm-3", style: "white-space: nowrap;" %>
+      </div>
+      <div class="col-md-3">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
     </div>
-  </div>
-  
-  <div class="row justify-content-center mb-3">
-    <div class="col-sm-3 text-sm-end">説明:</div>
-    <div class="col-sm-9 text-start">
-      <%= @group.description %>
+    
+    <div class="row justify-content-center mb-3">
+      <div class="col-sm-3 text-sm-end">説明:</div>
+      <div class="col-sm-9 text-start">
+        <%= f.text_area :description, class: 'form-control' %>
+      </div>
     </div>
-  </div>
+    
+    <div class="row justify-content-center">
+      <div class="col-sm-auto">
+        <%= f.submit '更新', class: "btn btn-success mr-2" %>
+      </div>
+    </div>
+  <% end %>
   
   <div class="row justify-content-center">
     <div class="col-sm-auto">
-      <%= link_to '編集', edit_admin_group_path(@group), class: "btn btn-success mr-2" %>
       <%= link_to '削除', admin_group_path(@group), method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'btn btn-danger' %>
     </div>
   </div>
 
 </div>
+
 

@@ -2,16 +2,7 @@
   <h2>新規投稿</h2>
 
   <%= form_with(model: @board, url: public_board_posts_path, local: true, html: { class: "form-horizontal" }) do |form| %>
-    <% if @board.errors.any? %>
-      <div id="error_explanation" class="alert alert-danger">
-        <h4><%= pluralize(@board.errors.count, "error") %> prohibited this board_post from being saved:</h4>
-        <ul>
-          <% @board.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+   <%= render 'layouts/error_messages', model: @group %>
 
     <div class="form-group row">
       <%= form.label :title, class: "col-sm-2 col-form-label" %>
