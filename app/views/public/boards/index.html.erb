@@ -1,7 +1,16 @@
 <div class="container mt-5">
   <%= render 'layouts/error_messages', model: @board %>
-    <div class="row">
-      <div class="col-md-8 offset-md-2">
+  <h4><%= @group.name %>への投稿はこちら！</h4>
+  
+  <%= form_with(model: @board, url: public_group_boards_path(@group), local: true) do |form| %>
+      <div><%= form.label :title, "タイトル" %></div>
+      <div><%= form.text_area :title, size: "10x5", class: "form-control" %></div>
+      <div><%= form.label :description, "内容" %></div>
+      <div> <%= form.text_area :description, size: "30x10", class: 'form-control' %></div>
+      <div> <%= form.submit "投稿", class:"btn btn-success mt-2" %></div>
+  <% end %>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
         <%= form_with url: public_group_boards_path(@group), method: :get do |f| %>
           <div class="row">
             <div class="col-sm-9 mb-2">
@@ -15,17 +24,7 @@
       </div>
     </div>
   </div>
-  <h4><%= @group.name %>への投稿はこちら！</h4>
-  
-  <%= form_with(model: @board, url: public_group_boards_path(@group), local: true) do |form| %>
-      <div><%= form.label :title, "タイトル" %></div>
-      <div><%= form.text_area :title, size: "50x5", class: "form-control" %></div>
-      <div><%= form.label :description, "内容" %></div>
-      <div> <%= form.text_area :description, size: "100x10", class: 'form-control' %></div>
-      <div> <%= form.submit "投稿", class:"btn btn-success mt-2" %></div>
-  <% end %>
-
-  <h3 class="mt-5 mb-3 text-center"><%= @group.name %>の投稿一覧</h3>
+<h3 class="mt-5 mb-3 text-center"><%= @group.name %>の投稿一覧</h3>
   
   <% @boards.each do |board| %>
     <div class="card">
