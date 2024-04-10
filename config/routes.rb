@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
   get '/about', to: 'public/homes#about', as: 'about'
-#get 'public/searches'
+  get 'public/searches', to: 'public/searchs#search'
   namespace :public, path: '' do
     resources :users do
       collection  do

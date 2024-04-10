@@ -5,12 +5,9 @@ class Public::SearchsController < ApplicationController
     @model = params[:model]
     @content = params[:content]
     @method = params[:method]
-    
-    # 選択したモデルに応じて検索を実行
-    #if @model  == "user"
-      @records = User.search_for(@content, @method)
-    #else
-      #@records = Books.search_for(@content, @method)
-    #end
+    @users = User.all
+    @users = User.page(params[:page])
+    @records = User.search_for(@content, @method)
+    render 'public/users/index'
   end
 end
