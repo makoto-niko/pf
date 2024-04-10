@@ -52,6 +52,14 @@ ja:
             email:
              blank: "を入力してください。"
              too_long: "は%{count}文字以内で入力してください。"
+  views:
+    pagination:
+      first: '最初'
+      last: '最後'
+      previous: '前'
+      next: '次'
+      truncate: '...'
+
     enums:
       errors:
         messages:
