@@ -35,3 +35,12 @@ main {
 .p2 {
   color: red;
 }
+.background-image {
+  background-image: url('rainbow.jpg');
+  background-size: cover; /* 画像を要素のサイズに合わせて調整 */
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+}
+
