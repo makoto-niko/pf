@@ -1,7 +1,7 @@
 <% board.comments.each do |comment| %>
   <div class="comment">
     <p><%= comment.user.username %>: <%= comment.content %></p>
-    <% if current_user.id == comment.user_id %>
+    <% if current_user && current_user.id == comment.user_id %> 
      <!%= link_to "編集", edit_public_group_board_comment_path(board.group_id, board, comment), class: "btn btn-primary" %-->
      <%= link_to "削除", public_group_board_comment_path(board.group_id, board, comment), method: :delete, class: "btn btn-danger" %>
     <% end %>

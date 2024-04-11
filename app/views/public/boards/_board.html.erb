@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-header">
+    <div class="row">
+      <p class="col-6"><%= board.user.username %>より：</p>
+      <p class="col-6"><%= board.created_at.strftime("%Y年%m月%d日 %H時%M分") %></p>
+    </div>
+  </div>
+  
+ <div style="display: flex; justify-content: space-around;">
+      <div class="divst-group divst-group-flush">
+        <div class="divst-group-item">
+          <%= board.title %>
+        </div>
+        <div class="divst-group-item">
+          <%= board.description %>
+        </div>
+        <div class="divst-group-item">
+          <% board.tags.each do |tag| %>
+           <%= link_to "#{tag.name} ( 投稿: #{tag.boards.count} )", public_tag_path(tag) %>
+          <% end %> 
+        </div>  
+        <div class="divst-group-item">
+          <% if current_user && (current_user.id == board.user_id || current_user.is_admin?) %>
+            <%= link_to "編集", edit_public_group_board_path(board.group_id, board.id), class: "btn btn-primary" %> 
+            <%= link_to "削除", public_group_board_path(board.group_id, board.id), method: :delete, class:"btn btn-danger" %> 
+          <% end %>
+        </div>
+     </div>
+  </div>
+</div>

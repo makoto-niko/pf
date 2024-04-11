@@ -5,12 +5,12 @@ class Public::BoardsController < ApplicationController
     @group = Group.all
     @group = Group.find(params[:group_id])
     @board = Board.new()
+    @comment = Comment.new
     @boards = @group.boards
     if params[:keyword].present?
       @boards = @boards.where('title LIKE(?)', "%#{params[:keyword]}%")
              .or(@boards.where('description LIKE(?)', "%#{params[:keyword]}%"))
     end
-    @comment = Comment.new
   end
 
   def edit
@@ -21,9 +21,9 @@ class Public::BoardsController < ApplicationController
     end
   end
   
-  def new
-     @board = Board.new
-  end
+  #def new
+     #@board = Board.new
+  #end
 
   def show
       @board = Board.find(params[:id])

@@ -52,8 +52,9 @@ class User < ApplicationRecord
         User.where('username LIKE ?', '%' + content + '%')
       end
   end
-
-
-
+  
+  def is_admin?
+    self.is_admin
+  end
 
 end
