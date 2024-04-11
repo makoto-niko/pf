@@ -2,6 +2,7 @@ class Public::BoardsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @group = Group.all
     @group = Group.find(params[:group_id])
     @board = Board.new()
     @boards = @group.boards
@@ -21,6 +22,7 @@ class Public::BoardsController < ApplicationController
   end
   
   def new
+     @board = Board.new
   end
 
   def show
@@ -32,6 +34,7 @@ class Public::BoardsController < ApplicationController
     @group = Group.find(params[:group_id])
     @board = Board.find(params[:id])
       if @board.user_id != current_user.id
+        @board.save_tags(params[:board][:tag])
         redirect_to public_group_boards_path(@group), alert: "更新権限がありません。"
       elsif @board.update(board_params)
         flash[:notice] = "更新に成功しました。"
@@ -46,7 +49,9 @@ class Public::BoardsController < ApplicationController
       @board = Board.new(board_params)
       @board.user_id = current_user.id
       @board.group_id = @group.id
+      @board = board.new(board_params)
       if @board.save
+        @board.save_tags(params[:board][:tag])
         flash[:notice] = "登録に成功しました。"
         redirect_to public_group_boards_path(@group)
       else
@@ -57,6 +62,7 @@ class Public::BoardsController < ApplicationController
   
   def destroy
     @board = Board.find(params[:id])
+    board.find(params[:id]).destroy()
       if  @board.user_id == current_user.id 
          @board.destroy 
       end
