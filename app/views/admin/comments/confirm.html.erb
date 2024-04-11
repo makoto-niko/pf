@@ -1,0 +1,7 @@
+<h2>コメントを削除しますか？</h2>
+
+<%= form_for [:admin, @comment], url: admin_comment_path(@comment), method: :delete do |f| %>
+  <%= f.submit "削除する" %>
+<% end %>
+
+<%= link_to 'キャンセル', admin_comments_path %>

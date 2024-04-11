@@ -1,11 +1,14 @@
 class Admin::CommentsController < ApplicationController
 before_action :authenticate_admin!
-before_action :set_group_and_board, only: [:index]
+before_action :set_comment, only: [:confirm_destroy, :destroy]
   def index
     @comments = Comment.all
     @users = User.all
   end
  
+  def confirm_destroy
+  end
+
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
@@ -14,7 +17,8 @@ before_action :set_group_and_board, only: [:index]
 
   private
   
-  def set_group_and_board
+  def set_comment
+    @comment = Comment.find(params[:id])
     #@group = Group.find(params[:group_id])
     #@board = Board.find(params[:board_id])
   end
