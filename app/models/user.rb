@@ -20,7 +20,7 @@ class User < ApplicationRecord
       user.username = "guestuser"
     end
   end
-
+  
    validates :email, presence: true,length: { maximum: 20 }
    validates :username, presence: true,length: { maximum: 20 }
  

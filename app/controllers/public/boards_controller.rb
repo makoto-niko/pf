@@ -49,7 +49,6 @@ class Public::BoardsController < ApplicationController
       @board = Board.new(board_params)
       @board.user_id = current_user.id
       @board.group_id = @group.id
-      @board = board.new(board_params)
       if @board.save
         @board.save_tags(params[:board][:tag])
         flash[:notice] = "登録に成功しました。"
@@ -62,7 +61,7 @@ class Public::BoardsController < ApplicationController
   
   def destroy
     @board = Board.find(params[:id])
-    board.find(params[:id]).destroy()
+    #board.find(params[:id]).destroy()
       if  @board.user_id == current_user.id 
          @board.destroy 
       end
