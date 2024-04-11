@@ -2,8 +2,8 @@
 <p>Find me in app/views/tags/show.html.erb</p>
 
 <h2>Actions --></h2>
-<%= link_to 'Tags List', tags_path %>
-<%= link_to 'Delete', tag_path(@tag), method: :delete, data: {confirm: '関連づいた記事のタグが空になりますがタグを削除しますか？'} %>
+<%= link_to 'Tags List', public_tags_path %>
+<%= link_to 'Delete', public_tag_path(@tag), method: :delete, data: {confirm: '関連づいた記事のタグが空になりますがタグを削除しますか？'} %>
 
 <h2>Tag --></h2>
 
@@ -14,7 +14,7 @@
 <ul>
   <% @tag.boards.each do |board| %>
     <li>
-      <%= link_to board.title, board_path(board) %>
+      <%= link_to board.title, public_group_boards_path(board.group_id) %>
     </li>
   <% end %>
 </ul>

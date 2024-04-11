@@ -1,9 +1,0 @@
-<%= board.label :title, 'タイトル' %><br>
-<%= board.text_field :title %><br>
-<%= board.label :description, 'コンテンツ' %><br>
-<%= board.text_area :description %><br>
-<%= board.label :tag, 'タグ' %><br>
-<%# Edit用に@board.tags.pluck(:name)でタグの配列を取得 %>
-<%= board.text_field :tag, value: @board.tags.pluck(:name) %><br>
-<small>スペースで区切ることで複数指定できます。</small><br>
-<%= board.submit %>

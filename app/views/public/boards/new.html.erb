@@ -17,7 +17,12 @@
         <%= form.text_area :content, class: 'form-control', rows: 5 %>
       </div>
     </div>
-
+     <div class="form-group row">
+      <%= form.label :tag, 'タグ' %><br>
+      <%# Edit用に@board.tags.pluck(:name)でタグの配列を取得 %>
+      <%= form.text_field :tag, value: @board.tags.pluck(:name) %><br>
+      <small>スペースで区切ることで複数指定できます。</small><br>
+    </div>  
     <div class="form-group row">
       <div class="col-sm-10 offset-sm-2">
         <%= form.submit "投稿", class: "btn btn-primary" %>

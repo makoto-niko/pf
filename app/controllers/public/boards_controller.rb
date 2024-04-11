@@ -34,9 +34,9 @@ class Public::BoardsController < ApplicationController
     @group = Group.find(params[:group_id])
     @board = Board.find(params[:id])
       if @board.user_id != current_user.id
-        @board.save_tags(params[:board][:tag])
         redirect_to public_group_boards_path(@group), alert: "更新権限がありません。"
       elsif @board.update(board_params)
+        @board.save_tags(params[:board][:tag])
         flash[:notice] = "更新に成功しました。"
         redirect_to public_group_boards_path(@group) 
       else

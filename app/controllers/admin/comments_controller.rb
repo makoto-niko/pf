@@ -6,9 +6,6 @@ before_action :set_comment, only: [:confirm_destroy, :destroy]
     @users = User.all
   end
  
-  def confirm_destroy
-  end
-
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy

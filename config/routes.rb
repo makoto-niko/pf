@@ -25,16 +25,16 @@ Rails.application.routes.draw do
     resources :groups, only: [:index, :show] do
       resources :boards do
         resources :comments, only: [:index, :create, :destroy] do
-          resources :tags, only: [:index, :show, :destroy]
         end
       end
     end
+    resources :tags, only: [:index, :show, :destroy]
   end
   namespace :admin do
-    root to: 'homes#top'
+    root to: 'admin/homes#top'
     resources :comments, only: [:index, :destroy]
     resources :groups, only: [:index, :show, :edit, :create, :update, :destroy] do
-      resources :board, only: [:index, :show, :destroy] do
+      resources :boards, only: [:index, :show, :destroy] do
         #resources :comments, only: [:index, :destroy]
       end
     end
