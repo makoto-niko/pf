@@ -27,6 +27,7 @@ class Public::BoardsController < ApplicationController
 
   def show
       @board = Board.find(params[:id])
+      @group = Group.find(params[:group_id])
       @Comment = Comment.new
   end
   
