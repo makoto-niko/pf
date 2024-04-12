@@ -21,7 +21,7 @@
         </div>  
         <div class="divst-group-item">
           <% if current_user && (current_user.id == board.user_id || current_user.is_admin?) %>
-            <%= link_to "編集", edit_public_group_board_path(board.group_id, board.id), class: "btn btn-primary" %> 
+           <%= link_to "詳細", public_group_board_path(board.group_id, board.id), class: "btn btn-primary" %>
             <%= link_to "削除", public_group_board_path(board.group_id, board.id), method: :delete, class:"btn btn-danger" %> 
           <% end %>
         </div>

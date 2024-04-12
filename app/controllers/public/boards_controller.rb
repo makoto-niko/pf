@@ -36,7 +36,7 @@ class Public::BoardsController < ApplicationController
       if @board.user_id != current_user.id
         redirect_to public_group_boards_path(@group), alert: "更新権限がありません。"
       elsif @board.update(board_params)
-        @board.save_tags(params[:board][:tag])
+        @board.save_tags(params[:board][:tags])
         flash[:notice] = "更新に成功しました。"
         redirect_to public_group_boards_path(@group) 
       else
@@ -50,7 +50,7 @@ class Public::BoardsController < ApplicationController
       @board.user_id = current_user.id
       @board.group_id = @group.id
       if @board.save
-        @board.save_tags(params[:board][:tag])
+        @board.save_tags(params[:board][:tags])
         flash[:notice] = "登録に成功しました。"
         redirect_to public_group_boards_path(@group)
       else
@@ -72,7 +72,7 @@ class Public::BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:title, :description, :user_id, :group_id)
+    params.require(:board).permit(:title, :description, :user_id, :group_id, :tags)
   end
 end
 

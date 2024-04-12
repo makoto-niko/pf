@@ -1,5 +1,6 @@
 <div class="container mt-5">
   <%= render 'layouts/error_messages', model: @board %>
+  <!--%= render 'layouts/error_messages', model: @tag %-->
   <h4><%= @group.name %>への投稿はこちら！</h4>
   
   <%= form_with(model: @board, url: public_group_boards_path(@group), local: true) do |form| %>
@@ -7,9 +8,9 @@
       <div><%= form.text_area :title, size: "10x5", class: "form-control" %></div>
       <div><%= form.label :description, "内容" %></div>
       <div> <%= form.text_area :description, size: "30x10", class: 'form-control' %></div>
-      <div><%= form.label :tag, 'タグ' %></div>
+      <div><%= form.label :tags, 'タグ' %></div>
       <%# Edit用に@board.tags.pluck(:name)でタグの配列を取得 %>
-      <div><%= form.text_field :tag, value: @board.tags.pluck(:name) %><br>
+      <div><%= form.text_field :tags, value: @board.tags.pluck(:name) %><br>
       <small>スペースで区切ることで複数指定できます。</small><br>
       </div>
       <div> <%= form.submit "投稿", class:"btn btn-success mt-2" %></div>
