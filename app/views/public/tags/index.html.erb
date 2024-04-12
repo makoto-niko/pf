@@ -1,15 +1,48 @@
-<h1>Tags#index</h1>
-<p>Find me in app/views/tags/index.html.erb</p>
+<div class="container">
+  <div class="row mt-5">
+    <!-- Actions Section -->
+    <div class="col-12">
+      <h2>Actions</h2>
+      <table class="table mt-3">
+        <thead>
+          <tr>
+            <th scope="col">アクション</th>
+            <th scope="col">リンク</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>タグリスト</td>
+            <td><%= link_to 'Tags List', public_tags_path, class: "btn btn-primary" %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-<h2>Actions --></h2>
-<%= link_to 'Top', root_path %>
+    <!-- Tag Section -->
+    <div class="col-12 mt-4">
+      <h2>Tag</h2>
+      <h3><!--%= @tag.name %--></h3>
+      <table class="table mt-3">
+        <thead>
+          <tr>
+            <th scope="col">掲示板タイトル</th>
+            <th scope="col">リンク</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tags.each do |tag| %>
+            <% tag.boards.each do |board| %>
+              <tr>
+                <td><%= tag.name %></td>
+                <td><%= board.title %></td>
+                <td><%= link_to '掲示板へ', public_group_boards_path(board.group_id), class: "btn btn-link" %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<h2>Tags --></h2>
-<ul>
-  <% @tags.each do |tag| %>
-    <li>
-      <%# タグの名前と、関連付く記事数を表示 %>
-      <%= link_to "#{tag.name} ( boards: #{tag.boards.count} )", public_tag_path(tag) %>
-    </li>
-  <% end %>
-</ul>
