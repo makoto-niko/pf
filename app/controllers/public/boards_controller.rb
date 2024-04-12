@@ -2,6 +2,7 @@ class Public::BoardsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @tags = Tag.all
     @group = Group.all
     @group = Group.find(params[:group_id])
     @board = Board.new()
@@ -28,7 +29,6 @@ class Public::BoardsController < ApplicationController
   def show
       @board = Board.find(params[:id])
       @group = Group.find(params[:group_id])
-      @Comment = Comment.new
   end
   
   def update
@@ -55,7 +55,8 @@ class Public::BoardsController < ApplicationController
         flash[:notice] = "登録に成功しました。"
         redirect_to public_group_boards_path(@group)
       else
-        @boards = @group.boards
+       tag_name = params[:board][:tag_name] # フォームから送信されたタグ名を取得
+       @boards = @group.boards.with_tag(tag_name)
         render :index 
       end
   end
@@ -73,7 +74,7 @@ class Public::BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:title, :description, :user_id, :group_id, :tags)
+    params.require(:board).permit(:title, :description, :user_id, :group_id, tags: [])
   end
 end
 

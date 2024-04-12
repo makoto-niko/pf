@@ -6,9 +6,11 @@ class Board < ApplicationRecord
     has_many :tags, through: :board_tags
       # タイトルが空でないこと、文字数が50文字以内であることを検証
   validates :title, presence: true, length: { maximum: 50 }
-  #validates :tags, presence: true
+  validates :tags, presence: true
   # 説明が空でないこと、文字数が100文字以内であることを検証
   validates :description, presence: true, length: { maximum: 100 }
+  scope :with_tag, -> (tag_name) { joins(:tags).where(tags: { name: tag_name }) }
+
   def save_tags(tags)
 
     # タグをスペース区切りで分割し配列にする
@@ -47,6 +49,13 @@ class Board < ApplicationRecord
       #   配列追加のようにレコードを渡すことで新規レコード作成が可能
       self.tags << new_post_tag
     end
+  end
+  
+   private
 
+  def tags_presence
+    if tags.empty?
+      errors.add(:tags, "を少なくとも1つ選択してください")
+    end
   end
 end

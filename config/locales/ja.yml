@@ -12,6 +12,7 @@ ja:
       user: "会員"
     attributes:
       board:
+        tags: "タグ"
         title: "タイトル"
         description: "内容"
       comment:

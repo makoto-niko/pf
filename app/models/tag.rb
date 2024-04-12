@@ -4,5 +4,4 @@ class Tag < ApplicationRecord
   has_many :board_tags,dependent: :destroy, foreign_key: 'tag_id'
   has_many :boards, through: :board_tags
   #belongs_to :group
-  validates :name, presence: true, length: { maximum: 50 }
 end
