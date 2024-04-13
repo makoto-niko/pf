@@ -1,6 +1,9 @@
-<%= form_with(model: [board, comment], url: public_group_board_comments_path(board.group_id, board), local: true) do |form| %>
-<%= render 'layouts/error_messages', model: @comment %>
-
-  <%= form.text_area :content, placeholder: "コメントをここに", class: "form-control" %>
-  <%= form.submit "コメントする", class: "btn btn-primary" %>
+<% if user_signed_in? && !current_user.email.eql?("guest@example.com") %>
+  <%= form_with(model: [board, comment], url: public_group_board_comments_path(board.group_id, board), local: true) do |form| %>
+    <%= render 'layouts/error_messages', model: @comment %>
+    <%= form.text_area :content, placeholder: "コメントをここに", class: "form-control" %>
+    <%= form.submit "コメントする", class: "btn btn-primary" %>
+  <% end %>
+<% else %>
+  <p>ゲストユーザーは投稿できません。</p>
 <% end %>

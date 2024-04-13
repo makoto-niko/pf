@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <%= render 'layouts/error_messages', model: @board %>
   <h4><%= @group.name %>への投稿はこちら！</h4>
-  
+  <% unless current_user.email == "guest@example.com" %>
   <%= form_with(model: @board, url: public_group_boards_path(@group), local: true) do |form| %>
       <div><%= form.label :title, "タイトル" %></div>
       <div><%= form.text_area :title, size: "10x5", class: "form-control" %></div>
@@ -13,6 +13,9 @@
       <small>スペースで区切ることで複数指定できます。</small><br>
       </div>
       <div> <%= form.submit "投稿", class:"btn btn-success mt-2" %></div>
+  <% end %>
+   <% else %>
+    <p>ゲストユーザーは投稿できません。</p>
   <% end %>
   <div class="row">
     <div class="col-md-8 offset-md-2">
