@@ -15,13 +15,21 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get '/about', to: 'public/homes#about', as: 'about'
   get 'public/searches', to: 'public/searchs#search'
-  namespace :public, path: '' do
+  
+ namespace :public, path: '', as: 'public' do
     resources :users do
-      collection  do
+      collection do
         get :unsubscribe
         patch :withdraw
       end
+      resource :relationships, only: [:create, :destroy] do
+        post 'follow', to: 'relationships#create', on: :member, as: 'follow'
+        delete 'unfollow', to: 'relationships#destroy', on: :member, as: 'unfollow'
+      end
+      get :followings, on: :member
+      get :followers, on: :member
     end
+
     resources :groups, only: [:index, :show] do
       resources :boards do
         resources :comments, only: [:index, :create, :destroy] do
