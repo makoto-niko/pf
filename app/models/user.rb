@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
   
   
-  def customer_status
+  def user_status
     if is_deleted == true
       "退会"
     else

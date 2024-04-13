@@ -30,15 +30,14 @@ class Admin::GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.admin_id = current_admin.id
     
-    if @group.save
-      @groups = Group.all
-      flash.now[:notice] = "グループを作成しました。"
-    else
-      @groups = Group.all
-      flash.now[:alert] = "グループの作成に失敗しました。"
-    end
-
-    render :index
+      if @group.save
+        @groups = Group.all
+        flash[:notice] = "グループを作成しました。"
+      else
+        @groups = Group.all
+        flash.now[:alert] = "グループの作成に失敗しました。"
+      end
+      render :index
   end
   
   def destroy

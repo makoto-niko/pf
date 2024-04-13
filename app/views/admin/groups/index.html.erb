@@ -1,9 +1,6 @@
 <div class="container">
   <div class='row'>
     <div class="col-md-3 mt-5">
-      <% if flash[:notice] %>
-        <div class="alert alert-success"><%= flash[:notice] %></div>
-      <% end %>
       <h3>グループ作成</h3>
 
       <%= form_with(model: @group, url: admin_groups_path) do |f| %>

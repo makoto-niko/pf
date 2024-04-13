@@ -6,10 +6,21 @@ class Board < ApplicationRecord
     has_many :tags, through: :board_tags
       # タイトルが空でないこと、文字数が50文字以内であることを検証
   validates :title, presence: true, length: { maximum: 50 }
-  validates :tags, presence: true
   # 説明が空でないこと、文字数が100文字以内であることを検証
   validates :description, presence: true, length: { maximum: 100 }
-  scope :with_tag, -> (tag_name) { joins(:tags).where(tags: { name: tag_name }) }
+
+  def save_tags_new(tags)
+    board_tags.destroy_all
+    tag_list = tags.present? ? tags.split(/[[:blank:]]+/) : []
+    tag_list.each do |tag_name|
+     tag = Tag.find_or_create_by(name: tag_name)
+     self.tags << tag
+    end
+    
+  end
+  
+
+
 
   def save_tags(tags)
 
@@ -48,14 +59,6 @@ class Board < ApplicationRecord
       # tag_mapsテーブルにpost_idとtag_idを保存
       #   配列追加のようにレコードを渡すことで新規レコード作成が可能
       self.tags << new_post_tag
-    end
-  end
-  
-   private
-
-  def tags_presence
-    if tags.empty?
-      errors.add(:tags, "を少なくとも1つ選択してください")
     end
   end
 end

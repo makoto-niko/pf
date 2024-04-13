@@ -1,6 +1,6 @@
 <div class="container">
+   <%= render 'layouts/flash_messages' %>
   <h3 class="row py-4">グループ作成</h3>
-
   <%= form_with model: @group, url: public_groups_path, local: true do |f| %>
     <div class="row mt-2">
       <h4 class="col-3">グループ名:</h4>

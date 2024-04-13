@@ -1,7 +1,11 @@
 class Public::TagsController < ApplicationController
   before_action :authenticate_user!
   def index
-    @tags = Tag.all
+    @tags = Tag.all 
+    if params[:keyword].present?
+    @tags = @tags.where('title LIKE(?)', "%#{params[:keyword]}%")
+             .or(@tags.where('description LIKE(?)', "%#{params[:keyword]}%"))
+    end
   end
 
   def show
@@ -23,5 +27,5 @@ class Public::TagsController < ApplicationController
     ensure
         redirect_to params[:group_id].present? ? public_group_boards_path(group_id: params[:group_id]) : public_groups_path
     end
- end
+  end
 end

@@ -37,10 +37,12 @@ class Public::BoardsController < ApplicationController
       if @board.user_id != current_user.id
         redirect_to public_group_boards_path(@group), alert: "更新権限がありません。"
       elsif @board.update(board_params)
-        @board.save_tags(params[:board][:tags])
+        @board.save_tags_new(params[:board][:tag])
         flash[:notice] = "更新に成功しました。"
         redirect_to public_group_boards_path(@group) 
       else
+       @boards = @group.boards
+       @comment = Comment.new
         render :edit
       end
   end
@@ -55,8 +57,9 @@ class Public::BoardsController < ApplicationController
         flash[:notice] = "登録に成功しました。"
         redirect_to public_group_boards_path(@group)
       else
-       tag_name = params[:board][:tag_name] # フォームから送信されたタグ名を取得
-       @boards = @group.boards.with_tag(tag_name)
+       @boards = @group.boards
+       @tags = Tag.all
+       @comment = Comment.new
         render :index 
       end
   end
@@ -74,7 +77,7 @@ class Public::BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:title, :description, :user_id, :group_id, tags: [])
+    params.require(:board).permit(:title, :description, :user_id, :group_id)
   end
 end
 

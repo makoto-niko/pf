@@ -1,6 +1,5 @@
 <div class="container mt-5">
   <%= render 'layouts/error_messages', model: @board %>
-  <!--%= render 'layouts/error_messages', model: @tag %-->
   <h4><%= @group.name %>への投稿はこちら！</h4>
   
   <%= form_with(model: @board, url: public_group_boards_path(@group), local: true) do |form| %>

@@ -15,13 +15,7 @@
             <td><%= link_to 'Tags List', public_tags_path, class: "btn btn-primary" %></td>
           </tr>
           <tr>
-            <% if @group.present? %>
-                <td><%= link_to '削除', public_tag_path(tag, group_id: @group.id), method: :delete, data: { confirm: '関連づいた記事のタグが空になりますがタグを削除しますか？' }, class: "btn btn-danger" %></td>
-              <% else %>
-                <td>グループが設定されていません</td>
-              <% end %>
-            <td>削除</td>
-            <td><!--%= link_to '削除', public_tag_path(tag, group_id: @group.id), method: :delete, data: { confirm: '関連づいた記事のタグが空になりますがタグを削除しますか？' }, class: "btn btn-danger" %--></td>
+          <td><!--%= link_to '削除', public_tag_path(tag), method: :delete, data: { confirm: '関連づいた記事のタグが空になりますがタグを削除しますか？' }, class: "btn btn-danger" %--></td>
           </tr>
         </tbody>
       </table>
