@@ -12,7 +12,22 @@
         <tbody>
           <tr>
             <td>タグリスト</td>
-            <td><%= link_to 'Tags List', public_tags_path, class: "btn btn-primary" %></td>
+        <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <%= form_with url: public_tags_url, method: :get do |f| %>
+              <div class="row">
+                <div class="col-sm-9 mb-2">
+                  <%= f.search_field :keyword, class: "form-control" %>
+                </div>
+                <div class="col-sm-3">
+                  <%= f.submit "search", class: "btn btn-primary btn-block" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+            <td><!--%= link_to 'Tags List', public_tags_path, class: "btn btn-primary" %--></td>
           </tr>
         </tbody>
       </table>

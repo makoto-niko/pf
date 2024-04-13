@@ -3,8 +3,7 @@ class Public::TagsController < ApplicationController
   def index
     @tags = Tag.all 
     if params[:keyword].present?
-    @tags = @tags.where('title LIKE(?)', "%#{params[:keyword]}%")
-             .or(@tags.where('description LIKE(?)', "%#{params[:keyword]}%"))
+    @tags = Tag.where('name LIKE(?)', "%#{params[:keyword]}%")
     end
   end
 

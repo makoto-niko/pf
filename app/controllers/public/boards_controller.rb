@@ -41,8 +41,8 @@ class Public::BoardsController < ApplicationController
         flash[:notice] = "更新に成功しました。"
         redirect_to public_group_boards_path(@group) 
       else
-       @boards = @group.boards
-       @comment = Comment.new
+       #@boards = @group.boards
+       #@comment = Comment.new
         render :edit
       end
   end
