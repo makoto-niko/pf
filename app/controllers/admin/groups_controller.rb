@@ -30,22 +30,30 @@ class Admin::GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.admin_id = current_admin.id
     
-      if @group.save
-        @groups = Group.all
-        flash[:notice] = "グループを作成しました。"
-      else
-        @groups = Group.all
-        flash.now[:alert] = "グループの作成に失敗しました。"
-      end
-      render :index
+    if @group.save
+      @groups = Group.all
+      flash[:notice] = "グループを作成しました。"
+    else
+      @groups = Group.all
+      flash.now[:alert] = "グループの作成に失敗しました。"
+    end
+
+    render :index
   end
   
   def destroy
-    @group = Group.find(params[:id])
-    @group.destroy
-    flash[:notice] = "グループを削除しました。"
-    redirect_to admin_groups_path
+    @board = Board.find_by(id: params[:id])
+    if @board
+      @group = @board.group
+      @board.destroy
+      flash[:notice] = "削除に成功しました。"
+      redirect_to admin_group_board_path(@group)
+    else
+      flash[:alert] = "指定されたボードは見つかりませんでした。"
+      render :index
+    end
   end
+
   
   private
   

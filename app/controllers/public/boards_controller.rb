@@ -41,8 +41,6 @@ class Public::BoardsController < ApplicationController
         flash[:notice] = "更新に成功しました。"
         redirect_to public_group_boards_path(@group) 
       else
-       #@boards = @group.boards
-       #@comment = Comment.new
         render :edit
       end
   end
@@ -66,12 +64,11 @@ class Public::BoardsController < ApplicationController
   
   def destroy
     @board = Board.find(params[:id])
-    #board.find(params[:id]).destroy()
       if  @board.user_id == current_user.id 
          @board.destroy 
       end
     flash[:notice] = "削除に成功しました。"
-    redirect_to public_group_boards_path(params[:group_id]) # コミュニティの投稿一覧ページにリダイレクト
+    redirect_to public_group_boards_path(params[:group_id]) 
   end
     
   private

@@ -12,7 +12,7 @@ class Admin::BoardsController < ApplicationController
     @group = @board.group
     @board.destroy
     flash[:notice] = "削除に成功しました。"
-    redirect_to admin_group_board_posts_path(group_id: @group.id)
+    redirect_to admin_group_path(id: @group.id)
   end
 end
 
