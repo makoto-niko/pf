@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'contacts/new'
+    get 'contacts/confirm'
+    get 'contacts/done'
+  end
   devise_for :admin, controllers: {
     registrations: "admin/registrations",
     sessions: "admin/sessions"
@@ -28,6 +33,14 @@ Rails.application.routes.draw do
       end
       get :followings, on: :member
       get :followers, on: :member
+    end
+   
+    resources :contacts, only: [:new, :create] do
+      collection do
+          post 'confirm'
+          post 'back'
+          get 'done'
+      end
     end
 
     resources :groups, only: [:index, :show] do
