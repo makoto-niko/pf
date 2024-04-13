@@ -5,15 +5,15 @@
       <table class="table">
         <tbody>
           <tr>
-            <td class="text-right" style="width: 30%;">お名前</td>
+            <td class="text-right" style="width: 50%;">お名前</td>
             <td><%= @contact.name %></td>
           </tr>
           <tr>
-            <td class="text-right mt-3" style="width: 30%;">メールアドレス</td>
+            <td class="text-right mt-3" style="width: 50%;">メールアドレス</td>
             <td><%= @contact.email %></td>
           </tr>
           <tr>
-            <td class="text-right mt-3" style="width: 30%;">件名</td>
+            <td class="text-right mt-3" style="width: 50%;">件名</td>
             <td><%= @contact.subject %></td>
           </tr>
           <tr>
@@ -23,9 +23,9 @@
         </tbody>
       </table>
 
-      <div class="d-flex">
+       <div class="d-flex justify-content-center">
         <div class="mr-3">
-        <%= form_with model: @contact do |f| %>
+        <%= form_with model: @contact, url: public_contacts_path, local: true do |f| %>
           <%= f.hidden_field :name %>
           <%= f.hidden_field :email %>
           <%= f.hidden_field :subject %>
@@ -35,7 +35,7 @@
         </div>
 
         <div>
-        <%= form_with model: @contact, url: back_contacts_path do |f| %>
+        <%= form_with model: @contact, url: back_public_contacts_path, local: true do |f| %>
           <%= f.hidden_field :name %>
           <%= f.hidden_field :email %>
           <%= f.hidden_field :subject %>
