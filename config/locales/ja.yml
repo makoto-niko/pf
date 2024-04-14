@@ -6,6 +6,7 @@ ja:
           one: "1つのエラーがあるため、この%{model}を保存できませんでした:"
           other: "%{count}つのエラーがあるため、この%{model}を保存できませんでした:"
     models:
+      contact: "お問い合わせ"
       group: "グループ"
       board: "掲示板"
       comment: "コメント"
@@ -22,6 +23,11 @@ ja:
         description: "説明"
       user:
         username: "ニックネーム"
+      contact:
+        name: "名前"
+        email: "メールアドレス"
+        subject: "件名"
+        message: "メッセージ"
     errors:
       models:
         board:
@@ -53,6 +59,16 @@ ja:
             email:
              blank: "を入力してください。"
              too_long: "は%{count}文字以内で入力してください。"
+        contact:
+          attributes:
+            name:
+              blank: "を入力してください。"
+            email:
+              blank: "を入力してください。"
+            subject:
+              blank: "を入力してください。"
+            message:
+              blank: "を入力してください。"
   views:
     pagination:
       first: '最初'
