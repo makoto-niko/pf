@@ -29,11 +29,14 @@
             <td><%= user.followings.count %></td>
             <td><%= user.followers.count %></td>
             <td>
-              <% if current_user.following?(user) %>
-                <%= button_to 'フォロー解除', unfollow_public_user_relationships_path(user_id: user.id), method: :delete, class: 'btn btn-danger'%>
-              <% else %>
-                <%= button_to 'フォロー', follow_public_user_relationships_path(user_id: user.id), method: :post, class: 'btn btn-primary' %>
+              <% unless current_user == user %>
+                <% if current_user.following?(user) %>
+                  <%= button_to 'フォロー解除', unfollow_public_user_relationships_path(user_id: user.id), method: :delete, class: 'btn btn-danger'%>
+                <% else %>
+                  <%= button_to 'フォロー', follow_public_user_relationships_path(user_id: user.id), method: :post, class: 'btn btn-primary' %>
+                <% end %>
               <% end %>
+
             </td>
           </tr>
         <% end %>
