@@ -7,8 +7,6 @@ class Public::ContactsController < ApplicationController
   def confirm
     @contact = Contact.new(contact_params)
     if @contact.invalid?
-      flash[:alert] = @contact.errors.full_messages.join(", ")
-      @contact = Contact.new
       render :new
     end
   end
@@ -17,12 +15,16 @@ class Public::ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     render :new
   end
+  
+  def reload 
+    redirect_to new_public_contact_path
+  end
 
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
       ContactMailer.send_mail(@contact).deliver_now
-      redirect_to done_contacts_path
+      redirect_to done_public_contacts_path
     else
       flash[:alert] = @contact.errors.full_messages.join(", ")
       @contact = Contact.new

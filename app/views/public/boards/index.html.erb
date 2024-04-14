@@ -1,5 +1,6 @@
 <div class="container mt-5">
   <%= render 'layouts/error_messages', model: @board %>
+  <%= render 'layouts/flash' %>
   <h4><%= @group.name %>への投稿はこちら！</h4>
   <% unless current_user.email == "guest@example.com" %>
   <%= form_with(model: @board, url: public_group_boards_path(@group), local: true) do |form| %>
@@ -33,7 +34,6 @@
     </div>
   </div>
 <h3 class="mt-5 mb-3 text-center"><%= @group.name %>の投稿一覧</h3>
-
 <% @boards.each do |board| %>
   <%= render 'public/boards/board', board: board %>
 

@@ -1,4 +1,4 @@
-<% if model.errors.any? %>
+<% if model && model.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(model.errors.count, "件のエラー") %>が原因でこの投稿を保存できませんでした：</h2>
     <ul>

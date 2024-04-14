@@ -37,6 +37,7 @@ Rails.application.routes.draw do
    
     resources :contacts, only: [:new, :create] do
       collection do
+          get 'confirm', to: 'contacts#reload', as: 'reload'
           post 'confirm'
           post 'back'
           get 'done'
