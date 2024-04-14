@@ -34,6 +34,9 @@
     </div>
   </div>
 <h3 class="mt-5 mb-3 text-center"><%= @group.name %>の投稿一覧</h3>
+
+<p><%= render 'layouts/error_messages', model: @comment %></p>
+
 <% @boards.each do |board| %>
   <%= render 'public/boards/board', board: board %>
 

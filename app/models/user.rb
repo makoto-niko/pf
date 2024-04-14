@@ -42,6 +42,7 @@ class User < ApplicationRecord
   end
   
   def self.search_for(content, method)
+    #byebug
       if method == 'perfect'
         User.where(username: content)
       elsif method == 'forward'
