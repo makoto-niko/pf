@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col-12">
-      <h2>Actions</h2>
-      <!-- 検索フォーム -->
+      <h2>タグ検索</h2>
       <%= form_with url: public_tags_url, method: :get, class: "row" do |f| %>
         <div class="col-md-8 offset-md-2 mb-2">
           <%= f.search_field :keyword, class: "form-control" %>
@@ -14,7 +13,6 @@
     </div>
   </div>
 
-  <!-- タグ検索結果 -->
   <div class="row mt-4">
     <div class="col-12">
       <h2>タグ検索結果</h2>
