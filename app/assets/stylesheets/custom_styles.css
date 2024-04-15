@@ -13,14 +13,14 @@ main {
 }
 
 .text-blue {
-  color: #007bff; /* Bootstrapのデフォルトの青色 */
+  color: #007bff; 
 }
 
-.navbar-nav {
+.navbar-item {
   letter-spacing: 10px;
   display: flex;
-  justify-content: flex-end; /* アイテムを右端に配置 */
-  flex-direction: row; /* アイテムを横並びにする */
+  justify-content: flex-end; 
+  flex-direction: row; 
   list-style: none;
   padding-left: 0;
 }
@@ -44,3 +44,9 @@ main {
   padding: 0;
 }
 
+.navbar-custom {
+  background-color: #FFFF99; /* headerの背景 */
+}
+.nav-link.text-blue {
+  color: #007bff; /* リンクの色 */
+}
