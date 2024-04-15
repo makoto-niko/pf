@@ -56,9 +56,7 @@ Rails.application.routes.draw do
     root to: 'admin/homes#top'
     resources :comments, only: [:index, :destroy]
     resources :groups, only: [:index, :show, :edit, :create, :update, :destroy] do
-      resources :boards, only: [:index, :show, :destroy] do
-        #resources :comments, only: [:index, :destroy]
-      end
+      resources :boards, only: [:index, :show, :destroy] 
     end
     resources :users, only: [:index, :show, :edit, :update]
   end

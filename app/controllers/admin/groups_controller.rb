@@ -7,11 +7,11 @@ class Admin::GroupsController < ApplicationController
   end
  
   def show
-    @boards = @group.boards
     @group = Group.find_by(id: params[:id])
     if @group.nil?
-     redirect_to root_path
-    return
+      redirect_to root_path
+    else
+      @boards = @group.boards
     end
   end
 
