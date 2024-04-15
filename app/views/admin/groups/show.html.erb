@@ -1,6 +1,7 @@
 <div class="container text-center">
   <h3 class="py-4">グループ詳細画面</h3>
   <%= render 'layouts/error_messages', model: @group %>
+  <%= render 'layouts/flash' %>
 
   <%= form_with(model: @group, url: admin_group_path(@group), local: true, html: { class: "needs-validation", novalidate: "" }) do |f| %>
     <div class="row justify-content-center mb-3">

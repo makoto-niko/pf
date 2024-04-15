@@ -1,7 +1,7 @@
 <%= render 'layouts/error_messages', model: @board %>
 <div class="container">
   <h3 class="text-center py-4">掲示板編集</h3>
-  
+  <%= render 'layouts/flash' %>
   <%= form_with model: [@group, @board], url: public_group_board_path(@group, @board), method: :patch, html: { class: "row justify-content-center" } do |f| %>
     <div class="col-md-8">
       <div class="row mb-3">

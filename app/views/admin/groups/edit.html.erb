@@ -1,7 +1,7 @@
 <div class="container">
   <h3 class="text-center py-4">グループ編集</h3>
  <%= render 'layouts/error_messages', model: @group %>
-
+ <%= render 'layouts/flash' %>
   <%= form_with model: @group, url: admin_group_path(@group), method: :patch, html: { class: "row justify-content-center" } do |f| %>
   
     <div class="col-md-8">
