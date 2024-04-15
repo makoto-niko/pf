@@ -12,21 +12,22 @@
       <% end %>
     </div>
   </div>
-
-  <div class="row mt-4">
-    <div class="col-12">
-      <h2>タグ検索結果</h2>
-      <% if @tags.any? %>
-        <ul>
-          <% @tags.each do |tag| %>
-            <li><%= tag.name %></li>
-          <% end %>
-        </ul>
-      <% else %>
-        <p>該当するタグが見つかりませんでした。</p>
-      <% end %>
+  <% if params[:keyword].present? %>
+    <div class="row mt-4">
+      <div class="col-12">
+        <h2>タグ検索結果</h2>
+        <% if @tags.any? %>
+          <ul>
+            <% @tags.each do |tag| %>
+              <li><%= tag.name %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>該当するタグが見つかりませんでした。</p>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <!-- 関連する掲示板 -->
   <div class="row mt-4">
