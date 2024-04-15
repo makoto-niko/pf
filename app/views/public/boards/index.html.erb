@@ -33,17 +33,24 @@
       </div>
     </div>
   </div>
-<h3 class="mt-5 mb-3 text-center"><%= @group.name %>の投稿一覧</h3>
-
-<p><%= render 'layouts/error_messages', model: @comment %></p>
-
-<% @boards.each do |board| %>
+  
+  <% if @boards.present? %>
+    <% @boards.each do |board| %>
   <%= render 'public/boards/board', board: board %>
-
+    <% end %>
+  <% else %>
+    <p>検索結果はありません</p>
+  <% end %>
+  
+  <h3 class="mt-5 mb-3 text-center"><%= @group.name %>の投稿一覧</h3>
+  
+  <p><%= render 'layouts/error_messages', model: @comment %></p>
+  
+  <% @boards.each do |board| %>
+    <%= render 'public/boards/board', board: board %>
+  
   <div class="list-group-item">
-    <%= render "public/comments/form", board: board, comment: Comment.new %>
-  </div>
-  <div style="margin-left: 20px;">
-    <%= render "public/comments/index", board: board %>
-  </div>
-<% end %>
+      <%= render "public/comments/form", board: board, comment: Comment.new %>
+  </div> 
+      <%= render "public/comments/index", board: board %>
+  <% end %>
