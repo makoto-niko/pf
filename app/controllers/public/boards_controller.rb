@@ -50,6 +50,9 @@ class Public::BoardsController < ApplicationController
       @board = Board.new(board_params)
       @board.user_id = current_user.id
       @board.group_id = @group.id
+      # unless params[:board][:tags].present?
+      #   @board.errors.add(:base, 'タグが入力されていません。')
+      # end
       if @board.save
         @board.save_tags(params[:board][:tags])
         flash[:notice] = "登録に成功しました。"
