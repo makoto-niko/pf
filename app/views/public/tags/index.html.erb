@@ -2,44 +2,42 @@
   <div class="row mt-5">
     <div class="col-12">
       <h2>Actions</h2>
-      <table class="table mt-3">
-        <thead>
-          <tr>
-            <th scope="col">アクション</th>
-            <th scope="col">リンク</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>タグリスト</td>
-        <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <%= form_with url: public_tags_url, method: :get do |f| %>
-              <div class="row">
-                <div class="col-sm-9 mb-2">
-                  <%= f.search_field :keyword, class: "form-control" %>
-                </div>
-                <div class="col-sm-3">
-                  <%= f.submit "search", class: "btn btn-primary btn-block" %>
-                </div>
-              </div>
-            <% end %>
-          </div>
+      <!-- 検索フォーム -->
+      <%= form_with url: public_tags_url, method: :get, class: "row" do |f| %>
+        <div class="col-md-8 offset-md-2 mb-2">
+          <%= f.search_field :keyword, class: "form-control" %>
         </div>
-      </div>
-            <td><!--%= link_to 'Tags List', public_tags_path, class: "btn btn-primary" %--></td>
-          </tr>
-        </tbody>
-      </table>
+        <div class="col-md-2">
+          <%= f.submit "search", class: "btn btn-primary btn-block" %>
+        </div>
+      <% end %>
     </div>
+  </div>
 
-    <!-- Tag Section -->
-    <div class="col-12 mt-4">
-      <h2>Tag</h2>
-      <h3><!--%= @tag.name %--></h3>
-      <table class="table mt-3">
+  <!-- タグ検索結果 -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <h2>タグ検索結果</h2>
+      <% if @tags.any? %>
+        <ul>
+          <% @tags.each do |tag| %>
+            <li><%= tag.name %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>該当するタグが見つかりませんでした。</p>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- 関連する掲示板 -->
+  <div class="row mt-4">
+    <div class="col-12">
+      <h2>関連する掲示板</h2>
+      <table class="table">
         <thead>
           <tr>
+            <th scope="col">タグ</th>
             <th scope="col">掲示板タイトル</th>
             <th scope="col">リンク</th>
           </tr>
@@ -59,4 +57,5 @@
     </div>
   </div>
 </div>
+
 

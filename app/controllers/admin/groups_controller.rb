@@ -7,8 +7,12 @@ class Admin::GroupsController < ApplicationController
   end
  
   def show
-    @group = Group.find(params[:id])
     @boards = @group.boards
+    @group = Group.find_by(id: params[:id])
+    if @group.nil?
+     redirect_to root_path
+    return
+    end
   end
 
   def edit

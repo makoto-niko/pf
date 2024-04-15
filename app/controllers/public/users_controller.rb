@@ -9,7 +9,11 @@ class Public::UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(current_user.id)
+    @user = User.find_by(id: current_user.id)
+    if @user.nil?
+    redirect_to root_path
+    return
+    end
   end
   
   def edit

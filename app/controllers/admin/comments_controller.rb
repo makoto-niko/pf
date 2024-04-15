@@ -16,8 +16,6 @@ before_action :set_comment, only: [:confirm_destroy, :destroy]
   
   def set_comment
     @comment = Comment.find(params[:id])
-    #@group = Group.find(params[:group_id])
-    #@board = Board.find(params[:board_id])
   end
   def authenticate_admin!
     # 管理者かどうかを確認するロジック

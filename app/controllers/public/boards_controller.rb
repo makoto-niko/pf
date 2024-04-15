@@ -22,13 +22,13 @@ class Public::BoardsController < ApplicationController
     end
   end
   
-  #def new
-     #@board = Board.new
-  #end
-
   def show
-      @board = Board.find(params[:id])
-      @group = Group.find(params[:group_id])
+      @board = Board.find_by(id: params[:id])
+      @group = Group.find_by(id: params[:group_id])
+      if @board.nil? || @group.nil?
+       redirect_to root_path
+       return
+      end
   end
   
   def update

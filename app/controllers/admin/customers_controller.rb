@@ -2,11 +2,15 @@ class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
   def index
     @customers = Customer.all
-    @customers = Customer.page(params[:page]) #ページネーション
+    @customers = Customer.page(params[:page]) 
   end
 
   def show
-    @customer = Customer.find(params[:id])
+    @customer = Customer.find_by(id: params[:id])
+    if @customer.nil?
+     redirect_to root_path
+    return
+    end
   end
 
   def edit
