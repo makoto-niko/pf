@@ -5,6 +5,11 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <% if user_signed_in? %>
+          <span class="text-black mr-12"><%= current_user.username %> さまようこそ</span>
+        <% elsif admin_signed_in? %>
+          <span class="text-black mr-12">Administrator</span>
+      <% end %>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <% if admin_signed_in? %>
           <ul class="navbar-nav ml-auto">  
