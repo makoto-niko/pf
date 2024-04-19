@@ -19,7 +19,7 @@
         <% end %>
       </tbody>
     </table>
-    <%= paginate @records %>
+   <%= paginate @records, params: { search: params[:search], model: @model, content: @content } %>
   </div> 
   <% else %>
     <h3>Users no search </h3>
