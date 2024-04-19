@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   def index
     @user = User.all
-    @users = User.page(params[:page]) #ページネーション
+    @users = User.page(params[:page]) 
   end
 
   def show
