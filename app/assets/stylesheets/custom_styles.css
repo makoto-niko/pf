@@ -1,7 +1,34 @@
-html, body {
+body, html {
   height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
+.content-center {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  height: 50vh;
+}
+
+.p2 {
+  color: red;
+}
+
+.profile {
+    justify-content: center;
+    text-align: center;
+    float: right;
+}
+
+.profile-img {
+    width: 50px;  
+    height: 50px; 
+    float: right; 
+    margin-top: 30px; 
+}
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -24,41 +51,37 @@ main {
   list-style: none;
   padding-left: 0;
 }
-.content-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 50vh; 
-  text-align: center; /* テキストを中央揃えに */
-}
-.p2 {
-  color: red;
-}
+
 .background-image {
-  background-image: url('rainbow.jpg');
-  background-size: cover; /* 画像を要素のサイズに合わせて調整 */
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: 0;
-  padding: 0;
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background-image: url('rainbow.jpg'); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  margin: 0; 
+  padding: 0; 
+  z-index: -1; 
 }
 
 .navbar-custom {
-  background-color: #FFFF99; /* headerの背景 */
+  background-color: #FFFF99; 
 }
 .nav-link.text-blue {
-  color: #007bff; /* リンクの色 */
+  color: #007bff; 
 }
 @media (max-width: 768px) {
     .navbar-nav .nav-link {
-        font-size: 14px; /* モバイルデバイスでのフォントサイズを小さくする */
+        font-size: 14px; 
     }
     .navbar-brand {
-        font-size: 18px; /* ロゴのフォントサイズを調整 */
+        font-size: 18px; 
     }
     .navbar-toggler {
-        font-size: 12px; /* トグルボタンのサイズを調整 */
+        font-size: 12px; 
     }
 }
 .navbar-toggler .navbar-toggler-icon {
