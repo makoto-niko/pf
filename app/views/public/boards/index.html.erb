@@ -13,7 +13,9 @@
       <div><%= form.text_field :tags, value: @board.tags.pluck(:name) %><br>
       <small>スペースで区切ることで複数指定できます。</small><br>
       </div>
-      <div> <%= form.submit "投稿", class:"btn btn-success mt-2" %></div>
+      <div><%= form.label :status, "公開状態" %></div>
+      <div><%= form.select :status, Board.statuses.keys.map { |status| [status.gsub('_status', '').humanize, status] }, {}, { class: 'form-control' } %></div>
+      <div><%= form.submit "投稿", class:"btn btn-success mt-2" %></div>
   <% end %>
    <% else %>
     <p>ゲストユーザーは投稿できません。</p>
@@ -38,8 +40,10 @@
   <% if params[:keyword].present? %>
     <% if @boards.present? %>
       <% @boards.each do |board| %>
-        <%= render 'public/boards/board', board: board %>
-      <% end %>
+      　<% if board.status_public_status? || (user_signed_in? && board.user_id == current_user.id) %>
+        　<%= render 'public/boards/board', board: board %>
+      　<% end %>
+     <% end %>
     <% else %>
       <p>検索結果はありません</p>
     <% end %>

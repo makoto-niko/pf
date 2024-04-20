@@ -7,7 +7,10 @@ class Public::BoardsController < ApplicationController
     @group = Group.find(params[:group_id])
     @board = Board.new()
     @comment = Comment.new
-    @boards = @group.boards
+    # 公開されている投稿、または現在のユーザーが投稿者の投稿を取得
+    @boards = @group.boards.where(status: Board.statuses[:public_status])
+    @boards = @boards.or(@group.boards.where(user_id: current_user.id)) if user_signed_in?
+
     if params[:keyword].present?
       @boards = @boards.where('title LIKE(?)', "%#{params[:keyword]}%")
              .or(@boards.where('description LIKE(?)', "%#{params[:keyword]}%"))
@@ -29,13 +32,19 @@ class Public::BoardsController < ApplicationController
        redirect_to root_path
        return
       end
+      
+      # 非公開の投稿へのアクセス制御
+      if @board.private_status? && @board.user_id != current_user.id && !current_user.is_admin?
+        redirect_to public_group_boards_path(@group), alert: "この投稿は非公開です。"
+        return
+      end
   end
   
   def update
     @group = Group.find(params[:group_id])
     @board = Board.find(params[:id])
       if @board.user_id != current_user.id
-        redirect_to public_group_boards_path(@group), alert: "更新権限がありません。"
+         redirect_to public_group_boards_path(@group), alert: "更新権限がありません。"
       elsif @board.update(board_params)
         @board.save_tags_new(params[:board][:tag])
         flash[:notice] = "更新に成功しました。"
@@ -90,7 +99,7 @@ class Public::BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:title, :description, :user_id, :group_id)
+    params.require(:board).permit(:title, :description, :user_id, :group_id, :status)
   end
 end
 

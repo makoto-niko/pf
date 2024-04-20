@@ -14,7 +14,6 @@ class Board < ApplicationRecord
      tag = Tag.find_or_create_by(name: tag_name)
      self.tags << tag
     end
-    
   end
   
   def save_tags(tags)
@@ -54,4 +53,5 @@ class Board < ApplicationRecord
       self.tags << new_post_tag
     end
   end
+  enum status: { public_status: 0, private_status: 1 }
 end
