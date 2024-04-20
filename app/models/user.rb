@@ -5,12 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   #has_many :posts
-  has_many :comments
+  has_many :comments,dependent: :destroy
   #has_many :group_members
   #has_many :groups, through: :group_members
   #has_many :group_messages
   #has_many :board_posts
-  has_many :boards
+  has_many :boards,dependent: :destroy
   
  GUEST_USER_EMAIL = "guest@example.com"
 

@@ -31,13 +31,18 @@ class Public::UsersController < ApplicationController
       render 'edit'
     end
   end
-
+ 
   def withdraw
     @user = User.find(current_user.id)
     @user.update(is_active: false)
-    reset_session
-    flash[:notice] = "退会処理を実行いたしました"
-    redirect_to root_path
+    if @user.destroy
+      reset_session
+      flash[:notice] = "退会処理を実行し、ユーザーとその関連データを削除しました。"
+      redirect_to root_path
+    else
+      flash[:alert] = "退会処理に失敗しました。"
+      render 'edit' 
+    end
   end
   
   def unsubscribe

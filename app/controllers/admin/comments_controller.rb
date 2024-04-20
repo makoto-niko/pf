@@ -2,7 +2,7 @@ class Admin::CommentsController < ApplicationController
 before_action :authenticate_admin!
 before_action :set_comment, only: [:confirm_destroy, :destroy]
   def index
-    @comments = Comment.all
+    @comments = Comment.page(params[:page])
     @users = User.all
   end
  
@@ -18,6 +18,5 @@ before_action :set_comment, only: [:confirm_destroy, :destroy]
     @comment = Comment.find(params[:id])
   end
   def authenticate_admin!
-    # 管理者かどうかを確認するロジック
   end
 end
