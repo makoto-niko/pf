@@ -67,8 +67,10 @@ class Public::BoardsController < ApplicationController
   
   def destroy
     @board = Board.find(params[:id])
+    tag_ids = @board.tags.ids
       if  @board.user_id == current_user.id 
          @board.destroy 
+         Tag.where(id: tag_ids).destroy_all
       end
     flash[:notice] = "削除に成功しました。"
     redirect_to public_group_boards_path(params[:group_id]) 

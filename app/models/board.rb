@@ -19,9 +19,6 @@ class Board < ApplicationRecord
     
   end
   
-
-
-
   def save_tags(tags)
 
     # タグをスペース区切りで分割し配列にする

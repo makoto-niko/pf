@@ -5,7 +5,6 @@ class Public::TagsController < ApplicationController
       @tags = Tag.where('name LIKE(?)', "%#{params[:keyword]}%")
     else
       @tags = Tag.all
-      #@tags = Tag.none
     end
   end
 
@@ -17,7 +16,7 @@ class Public::TagsController < ApplicationController
     end 
   end
 
-  def destroy
+  #def destroy
     begin
       @tag = Tag.find(params[:id])
       @tag.destroy
@@ -27,5 +26,5 @@ class Public::TagsController < ApplicationController
     ensure
         redirect_to params[:group_id].present? ? public_group_boards_path(group_id: params[:group_id]) : public_groups_path
     end
-  end
+  #end
 end
