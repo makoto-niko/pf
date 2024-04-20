@@ -46,15 +46,16 @@ class Admin::GroupsController < ApplicationController
   end
   
   def destroy
-    @board = Board.find_by(id: params[:id])
-    if @board
-      @group = @board.group
-      @board.destroy
+    @group = Group.find_by(id: params[:id])
+    if @group
+      @group.destroy
       flash[:notice] = "削除に成功しました。"
-      redirect_to admin_group_board_path(@group)
+      redirect_to admin_groups_path
     else
       flash[:alert] = "指定されたボードは見つかりませんでした。"
-      render :index
+      @group = Group.new
+    @groups = Group.all
+     render :index
     end
   end
 
