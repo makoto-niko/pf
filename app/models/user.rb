@@ -4,12 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  #has_many :posts
   has_many :comments,dependent: :destroy
-  #has_many :group_members
-  #has_many :groups, through: :group_members
-  #has_many :group_messages
-  #has_many :board_posts
   has_many :boards,dependent: :destroy
   
  GUEST_USER_EMAIL = "guest@example.com"
@@ -28,15 +23,6 @@ class User < ApplicationRecord
     username
   end
   
-  
-  #def user_status
-    #if is_deleted == true
-     # "退会"
-    #else
-     # "有効"
-    #end
-  #end
-   # (退会処理)
   def active_for_authentication?
     super && is_active 
   end

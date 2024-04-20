@@ -24,18 +24,6 @@
             </tr>
 
             <tr>
-              <th class="nowrap" style="font-size: 18px;">会員ステータス</th>
-              <td style="font-size: 18px;">
-                <% if @user.is_active %>
-                <span class='text-success'>有効</span>
-                <% else %>
-                <span class='text-secondary'>退会</span>
-                <% end %>
-              </td>
-            </tr>
-
-            <tr>
-              <th></th>
               <td><%= link_to '編集する', edit_public_user_path(@user.id), class: "btn btn-success" %></td>
             </tr>
             
