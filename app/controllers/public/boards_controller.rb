@@ -50,10 +50,21 @@ class Public::BoardsController < ApplicationController
       @board = Board.new(board_params)
       @board.user_id = current_user.id
       @board.group_id = @group.id
-      # unless params[:board][:tags].present?
-      #   @board.errors.add(:base, 'タグが入力されていません。')
-      # end
-      if @board.save
+
+      # タグのバリデーションのため、手動でバリデート
+      @board.errors.add(:tags, 'が入力されていません。') unless params[:board][:tags].present?
+      @board.errors.add(:title, 'が入力されていません。') unless board_params[:title].present?
+      @board.errors.add(:description, 'が入力されていません。') unless board_params[:description].present?
+      
+      unless @board.errors.any? # 手動バリデートでエラーがあれば
+        unless @board.valid? # 通常(モデル定義した)のバリデーションに引っかかっていれば
+          @boards = @group.boards
+          @tags = Tag.all
+          @comment = Comment.new
+          render :index
+          return
+        end
+        @board.save
         @board.save_tags(params[:board][:tags])
         flash[:notice] = "登録に成功しました。"
         redirect_to public_group_boards_path(@group)

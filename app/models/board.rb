@@ -35,8 +35,6 @@ class Board < ApplicationRecord
     #   -- 新規に追加されたタグ
     new_tags = tag_list - current_tags
 
-    p current_tags
-
     # tag_mapsテーブルから、(1)のタグを削除
     #   tagsテーブルから該当のタグを探し出して削除する
     old_tags.each do |old|

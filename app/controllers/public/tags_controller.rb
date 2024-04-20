@@ -17,14 +17,15 @@ class Public::TagsController < ApplicationController
   end
 
   #def destroy
-    begin
-      @tag = Tag.find(params[:id])
-      @tag.destroy
-      flash[:notice] = "タグを正常に削除しました。"
-    rescue ActiveRecord::RecordNotFound
-      flash[:alert] = "指定されたタグは見つかりませんでした。"
-    ensure
-        redirect_to params[:group_id].present? ? public_group_boards_path(group_id: params[:group_id]) : public_groups_path
-    end
+    #begin
+      #@tag = Tag.find(params[:id])
+      #@tag.destroy
+      #flash[:notice] = "タグを正常に削除しました。"
+    #rescue ActiveRecord::RecordNotFound
+     # flash[:alert] = "指定されたタグは見つかりませんでした。"
+    #ensure
+        #redirect_to params[:group_id].present? ? public_group_boards_path(group_id: params[:group_id]) : public_groups_path
+    #
+    #end
   #end
 end
