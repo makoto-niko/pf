@@ -28,7 +28,6 @@ class User < ApplicationRecord
   end
   
   def self.search_for(content, method)
-    #byebug
       if method == 'perfect'
         User.where(username: content)
       elsif method == 'forward'
@@ -61,4 +60,6 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+  #searchに退会は出さないようにするscope
+   scope :active, -> { where(is_active: true) }
 end

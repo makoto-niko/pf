@@ -5,10 +5,10 @@ class Public::SearchsController < ApplicationController
     @model = params[:model]
     @content = params[:content]
     @method = params[:method]
-    @users = User.all
-    @users = User.page(params[:page])
-    @records = User.search_for(@content, @method).page(params[:search_page])
-    #byebug
+    @records = User.active.search_for(@content, @method).page(params[:search_page])
     render 'public/users/index'
   end
 end
+
+
+

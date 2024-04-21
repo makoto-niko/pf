@@ -7,7 +7,7 @@
     <% if @records %>
       <%= render 'public/searches/index', locals: { users: @records } %>
     <% end %>
-    
+  <% if @users.present? %>  
   <div class='row mt-5'> 
     <h3>ユーザー一覧</h3>
     
@@ -41,5 +41,6 @@
       </tbody>
     </table>
     <%= paginate @users %>
+  <% end %>
   </div>
 </div>
