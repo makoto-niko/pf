@@ -5,9 +5,13 @@ class Public::BoardsController < ApplicationController
     @group = Group.find(params[:group_id])
     @board = Board.new()
     @comment = Comment.new
-    # 公開されている投稿、または現在のユーザーが投稿者の投稿を取得
-    @boards = @group.boards.where(status: Board.public_status)
-    @boards = @boards.or(@group.boards.where(user_id: current_user.id)) if user_signed_in?
+    # 公開されている投稿だけを公開
+    boards = @group.boards.where(status: 0)
+    #自分の投稿であれば、全て非公開投稿も公開
+    if user_signed_in?
+      @boards = boards.or(@group.boards.where(user_id: current_user.id))
+    end
+
     if params[:keyword].present?
       @boards = @boards.where('title LIKE(?)', "%#{params[:keyword]}%")
              .or(@boards.where('description LIKE(?)', "%#{params[:keyword]}%"))
