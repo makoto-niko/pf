@@ -2,15 +2,12 @@ class Public::BoardsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @tags = Tag.all
-    @group = Group.all
     @group = Group.find(params[:group_id])
     @board = Board.new()
     @comment = Comment.new
     # 公開されている投稿、または現在のユーザーが投稿者の投稿を取得
-    @boards = @group.boards.where(status: Board.statuses[:public_status])
+    @boards = @group.boards.where(status: Board.public_status)
     @boards = @boards.or(@group.boards.where(user_id: current_user.id)) if user_signed_in?
-
     if params[:keyword].present?
       @boards = @boards.where('title LIKE(?)', "%#{params[:keyword]}%")
              .or(@boards.where('description LIKE(?)', "%#{params[:keyword]}%"))
@@ -55,34 +52,27 @@ class Public::BoardsController < ApplicationController
   end
   
   def create
-      @group = Group.find(params[:group_id])
-      @board = Board.new(board_params)
-      @board.user_id = current_user.id
-      @board.group_id = @group.id
+    @group = Group.find(params[:group_id])
+    @board = Board.new(board_params)
+    @board.user_id = current_user.id
+    @board.group_id = @group.id
 
-      # タグのバリデーションのため、手動でバリデート
-      @board.errors.add(:tags, 'が入力されていません。') unless params[:board][:tags].present?
-      @board.errors.add(:title, 'が入力されていません。') unless board_params[:title].present?
-      @board.errors.add(:description, 'が入力されていません。') unless board_params[:description].present?
+    # タグのバリデーションのため、手動でバリデート
+    @board.errors.add(:tags, 'が入力されていません。') unless params[:board][:tags].present?
+    @board.errors.add(:title, 'が入力されていません。') unless board_params[:title].present?
+    @board.errors.add(:description, 'が入力されていません。') unless board_params[:description].present?
       
-      unless @board.errors.any? # 手動バリデートでエラーがあれば
-        unless @board.valid? # 通常(モデル定義した)のバリデーションに引っかかっていれば
-          @boards = @group.boards
-          @tags = Tag.all
-          @comment = Comment.new
-          render :index
-          return
-        end
-        @board.save
-        @board.save_tags(params[:board][:tags])
-        flash[:notice] = "登録に成功しました。"
-        redirect_to public_group_boards_path(@group)
-      else
-       @boards = @group.boards
-       @tags = Tag.all
-       @comment = Comment.new
-        render :index 
-      end
+    if @board.errors.any? || @board.invalid?# 手動バリデートでエラーがあれば または (モデル定義)のバリデーションに引っかかっていれば
+      @boards = @group.boards
+      @tags = Tag.all
+      @comment = Comment.new
+       render :index 
+    else
+      @board.save
+      @board.save_tags(params[:board][:tags])
+      flash[:notice] = "登録に成功しました。"
+      redirect_to public_group_boards_path(@group)
+    end
   end
   
   def destroy
