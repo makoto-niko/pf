@@ -1,6 +1,6 @@
 <% if model && model.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(model.errors.count, "件のエラー") %>が原因でこの投稿を保存できませんでした：</h2>
+    <h2><%= pluralize(model.errors.count, "件のエラー") %>が原因でこの投稿を保存できませんでした</h2>
     <ul>
     <% model.errors.full_messages.each do |message| %>
       <li><%= message %></li>
