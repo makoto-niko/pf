@@ -5,7 +5,7 @@ class Public::BoardsController < ApplicationController
     @group = Group.find(params[:group_id])
     @board = Board.new()
     @comment = Comment.new
-    # 公開されている投稿だけを公開
+    # 公開されている投稿だけを公開、モデルは公開は０
     boards = @group.boards.where(status: 0)
     #自分の投稿であれば、全て非公開投稿も公開
     if user_signed_in?
