@@ -1,4 +1,5 @@
 <div class="container mt-5">
+  
   <%= render 'layouts/error_messages', model: @board %>
   <%= render 'layouts/flash' %>
   <h4><%= @group.name %>への投稿はこちら！</h4>
@@ -40,9 +41,7 @@
   <% if params[:keyword].present? %>
     <% if @boards.present? %>
       <% @boards.each do |board| %>
-      　<% if board.status_public_status? || (user_signed_in? && board.user_id == current_user.id) %>
-        　<%= render 'public/boards/board', board: board %>
-      　<% end %>
+        <%= render 'public/boards/board', board: board %>
      <% end %>
     <% else %>
       <p>検索結果はありません</p>
