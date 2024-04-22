@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'contacts/new'
-    get 'contacts/confirm'
-    get 'contacts/done'
-  end
+  #namespace :public do
+    #get 'contacts/new'
+    #get 'contacts/confirm'
+    #get 'contacts/done'
+  #end
   devise_for :admin, controllers: {
     registrations: "admin/registrations",
     sessions: "admin/sessions"
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get '/about', to: 'public/homes#about', as: 'about'
   get 'public/searches', to: 'public/searchs#search'
   
- namespace :public, path: '', as: 'public' do
+  namespace :public, path: '', as: 'public' do
     resources :users do
       collection do
         get :unsubscribe
@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     end
     resources :tags, only: [:index, :show, :destroy]
   end
+  
   namespace :admin do
     root to: 'admin/homes#top'
     resources :comments, only: [:index, :destroy]
@@ -61,5 +62,5 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
   end
 
- match '*path', to: redirect('/'), via: :all
+ #match '*path', to: redirect('/'), via: :all
 end

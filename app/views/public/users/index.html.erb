@@ -28,19 +28,15 @@
             <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
             <td><%= user.followings.count %></td>
             <td><%= user.followers.count %></td>
-            <td>
-           <% unless current_user == user %>
-            <% if current_user.following?(user) %>
-              <%= button_to 'フォロー解除', unfollow_public_user_relationships_path(user_id: user.id), method: :delete, class: 'btn btn-danger'%>
-            <% else %>
-              <%= button_to 'フォロー', follow_public_user_relationships_path(user_id: user.id), method: :post, class: 'btn btn-primary' %>
-            <% end %>
-          <% end %>
+            <td id="follow-form-<%= user.id %>">
+            <%= render 'public/relationships/btn', user: user %>
+            </td>
           </tr>
         <% end %>
       </tbody>
     </table>
     <%= paginate @users %>
-  <% end %>
+  
   </div>
+  <% end %>
 </div>
