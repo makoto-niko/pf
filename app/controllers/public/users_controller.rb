@@ -3,7 +3,6 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
   
   def index
-    # @users = User.page(params[:page])
     @users = User.where(is_active: true).page(params[:page])
     @records = []
   end
@@ -49,24 +48,6 @@ class Public::UsersController < ApplicationController
     @user = User
   end
   
-  # def follow
-  #   user = User.find(params[:user_id])
-  #   if user == current_user
-  #     flash[:alert] = "自分自身をフォローすることはできません。"
-  #     redirect_to users_path
-  #   else
-  #     current_user.follow(user)
-  #     flash[:success] = "#{user.username}をフォローしました。"
-  #     redirect_to users_path
-  #   end
-  # end
-
-  # def unfollow
-  #   user = User.find(params[:user_id])
-  #   current_user.unfollow(user)
-  #   flash[:success] = "#{user.username}のフォローを解除しました。"
-  #   redirect_to users_path
-  # end
   
   private
   

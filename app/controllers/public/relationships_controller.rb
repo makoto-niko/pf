@@ -2,15 +2,14 @@ class Public::RelationshipsController < ApplicationController
   before_action :authenticate_user!
   def create
     @user = User.find(params[:user_id])
+    #安全策（自分自身のフォローはしないように。view側で制限はかけている
     redirect_to request.referer && return if current_user == @user
     current_user.follow(@user)
-    # redirect_to request.referer, notice: "フォローしました。"
   end
   
   def destroy
     @user = User.find(params[:user_id])
     current_user.unfollow(@user)
-    # redirect_to  request.referer, notice: "フォロー解除しました。"
   end
   
   def followings
