@@ -1,5 +1,6 @@
 <% unless current_user == user %>
     <% if current_user.following?(user) %>
+    <%# byebug %>
         <%= button_to 'フォロー解除', unfollow_public_user_relationships_path(user_id: user.id), method: :delete, class: 'btn btn-danger', remote: true %>
     <% else %>
         <%= button_to 'フォロー', follow_public_user_relationships_path(user_id: user.id), method: :post, class: 'btn btn-primary', remote: true %>

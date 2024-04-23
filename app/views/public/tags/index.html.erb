@@ -37,15 +37,15 @@
           <table class="table">
             <thead>
               <tr>
-                <th scope="col">タグ</th>
-                <th scope="col">掲示板タイトル</th>
-                <th scope="col">リンク</th>
+                <th width="20%">タグ</th>
+                <th width="40%">掲示板タイトル</th>
+                <th width="30%">リンク</th>
               </tr>
             </thead>
             <tbody>
               <% @tags.each do |tag| %>
                 <% tag.boards.each do |board| %>
-                  <tr>
+                  <tr style="word-break:break-all;">
                     <td><%= tag.name %></td>
                     <td><%= board.title %></td>
                     <td><% if board.user_id == current_user.id || board.public_status? %>

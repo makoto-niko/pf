@@ -9,8 +9,30 @@
   <% if @users.present? %>  
   <div class='row mt-5'> 
     <h3>ユーザー一覧</h3>
+<div id="success-message" class="alert alert-success" style="display: none;"></div>
+<div id="error-message" class="alert alert-danger" style="display: none;"></div>
   <div class="table-responsive">
-    <table class="table mt-3">
+    <table class="table mt-3 d-block d-sm-none">
+      <thead>
+        <tr>
+          <th>ユーザー名<br>作成日</th>
+          <th>フォロー数<br>フォロワー数</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.username %><br><%= user.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= user.followings.count %><br><%= user.followers.count %></td>
+            <td id="follow-form-<%= user.id %>-m">
+            <%= render 'public/relationships/btn', user: user %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <table class="table mt-3 d-none d-sm-block">
       <thead>
         <tr>
           <th class="col-2">ユーザー名</th>
