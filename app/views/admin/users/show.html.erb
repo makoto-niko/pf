@@ -1,31 +1,25 @@
 <div class="col-sm-9 col-md-7 col-lg-5 px-5 px-sm-0 mx-auto align-self-center text-start" style="margin-top: 50px; margin-bottom: 50px;">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-
-          <h3 class="text-left md-4"><strong><%= @user.username %> </strong> さんの会員詳細</h3>
-          
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h3 class="text-left md-4"><strong><%= @user.username %> </strong> さんの会員詳細</h3>
+        <div class="table-responsive">
           <table class="table table-borderless">
-            
-            
             <tr>
-              <th class="nowrap" style="font-size: 18px;">会員ID</th>
-              <td style="font-size: 18px;"><%= @user.id %></td>
+              <th class="nowrap">会員ID</th>
+              <td><%= @user.id %></td>
             </tr>
-
             <tr>
-              <th class="nowrap" style="font-size: 18px;">ニックネーム</th>
-              <td style="font-size: 18px;"><%= "#{@user.username}" %></td>
+              <th class="nowrap">ニックネーム</th>
+              <td><%= @user.username %></td>
             </tr>
-            
             <tr>
-              <th class="nowrap" style="font-size: 18px;">メールアドレス</th>
-              <td style="font-size: 18px;"><%= @user.email %></td>
+              <th class="nowrap">メールアドレス</th>
+              <td><%= @user.email %></td>
             </tr>
-
             <tr>
-              <th class="nowrap" style="font-size: 18px;">会員ステータス</th>
-              <td style="font-size: 18px;">
+              <th class="nowrap">会員ステータス</th>
+              <td>
                 <% if @user.is_active %>
                 <span class='text-success'>有効</span>
                 <% else %>
@@ -33,16 +27,19 @@
                 <% end %>
               </td>
             </tr>
-
             <tr>
               <th></th>
-              <td><%= link_to '編集する', edit_admin_user_path(@user.id), class: "btn btn-success" %></td>
+              <td>
+                <div class="d-grid gap-2 d-md-block">
+                  <%= link_to '編集する', edit_admin_user_path(@user.id), class: "btn btn-success btn-block btn-sm" %>
+                </div>
+              </td>
             </tr>
-            
-         </table>
+          </table>
+        </div>
       </div> 
     </div>
   </div>
-</div>  
+</div>
 
 

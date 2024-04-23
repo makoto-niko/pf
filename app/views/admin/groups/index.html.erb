@@ -25,20 +25,22 @@
 
     <div class="col-md-8 offset-md-1 mt-5">
       <h3>グループ一覧</h3>
-      <table class="table">
-        <tr>
-          <th class="col-4">グループ名</th>
-          <th class="col-7">説明</th>
-          <th class="col-1"></th>
-        </tr>
-        <% @groups.each do |group| %>
+    <div class="table-responsive">
+        <table class="table">
           <tr>
-            <td class="col-4"><%= link_to group.name, admin_group_path(group) %></td>
-            <td class="col-7"><%= truncate(group.description, length: 100) %></td>
-            <td><%= link_to "一覧", edit_admin_group_path(group) %></td>
+            <th class="col-4">グループ名</th>
+            <th class="col-7">説明</th>
+            <th class="col-1"></th>
           </tr>
-        <% end %>
-      </table>
+          <% @groups.each do |group| %>
+            <tr>
+              <td class="col-4"><%= link_to group.name, admin_group_path(group) %></td>
+              <td class="col-7"><%= truncate(group.description, length: 100) %></td>
+              <td><%= link_to "一覧", edit_admin_group_path(group) %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
     </div>
   </div>
 </div>

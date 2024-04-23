@@ -3,32 +3,34 @@
   <div class="row mt-5'">
     <%= render 'layouts/flash' %>
     <h3>会員一覧</h3>
-    <table class="table mt-3">
-      <thead>
-        <tr>
-          <th class="col-2">会員ID</th>
-          <th class="col-2">ニックネーム</th>
-          <th class="col-2">メールアドレス</th>
-          <th class="col-2">ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
+    <div class="table-responsive">
+      <table class="table mt-3">
+        <thead>
           <tr>
-            <td><%= user.id %></td>
-            <td><%= link_to user.username, admin_user_path(user.id) %></td>
-            <td><%= user.email %></td>
-            <td>
-              <% if user.is_active %>
-                <span class='text-success'>有効</span>
-              <% else %>
-                <span class='text-secondary'>退会</span>
-              <% end %>
-            </td>
+            <th class="col-2">会員ID</th>
+            <th class="col-2">ニックネーム</th>
+            <th class="col-2">メールアドレス</th>
+            <th class="col-2">ステータス</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= link_to user.username, admin_user_path(user.id) %></td>
+              <td><%= user.email %></td>
+              <td>
+                <% if user.is_active %>
+                  <span class='text-success'>有効</span>
+                <% else %>
+                  <span class='text-secondary'>退会</span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div
     <div class="d-flex justify-content-center" style="margin-top: 50px;">
       <%= paginate @users %>
     </div>
