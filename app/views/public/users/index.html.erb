@@ -9,7 +9,7 @@
   <% if @users.present? %>  
   <div class='row mt-5'> 
     <h3>ユーザー一覧</h3>
-    
+  <div class="table-responsive">
     <table class="table mt-3">
       <thead>
         <tr>
@@ -34,8 +34,8 @@
         <% end %>
       </tbody>
     </table>
+  </div>
     <%= paginate @users %>
-  
   </div>
   <% end %>
 </div>

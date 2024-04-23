@@ -4,35 +4,36 @@
     
   <div class='row mt-5'>
     <h3>検索結果</h3>
-    
-    <table class="table mt-3">
-      <thead>
-        <tr>
-          <th class="col-2">ユーザー名</th>
-          <th class="col-2">フォロー数</th>
-          <th class="col-2">フォロワー数</th>
-          <th class="col-2">操作</th>
-        </tr>
-        </tr>
-      </thead>
-      <tbody>
-        <% @records.each do |user| %>
+  <div class="table-responsive">
+      <table class="table mt-3">
+        <thead>
           <tr>
-            <td><%= user.username %></td>
-            <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
-            <td><%= user.followings.count %></td>
-            <td><%= user.followers.count %></td>
-            <td id="follow-form-<%= user.id %>">
-            <%= render 'public/relationships/btn', user: user %>
-            </td>
+            <th class="col-2">ユーザー名</th>
+            <th class="col-2">フォロー数</th>
+            <th class="col-2">フォロワー数</th>
+            <th class="col-2">操作</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-   <%= paginate @records, param_name: :search_page ,params: { search: params[:search], model: @model, content: @content } %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @records.each do |user| %>
+            <tr>
+              <td><%= user.username %></td>
+              <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
+              <td><%= user.followings.count %></td>
+              <td><%= user.followers.count %></td>
+              <td id="follow-form-<%= user.id %>">
+              <%= render 'public/relationships/btn', user: user %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+     <%= paginate @records, param_name: :search_page ,params: { search: params[:search], model: @model, content: @content } %>
   </div> 
-  <% else %>
-    <h3>Users no search </h3>
+    <% else %>
+      <h3>Users no search </h3>
+    <% end %>
   <% end %>
-<% end %>
 
