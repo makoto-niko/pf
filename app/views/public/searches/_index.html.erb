@@ -33,8 +33,8 @@
 
      <%= paginate @records, param_name: :search_page ,params: { search: params[:search], model: @model, content: @content } %>
   </div> 
-    <% else %>
-      <h3>Users no search </h3>
-    <% end %>
+  <% else %>
+    <h3>Users no search </h3>
   <% end %>
+<% end %>
 
