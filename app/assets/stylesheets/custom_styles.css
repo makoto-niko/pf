@@ -94,3 +94,41 @@ main {
     background-image: none; /* 画像を使用しない */
     background-color: #007bff; /* 青色を指定 */
 }
+/* テーブルの基本スタイル */
+.table {
+    border: 1px solid #858585;
+}
+
+/* スマートフォン用のスタイル */
+@media screen and (max-width: 767px) {
+    .table thead {
+        display: none;
+    }
+    .table tbody tr {
+        display: block;
+        border-bottom: 1px solid #858585;
+    }
+    .table tbody th,
+    .table tbody td {
+        display: list-item;
+        list-style: none;
+        border-bottom: none;
+    }
+}
+
+/* タブレット以上の画面サイズでのスタイル */
+@media screen and (min-width: 768px) {
+    .table {
+        border-bottom: 1px solid #ddd;
+        border-left: 1px solid #ddd;
+    }
+    .table tbody tr {
+        display: table-row;
+    }
+    .table tbody th,
+    .table tbody td {
+        border-right: 1px solid #ddd;
+        display: table-cell;
+        border-bottom: none;
+    }
+}
