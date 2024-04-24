@@ -129,8 +129,8 @@ main {
     }
     .table tbody th,
     .table tbody td {
-        border-right: 1px solid #ddd;
-        border-left: 1px solid #ddd;
+        border-right: none;
+        border-left: none;
         display: table-cell;
         border-bottom: none;
     }
