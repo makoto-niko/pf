@@ -12,29 +12,8 @@
 
 <div id="success-message" class="alert alert-success" style="display: none;"></div>
 
-  <div class="table-responsive">
-    <table class="table mt-3 d-block d-sm-none">
-      <thead>
-        <tr>
-          <th>ユーザー名<br>作成日</th>
-          <th>フォロー数<br>フォロワー数</th>
-          <th>操作</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td><%= user.username %><br><%= user.created_at.strftime('%Y/%m/%d') %></td>
-            <td><%= user.followings.count %><br><%= user.followers.count %></td>
-            <td id="follow-form-<%= user.id %>-m">
-            <%= render 'public/relationships/btn', user: user %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
 
-  <table class="table mt-6 mx-auto d-none d-sm-block">
+  <table class="table">
     <thead>
       <tr>
           <th class="col-2">ユーザー名</th>
@@ -46,20 +25,20 @@
     </thead>
       <tbody>
          <% @users.each do |user| %>
-        <tr>
-            <td><%= user.username %></td>
-            <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
-            <td><%= user.followings.count %></td>
-            <td><%= user.followers.count %></td>
-            <td id="follow-form-<%= user.id %>">
-              <%= render 'public/relationships/btn', user: user %>
-            </td>
-        </tr>
-         <% end %>
-        </tbody>
-      </table>
+      <tr>
+          <td><%= user.username %></td>
+          <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= user.followings.count %></td>
+          <td><%= user.followers.count %></td>
+          <td id="follow-form-<%= user.id %>">
+             <%= render 'public/relationships/btn', user: user %>
+          </td>
+      </tr>
+       <% end %>
+     </tbody>
+    </table>
   </div>
     <%= paginate @users %>
-  </div>
-  <% end %>
+    <% end %>
 </div>
+

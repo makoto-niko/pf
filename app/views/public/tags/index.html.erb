@@ -31,37 +31,36 @@
   <% end %>
   
   <div class="row mt-4">
-      <div class="col-12">
-        <h2>Tag List</h2>
-        <div class="table-responsive">
-          <table class="table">
-            <thead>
-              <tr>
-                <th width="20%">タグ</th>
-                <th width="40%">掲示板タイトル</th>
-                <th width="30%">リンク</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @tags.each do |tag| %>
-                <% tag.boards.each do |board| %>
-                  <tr style="word-break:break-all;">
-                    <td><%= tag.name %></td>
-                    <td><%= board.title %></td>
-                    <td><% if board.user_id == current_user.id || board.public_status? %>
-                    <%= link_to '掲示板へ', public_group_boards_path(board.group_id), class: "btn btn-link" %>
-                        <% else %>
-                           非公開です 
-                        <% end %> 
-                    </td>
-                  </tr>
-                <% end %>
+    <div class="col-12">
+      <h2>Tag List</h2>
+         <table class="table">
+           <thead>
+            <tr>
+              <th width="20%">タグ</th>
+              <th width="40%">掲示板タイトル</th>
+              <th width="30%">リンク</th>
+            </tr>
+          </thead>
+          <tbody>
+             <% @tags.each do |tag| %>
+              <% tag.boards.each do |board| %>
+                 <tr style="word-break:break-all;">
+                   <td><%= tag.name %></td>
+                   <td><%= board.title %></td>
+                   <td><% if board.user_id == current_user.id || board.public_status? %>
+                  <%= link_to '掲示板へ', public_group_boards_path(board.group_id), class: "btn btn-link" %>
+                      <% else %>
+                         非公開です 
+                       <% end %> 
+                   </td>
+                 </tr>
               <% end %>
-            </tbody>
-          </table>
+             <% end %>
+           </tbody>
+         </table>
         </div>
       </div>
     </div>
-</div>
+
 
 

@@ -2,50 +2,48 @@
   <div class="row">
     <div class="col-md-10 offset-md-1">
     <%= render 'layouts/error_messages', model: @contact %>
-      <div class="table-responsive">
-        <table class="table">
-          <tbody>
-            <tr>
-              <td class="text-right" style="width: 50%;">お名前</td>
-              <td><%= @contact.name %></td>
-            </tr>
-            <tr>
-              <td class="text-right mt-3" style="width: 50%;">メールアドレス</td>
-              <td><%= @contact.email %></td>
-            </tr>
-            <tr>
-              <td class="text-right mt-3" style="width: 50%;">件名</td>
-              <td><%= @contact.subject %></td>
-            </tr>
-            <tr>
-              <td class="text-right mt-3">メッセージ</td>
-              <td style="white-space: pre-wrap;"><%= @contact.message %></td>
-            </tr>
-          </tbody>
-        </table>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td class="text-right" style="width: 50%;">お名前</td>
+            <td><%= @contact.name %></td>
+          </tr>
+          <tr>
+            <td class="text-right mt-3" style="width: 50%;">メールアドレス</td>
+            <td><%= @contact.email %></td>
+          </tr>
+          <tr>
+            <td class="text-right mt-3" style="width: 50%;">件名</td>
+            <td><%= @contact.subject %></td>
+          </tr>
+          <tr>
+            <td class="text-right mt-3">メッセージ</td>
+             <td style="white-space: pre-wrap;"><%= @contact.message %></td>
+          </tr>
+        </tbody>
+      </table>
   
-         <div class="d-flex justify-content-center">
-          <div class="mr-3">
-          <%= form_with model: @contact, url: public_contacts_path, local: true do |f| %>
-            <%= f.hidden_field :name %>
-            <%= f.hidden_field :email %>
-            <%= f.hidden_field :subject %>
-            <%= f.hidden_field :message %>
-            <div><%= f.submit '送信', class: "btn btn-success" %></div>
-          <% end %>
-          </div>
-  
-          <div>
-          <%= form_with model: @contact, url: back_public_contacts_path, local: true do |f| %>
-            <%= f.hidden_field :name %>
-            <%= f.hidden_field :email %>
-            <%= f.hidden_field :subject %>
-            <%= f.hidden_field :message %>
-            <div><%= f.submit '入力画面に戻る', class: "btn btn-info" %></div>
-          <% end %>
-          </div>
+       <div class="d-flex justify-content-center">
+        <div class="mr-3">
+        <%= form_with model: @contact, url: public_contacts_path, local: true do |f| %>
+          <%= f.hidden_field :name %>
+          <%= f.hidden_field :email %>
+          <%= f.hidden_field :subject %>
+          <%= f.hidden_field :message %>
+          <div><%= f.submit '送信', class: "btn btn-success" %></div>
+        <% end %>
         </div>
-      </div>
-    </div>
-  </div>
+  
+        <div>
+         　<%= form_with model: @contact, url: back_public_contacts_path, local: true do |f| %>
+           <%= f.hidden_field :name %>
+           <%= f.hidden_field :email %>
+           <%= f.hidden_field :subject %>
+           <%= f.hidden_field :message %>
+        <div><%= f.submit '入力画面に戻る', class: "btn btn-info" %></div>
+        <% end %>
+         </div>
+       </div>
+     </div>
+   </div>
 </div>
