@@ -4,7 +4,6 @@
       <%= render 'layouts/flash' %>
       <h2 class="mt-5">会員情報編集</h2>
       <%= form_with(model: @user, url: admin_user_path(@user), local: true) do |form| %>
-        <div class="table-responsive">
           <table class="table">
             <tbody>
               <tr>
@@ -42,7 +41,6 @@
               </tr>
             </tbody>
           </table>
-        </div>
       <% end %>
     </div>
   </div>
