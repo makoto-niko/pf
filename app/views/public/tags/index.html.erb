@@ -8,11 +8,12 @@
         </div>
         <div class="col-md-2">
           <%= f.submit "search", class: "btn btn-primary btn-block" %>
-          <smail>タグを検索できます</smail>
+          <small>タグを検索できます</small>
         </div>
       <% end %>
-   </div>
- </div>
+    </div>
+  </div>
+
   <% if params[:keyword].present? %>
     <div class="row mt-4">
       <div class="col-12">
@@ -29,37 +30,40 @@
       </div>
     </div>
   <% end %>
-  
+
   <div class="row mt-4">
     <div class="col-12">
       <h2>Tag List</h2>
-         <table class="table">
-           <thead>
-            <tr>
-              <th>タグ</th>
-              <th>掲示板タイトル</th>
-              <th>リンク</th>
-            </tr>
-          </thead>
-          <tbody>
-             <% @tags.each do |tag| %>
-              <% tag.boards.each do |board| %>
-               <td><%= tag.name %></td>
-               <td><%= board.title %></td>
-               <td><% if board.user_id == current_user.id || board.public_status? %>
-                   <%= link_to '掲示板へ', public_group_boards_path(board.group_id), class: "btn btn-link" %>
-                    <% else %>
-                        非公開です 
-                    <% end %> 
+      <table class="table">
+        <thead>
+          <tr>
+            <th>タグ</th>
+            <th>掲示板タイトル</th>
+            <th>リンク</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tags.each do |tag| %>
+            <% tag.boards.each do |board| %>
+              <tr>
+                <td><%= tag.name %></td>
+                <td><%= board.title %></td>
+                <td>
+                  <% if board.user_id == current_user.id || board.public_status? %>
+                    <%= link_to '掲示板へ', public_group_boards_path(board.group_id), class: "btn btn-link" %>
+                  <% else %>
+                    非公開です
+                  <% end %>
                 </td>
               </tr>
-              <% end %>
-             <% end %>
-           </tbody>
-         </table>
-        </div>
-      </div>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
     </div>
+  </div>
+</div>
+
 
 
 

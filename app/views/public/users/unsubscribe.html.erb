@@ -1,33 +1,33 @@
 <div class="container mt-4">
- <div class="mt-5">
-  <div class="row justify-content-center">
-    <div class="col-lg-6 d-flex align-items-center flex-column">
-     <h1 class="text-center" style="text-shadow: -1px -1px 5px rgba(160,82,45,0.8),  
+  <div class="mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 d-flex align-items-center flex-column">
+        <h1 class="text-center" style="text-shadow: -1px -1px 5px rgba(160,82,45,0.8),  
           1px -1px 5px rgba(160,82,45,0.8),  
           -1px 1px 5px rgba(160,82,45,0.8),  
           1px 1px 5px rgba(160,82,45,0.8); color: white; animation: blink 3s infinite;">
-       本当に退会しますか？
-     </h1>
+          本当に退会しますか？
+        </h1>
 
-      <style>
-        @keyframes blink {
-          0% { opacity: 1; }
-          50% { opacity: 0; }
-          100% { opacity: 1; }
-        }
-      </style>
+        <style>
+          @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+          }
+        </style>
 
-      <p class="text-center">
-        退会すると、会員情報登録や<br>
-        これまでの情報履歴が閲覧できなくなります。<br>
-        退会する場合は、「退会する」をクリックしてください。　
-      </p>
- 
-      <div class="d-flex justify-content-center">
-          <%= link_to "退会しない",  edit_public_user_path(@user), class: "btn btn-primary mr-3" %>
-          <%= link_to "退会する",  withdraw_public_users_path, method: :patch, class: "btn btn-danger", data: { confirm: "本当に退会しますか？すべてのデータが削除されます"} %>
+        <p class="text-center">
+          退会すると、会員情報登録や<br>
+          これまでの情報履歴が閲覧できなくなります。<br>
+          退会する場合は、「退会する」をクリックしてください。
+        </p>
+
+        <div class="d-flex justify-content-center">
+          <%= link_to "退会しない", edit_public_user_path(@user), class: "btn btn-primary mr-3" %>
+          <%= link_to "退会する", withdraw_public_users_path, method: :patch, class: "btn btn-danger", data: { confirm: "本当に退会しますか？すべてのデータが削除されます"} %>
         </div>
-
+      </div>
     </div>
   </div>
 </div>

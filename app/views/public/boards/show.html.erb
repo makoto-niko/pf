@@ -3,7 +3,7 @@
   <%= render 'layouts/error_messages', model: @board %>
   
   <%= form_with model: [@group, @board], url: public_group_board_path(@group, @board), method: :patch, html: { class: "row justify-content-center" } do |f| %>
-    <div class="col-md-8">
+  <div class="col-md-8">
       <div class="row mb-3">
         <%= f.label :title, "タイトル:", class: "col-sm-3 col-form-label text-sm-end" %>
         <div class="col-sm-9">
@@ -32,7 +32,6 @@
           <%= link_to "編集", edit_public_group_board_path(@board.group_id, @board.id), class: "btn btn-primary" %>
         </div>
       </div>
-    </div>
-    
+  </div>
   <% end %>
 </div>

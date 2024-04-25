@@ -2,9 +2,9 @@
   <% if @records.size > 0 %>
     <h3>Users search for "<%= @content %>"</h3>
     
-  <div class='row mt-5'>
-    <h3>検索結果</h3>
-<div id="success-message" class="alert alert-success" style="display: none;"></div>
+    <div class='row mt-5'>
+      <h3>検索結果</h3>
+      <div id="success-message" class="alert alert-success" style="display: none;"></div>
 
       <table class="table">
         <thead>
@@ -13,7 +13,6 @@
             <th class="col-2">フォロー数</th>
             <th class="col-2">フォロワー数</th>
             <th class="col-2">操作</th>
-          </tr>
           </tr>
         </thead>
         <tbody>
@@ -24,17 +23,18 @@
               <td><%= user.followings.count %></td>
               <td><%= user.followers.count %></td>
               <td id="follow-form-<%= user.id %>">
-              <%= render 'public/relationships/btn', user: user %>
+                <%= render 'public/relationships/btn', user: user %>
               </td>
             </tr>
           <% end %>
         </tbody>
       </table>
 
-     <%= paginate @records, param_name: :search_page ,params: { search: params[:search], model: @model, content: @content } %>
-  </div> 
+      <%= paginate @records, param_name: :search_page, params: { search: params[:search], model: @model, content: @content } %>
+    </div> 
   <% else %>
-    <h3>Users no search </h3>
+    <h3>No users found for "<%= @content %>"</h3>
   <% end %>
 <% end %>
+
 

@@ -2,45 +2,41 @@
   <div class="row mt-5">
     <div class="col-12">
       <h2>Actions</h2>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">アクション</th>
-              <th scope="col">リンク</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>タグリスト</td>
-              <td><%= link_to 'Tags List', public_tags_path, class: "btn btn-primary" %></td>
-            </tr>
-            <tr>
-            <td><!--%= link_to '削除', public_tag_path(tag), method: :delete, data: { confirm: '関連づいた記事のタグが空になりますがタグを削除しますか？' }, class: "btn btn-danger" %--></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-  
-      <!-- Tag Section -->
-    <div class="col-12 mt-4">
-       <h2>Tag</h2>
-       <h3><%= @tag.name %></h3>
-       <table class="table">
-         <thead>
+      <table class="table">
+        <thead>
           <tr>
-             <th scope="col">掲示板タイトル</th>
-             <th scope="col">リンク</th>
+            <th scope="col">アクション</th>
+            <th scope="col">リンク</th>
           </tr>
-         </thead>
-         <tbody>
-            <% @tag.boards.each do |board| %>
-           <tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>タグリスト</td>
+            <td><%= link_to 'Tags List', public_tags_path, class: "btn btn-primary" %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-12 mt-4">
+      <h2>Tag</h2>
+      <h3><%= @tag.name %></h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">掲示板タイトル</th>
+            <th scope="col">リンク</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tag.boards.each do |board| %>
+            <tr>
               <td><%= board.title %></td>
               <td><%= link_to '掲示板へ', public_group_boards_path(board.group_id), class: "btn btn-link" %></td>
             </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+          <% end %>
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>
