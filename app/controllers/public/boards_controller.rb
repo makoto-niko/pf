@@ -22,8 +22,8 @@ class Public::BoardsController < ApplicationController
   end
   
   def show
-      @board = Board.find_by(id: params[:id])
-      @group = Group.find_by(id: params[:group_id])
+    @board = Board.find_by(id: params[:id])
+    @group = Group.find_by(id: params[:group_id])
       if @board.nil? || @group.nil?
        redirect_to root_path
        return
@@ -37,13 +37,13 @@ class Public::BoardsController < ApplicationController
   end
   
   def update
-      if @board.update(board_params)
-        @board.save_tags_new(params[:board][:tag])
-        flash[:notice] = "更新に成功しました。"
-        redirect_to public_group_boards_path(@group) 
-      else
-        render :edit
-      end
+    if @board.update(board_params)
+       @board.save_tags_new(params[:board][:tag])
+       flash[:notice] = "更新に成功しました。"
+       redirect_to public_group_boards_path(@group) 
+    else
+       render :edit
+    end
   end
   
   def create

@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  # before_action :authenticate_user!, except: [:new, :create, :guest_sign_in]
-  # before_action :prevent_logged_in_access, only: [:new, :create]
-  
+
    def guest_sign_in
     user = User.guest
     pp "hoge", user
@@ -29,7 +27,7 @@ class Public::SessionsController < Devise::SessionsController
 
  # protected
   
-    private
+  #private
     
   # def prevent_logged_in_access
   #      redirect_to root_path if user_signed_in?

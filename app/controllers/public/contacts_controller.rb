@@ -35,9 +35,9 @@ class Public::ContactsController < ApplicationController
   def done
   end
 
-    private
+  private
 
-    def contact_params
+  def contact_params
       params.require(:contact).permit(:name, :email, :subject, :message)
-    end
+  end
 end
