@@ -83,7 +83,7 @@ class Public::BoardsController < ApplicationController
     
   private
   
-  def is current_user
+  def is_current_user
     @group = Group.find(params[:group_id])
     @board = Board.find(params[:id])
     unless @board.user_id == current_user.id

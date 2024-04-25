@@ -41,8 +41,7 @@ class Admin::GroupsController < ApplicationController
       @groups = Group.all
       flash.now[:alert] = "グループの作成に失敗しました。"
     end
-
-    render :index
+      render :index
   end
   
   def destroy
