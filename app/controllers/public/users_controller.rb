@@ -45,7 +45,6 @@ class Public::UsersController < ApplicationController
   end
   
   def unsubscribe
-    @user = User
   end
   
   

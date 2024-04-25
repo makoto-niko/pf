@@ -24,7 +24,7 @@
         </p>
 
         <div class="d-flex justify-content-center">
-          <%= link_to "退会しない", edit_public_user_path(@user), class: "btn btn-primary mr-3" %>
+          <%= link_to "退会しない", edit_public_user_path(current_user), class: "btn btn-primary mr-3" %>
           <%= link_to "退会する", withdraw_public_users_path, method: :patch, class: "btn btn-danger", data: { confirm: "本当に退会しますか？すべてのデータが削除されます"} %>
         </div>
       </div>
