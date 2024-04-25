@@ -14,7 +14,7 @@ class User < ApplicationRecord
     end
   end
   
-   validates :email, presence: true,length: { maximum: 20 }
+   validates :email, presence: true
    validates :username, presence: true,length: { maximum: 20 }
  
   def full_name
