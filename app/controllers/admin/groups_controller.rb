@@ -35,13 +35,13 @@ class Admin::GroupsController < ApplicationController
     @group.admin_id = current_admin.id
     
     if @group.save
-      @groups = Group.all
       flash[:notice] = "グループを作成しました。"
+      redirect_to admin_groups_path
     else
       @groups = Group.all
       flash.now[:alert] = "グループの作成に失敗しました。"
+      render :index 
     end
-      render :index
   end
   
   def destroy
@@ -57,7 +57,6 @@ class Admin::GroupsController < ApplicationController
      render :index
     end
   end
-
   
   private
   
