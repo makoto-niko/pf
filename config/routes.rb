@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  #namespace :public do
-    #get 'contacts/new'
-    #get 'contacts/confirm'
-    #get 'contacts/done'
-  #end
   devise_for :admin, controllers: {
     registrations: "admin/registrations",
     sessions: "admin/sessions"

@@ -1,6 +1,6 @@
 class Public::BoardsController < ApplicationController
   before_action :authenticate_user!
-
+  before_action :is_current_user, only:[:edit,:update,:destroy]
   def index
     @group = Group.find(params[:group_id])
     @board = Board.new()
@@ -19,11 +19,6 @@ class Public::BoardsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params[:group_id])
-    @board = Board.find(params[:id])
-    unless @board.user_id == current_user.id
-      redirect_to public_group_boards_path(@group), alert: "編集権限がありません。"
-    end
   end
   
   def show
@@ -42,11 +37,7 @@ class Public::BoardsController < ApplicationController
   end
   
   def update
-    @group = Group.find(params[:group_id])
-    @board = Board.find(params[:id])
-      if @board.user_id != current_user.id
-         redirect_to public_group_boards_path(@group), alert: "更新権限がありません。"
-      elsif @board.update(board_params)
+      if @board.update(board_params)
         @board.save_tags_new(params[:board][:tag])
         flash[:notice] = "更新に成功しました。"
         redirect_to public_group_boards_path(@group) 
@@ -91,7 +82,15 @@ class Public::BoardsController < ApplicationController
   end
     
   private
-
+  
+  def is current_user
+    @group = Group.find(params[:group_id])
+    @board = Board.find(params[:id])
+    unless @board.user_id == current_user.id
+      redirect_to public_group_boards_path(@group), alert: "権限がありません。"
+    end
+  end
+  
   def board_params
     params.require(:board).permit(:title, :description, :user_id, :group_id, :status)
   end
