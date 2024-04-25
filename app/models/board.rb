@@ -16,6 +16,11 @@ class Board < ApplicationRecord
     end
   end
   
+  
+   def written_by?(current_user)
+     user == current_user
+   end
+  
   def save_tags(tags)
 
     # タグをスペース区切りで分割し配列にする

@@ -73,7 +73,7 @@ class Public::BoardsController < ApplicationController
   def destroy
     @board = Board.find(params[:id])
     tag_ids = @board.tags.ids
-      if  @board.user_id == current_user.id 
+      if  @board.written_by?(current_user)
          @board.destroy 
          Tag.where(id: tag_ids).destroy_all
       end
@@ -86,7 +86,7 @@ class Public::BoardsController < ApplicationController
   def is_current_user
     @group = Group.find(params[:group_id])
     @board = Board.find(params[:id])
-    unless @board.user_id == current_user.id
+    unless @board.written_by?(current_user)
       redirect_to public_group_boards_path(@group), alert: "権限がありません。"
     end
   end

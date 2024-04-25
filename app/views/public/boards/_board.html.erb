@@ -20,8 +20,8 @@
           <% end %> 
         </div>  
         <div class="divst-group-item">
-          <% if user_signed_in? && current_user.id == board.user_id %>
-            <%= link_to "詳細", public_group_board_path(board.group_id, board.id), class: "btn btn-primary" %>
+          <% if board.written_by?(current_user)%>
+              <%= link_to "詳細", public_group_board_path(board.group_id, board.id), class: "btn btn-primary" %>
             <% elsif admin_signed_in? %>
               <%= link_to "削除", admin_group_board_path(group_id: board.group.id, id: board.id), method: :delete, class:"btn btn-danger" %>
           <% end %>
