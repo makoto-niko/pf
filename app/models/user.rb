@@ -58,6 +58,6 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
-  #searchに退会は出さないようにするscope
+  #退会は出さないようにするscope
    scope :active, -> { where(is_active: true) }
 end

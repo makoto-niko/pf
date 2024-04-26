@@ -9,6 +9,7 @@ class Board < ApplicationRecord
   
   scope :public_boards, -> { where(status: 0) }
   scope :user_boards, ->(user_id) { where(user_id: user_id) }
+  scope :search, ->(keyword) { where('title LIKE ? OR description LIKE ?', "%#{keyword}%", "%#{keyword}%") }
   
   def save_tags_new(tags)
     board_tags.destroy_all

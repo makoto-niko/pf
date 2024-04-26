@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
   
   def index
-    @users = User.where(is_active: true).page(params[:page])
+    @users = User.active.page(params[:page])
     @records = []
   end
   
@@ -62,7 +62,7 @@ class Public::UsersController < ApplicationController
   end 
   
   def set_current_user
-    @user = User.find(current_user.id)
+    @user = current_user
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: "ユーザーが見つかりません。"
   end

@@ -1,11 +1,7 @@
 class Public::TagsController < ApplicationController
   before_action :authenticate_user!
   def index
-    if params[:keyword].present?
-      @tags = Tag.where('name LIKE(?)', "%#{params[:keyword]}%")
-    else
-      @tags = Tag.all
-    end
+    @tags = params[:keyword].present? ? Tag.search_by_name(params[:keyword]) : Tag.all
   end
 
   def show

@@ -7,9 +7,9 @@ class Public::BoardsController < ApplicationController
     @boards = @group.boards.public_boards
     @boards = @boards.or(@group.boards.user_boards(current_user.id)) if user_signed_in?
 
-    if params[:keyword].present?
-      @boards = @boards.where('title LIKE(?) OR description LIKE(?)', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
-    end
+     if params[:keyword].present?
+      @boards = @boards.search(params[:keyword])
+     end
   end
 
   def edit
