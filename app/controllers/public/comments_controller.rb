@@ -17,7 +17,7 @@ class Public::CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @board = @comment.board
-    if @comment.user == current_user
+    if @comment.written_by?(current_user)
       @comment.destroy
       redirect_to public_group_boards_path(@board.group),notice: 'コメントを削除しました。'
     else

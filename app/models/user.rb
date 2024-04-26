@@ -60,5 +60,4 @@ class User < ApplicationRecord
   end
   #searchに退会は出さないようにするscope
    scope :active, -> { where(is_active: true) }
-   
 end

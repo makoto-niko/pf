@@ -1,5 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
+  before_action :set_current_user, only: [:show, :update, :withdraw]
   before_action :ensure_guest_user, only: [:edit]
   
   def index
@@ -8,7 +9,7 @@ class Public::UsersController < ApplicationController
   end
   
   def show
-    @user = User.find_by(id: current_user.id)
+    #@user = User.find_by(id: current_user.id)
     if @user.nil?
     redirect_to root_path
     return
@@ -21,7 +22,7 @@ class Public::UsersController < ApplicationController
 
   
   def update
-    @user = User.find(current_user.id)
+    #@user = User.find(current_user.id)
     if @user.update(user_params)
       flash[:notice] = "会員情報を更新しました。"
       redirect_to edit_public_user_path(@user)
@@ -32,7 +33,7 @@ class Public::UsersController < ApplicationController
   end
  
   def withdraw
-    @user = User.find(current_user.id)
+    #@user = User.find(current_user.id)
     @user.update(is_active: false)
     if @user.destroy
       reset_session
@@ -47,7 +48,6 @@ class Public::UsersController < ApplicationController
   def unsubscribe
   end
   
-  
   private
   
   def user_params
@@ -60,4 +60,11 @@ class Public::UsersController < ApplicationController
       redirect_to root_path(@user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end 
+  
+  def set_current_user
+    @user = User.find(current_user.id)
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: "ユーザーが見つかりません。"
+  end
+
 end
