@@ -1,10 +1,11 @@
 class Public::BoardsController < ApplicationController
   before_action :authenticate_user!
   before_action :is_current_user, only:[:edit,:update,:destroy]
-  before_action :set_group,only:[:show,:craate]
+  before_action :set_group,only:[:index,:show,:create]
   def index
-  @boards = @group.boards.public_boards
-  @boards = @boards.or(@group.boards.user_boards(current_user.id)) if user_signed_in?
+    @board = Board.new
+    @boards = @group.boards.public_boards
+    @boards = @boards.or(@group.boards.user_boards(current_user.id)) if user_signed_in?
 
     if params[:keyword].present?
       @boards = @boards.where('title LIKE(?) OR description LIKE(?)', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
