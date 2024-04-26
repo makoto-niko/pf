@@ -1,20 +1,13 @@
 class Public::BoardsController < ApplicationController
   before_action :authenticate_user!
   before_action :is_current_user, only:[:edit,:update,:destroy]
+  before_action :set_group,only:[:show,:craate]
   def index
-    @group = Group.find(params[:group_id])
-    @board = Board.new()
-    @comment = Comment.new
-    # 公開されている投稿だけを公開、モデルは公開は０
-    boards = @group.boards.where(status: 0)
-    #自分の投稿であれば、全て非公開投稿も公開
-    if user_signed_in?
-      @boards = boards.or(@group.boards.where(user_id: current_user.id))
-    end
+  @boards = @group.boards.public_boards
+  @boards = @boards.or(@group.boards.user_boards(current_user.id)) if user_signed_in?
 
     if params[:keyword].present?
-      @boards = @boards.where('title LIKE(?)', "%#{params[:keyword]}%")
-             .or(@boards.where('description LIKE(?)', "%#{params[:keyword]}%"))
+      @boards = @boards.where('title LIKE(?) OR description LIKE(?)', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
     end
   end
 
@@ -23,7 +16,7 @@ class Public::BoardsController < ApplicationController
   
   def show
     @board = Board.find_by(id: params[:id])
-    @group = Group.find_by(id: params[:group_id])
+    #@group = Group.find_by(id: params[:group_id])
       if @board.nil? || @group.nil?
        redirect_to root_path
        return
@@ -47,7 +40,7 @@ class Public::BoardsController < ApplicationController
   end
   
   def create
-    @group = Group.find(params[:group_id])
+    #@group = Group.find(params[:group_id])
     @board = Board.new(board_params)
     @board.user_id = current_user.id
     @board.group_id = @group.id
@@ -84,11 +77,17 @@ class Public::BoardsController < ApplicationController
   private
   
   def is_current_user
-    @group = Group.find(params[:group_id])
+    #@group = Group.find(params[:group_id])
     @board = Board.find(params[:id])
     unless @board.written_by?(current_user)
       redirect_to public_group_boards_path(@group), alert: "権限がありません。"
     end
+  end
+  
+  def set_group
+    @group = Group.find(params[:group_id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: "指定されたグループが見つかりません。"
   end
   
   def board_params

@@ -6,7 +6,10 @@ class Board < ApplicationRecord
     has_many :tags, through: :board_tags
   validates :title, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 100 }
-
+  
+  scope :public_boards, -> { where(status: 0) }
+  scope :user_boards, ->(user_id) { where(user_id: user_id) }
+  
   def save_tags_new(tags)
     board_tags.destroy_all
     tag_list = tags.present? ? tags.split(/[[:blank:]]+/) : []
@@ -17,10 +20,10 @@ class Board < ApplicationRecord
   end
   
   
-   def written_by?(current_user)
+  def written_by?(current_user)
      user == current_user
-   end
-  
+  end
+ 
   def save_tags(tags)
 
     # タグをスペース区切りで分割し配列にする

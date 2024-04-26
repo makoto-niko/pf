@@ -1,13 +1,13 @@
 class Admin::GroupsController < ApplicationController
   before_action :authenticate_admin!
-
+  before_action :set_group,only: [:show, :edit, :update,:destroy]
   def index
     @group = Group.new
     @groups = Group.all
   end
  
   def show
-    @group = Group.find_by(id: params[:id])
+    #@group = Group.find_by(id: params[:id])
     if @group.nil?
       redirect_to root_path
     else
@@ -16,11 +16,11 @@ class Admin::GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params[:id])
+    #@group = Group.find(params[:id])
   end
   
   def update
-    @group = Group.find(params[:id])
+    #@group = Group.find(params[:id])
     if @group.update(group_params)
       flash[:notice] = "グループを更新しました。"
       redirect_to admin_groups_path
@@ -45,22 +45,27 @@ class Admin::GroupsController < ApplicationController
   end
   
   def destroy
-    @group = Group.find_by(id: params[:id])
-    if @group
+    #@group = Group.find_by(id: params[:id])
+    #if @group
       @group.destroy
       flash[:notice] = "削除に成功しました。"
       redirect_to admin_groups_path
-    else
-      flash[:alert] = "指定されたボードは見つかりませんでした。"
-      @group = Group.new
-    @groups = Group.all
-     render :index
-    end
+    #else
+      #flash[:alert] = "指定されたボードは見つかりませんでした。"
+      #@group = Group.new
+      #@groups = Group.all
+      #render :index
+    #end
   end
   
   private
+  def set_group
+    @group = Group.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to admin_groups_path, alert: "指定されたグループが見つかりません。"
+  end
   
   def group_params
-    params.require(:group).permit(:name, :description, :admin_id)
+    params.require(:group).permit(:name, :description)
   end
 end
