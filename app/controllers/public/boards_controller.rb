@@ -1,7 +1,7 @@
 class Public::BoardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :is_current_user, only:[:edit,:update,:destroy]
-  before_action :set_group,only:[:index,:show,:create]
+  before_action :set_current_user, only:[:edit,:update,:destroy]
+  before_action :set_group,only:[:index,:show,:create,:is_current_user]
   def index
     @board = Board.new
     @boards = @group.boards.public_boards
@@ -46,7 +46,7 @@ class Public::BoardsController < ApplicationController
     @board.user_id = current_user.id
     @board.group_id = @group.id
 
-    # タグのバリデーションのため、手動でバリデート
+    # タグのバリデーションのため、手動でバリデート。モデルで定義試みたができなかったため
     @board.errors.add(:tags, 'が入力されていません。') unless params[:board][:tags].present?
     @board.errors.add(:title, 'が入力されていません。') unless board_params[:title].present?
     @board.errors.add(:description, 'が入力されていません。') unless board_params[:description].present?
@@ -77,7 +77,7 @@ class Public::BoardsController < ApplicationController
     
   private
   
-  def is_current_user
+  def set_current_user
     #@group = Group.find(params[:group_id])
     @board = Board.find(params[:id])
     unless @board.written_by?(current_user)

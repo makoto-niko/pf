@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
-  before_action :set_current_user, only: [:show, :update, :withdraw]
+  before_action :is_current_user, only: [:show, :update, :withdraw]
   before_action :ensure_guest_user, only: [:edit]
   
   def index
@@ -61,7 +61,7 @@ class Public::UsersController < ApplicationController
     end
   end 
   
-  def set_current_user
+  def is_current_user
     @user = current_user
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: "ユーザーが見つかりません。"
