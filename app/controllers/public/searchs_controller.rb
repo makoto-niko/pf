@@ -9,6 +9,3 @@ class Public::SearchsController < ApplicationController
     render 'public/users/index'
   end
 end
-
-
-

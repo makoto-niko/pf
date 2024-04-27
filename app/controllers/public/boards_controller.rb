@@ -15,8 +15,7 @@ class Public::BoardsController < ApplicationController
      end
   end
 
-  def edit
-  end
+  def edit; end
   
   def show
     @board = Board.find(params[:id])
@@ -77,6 +76,8 @@ class Public::BoardsController < ApplicationController
   
   def set_group
     @group = Group.find(params[:group_id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path
   end
   
   def board_params

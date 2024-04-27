@@ -36,8 +36,8 @@
   <% @boards.each do |board| %>
     <%= render 'public/boards/board', board: board %>
   
-  <div class="list-group-item">
+    <div class="list-group-item">
       <%= render "public/comments/form", board: board, comment: Comment.new %>
-  </div> 
-      <%= render "public/comments/index", board: board %>
+    </div>
+    <%= render "public/comments/index", board: board %>
   <% end %>

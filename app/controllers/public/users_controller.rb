@@ -1,13 +1,12 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
-  before_action :ensure_guest_user, only: [:edit]
+  before_action :ensure_guest_user, only: [:edit, :update]
   
   def index
     @users = User.active.page(params[:page])
   end
   
-  def show
-  end
+  def show; end
   
   def edit
     redirect_to public_user_path(current_user) unless current_user.id == params[:id].to_i
@@ -15,7 +14,6 @@ class Public::UsersController < ApplicationController
 
   
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to edit_public_user_path(current_user) ,notice: "会員情報を更新しました。"
     else
@@ -27,7 +25,7 @@ class Public::UsersController < ApplicationController
   def withdraw
     if current_user.update(is_active: false)
       reset_session
-      redirect_to root_path ,notice: "退会処理を実行し、ユーザーとその関連データを削除しました。"
+      redirect_to root_path, notice: "退会処理を実行し、ユーザーとその関連データを削除しました。"
     else
       flash[:alert] = "退会処理に失敗しました。"
       render 'edit' 

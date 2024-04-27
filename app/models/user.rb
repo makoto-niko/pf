@@ -2,10 +2,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  has_many :comments,dependent: :destroy
-  has_many :boards,dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :boards, dependent: :destroy
   
- GUEST_USER_EMAIL = "guest@example.com"
+  GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
@@ -14,8 +14,8 @@ class User < ApplicationRecord
     end
   end
   
-   validates :email, presence: true
-   validates :username, presence: true,length: { maximum: 20 }
+  validates :email, presence: true
+  validates :username, presence: true, length: { maximum: 20 }
  
   def full_name
     username
@@ -26,15 +26,15 @@ class User < ApplicationRecord
   end
   
   def self.search_for(content, method)
-      if method == 'perfect'
-        User.where(username: content)
-      elsif method == 'forward'
-        User.where('username LIKE ?', content + '%')
-      elsif method == 'backward'
-        User.where('username LIKE ?', '%' + content)
-      else
-        User.where('username LIKE ?', '%' + content + '%')
-      end
+    if method == 'perfect'
+      User.where(username: content)
+    elsif method == 'forward'
+      User.where('username LIKE ?', "#{content}%")
+    elsif method == 'backward'
+      User.where('username LIKE ?', "%#{content}")
+    else
+      User.where('username LIKE ?', "%#{content}%")
+    end
   end
   
   def guest?
