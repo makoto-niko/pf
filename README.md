@@ -39,7 +39,9 @@
 - 関連書籍やコラムの紹介コーナーの設置
 
 ## 設計書
+<img width="572" alt="スクリーンショット 2024-04-27 23 00 48" src="https://github.com/makoto-niko/pf/assets/156491237/de2c364c-6c68-45ab-aa5f-cc6e96047f18">
 
+<img width="612" alt="スクリーンショット 2024-04-27 22 44 04" src="https://github.com/makoto-niko/pf/assets/156491237/22133ce3-4284-44f7-8f80-573dde295209">
 
 
 ## 開発環境
