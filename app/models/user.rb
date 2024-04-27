@@ -37,10 +37,6 @@ class User < ApplicationRecord
       end
   end
   
-  def is_admin?
-    self.is_admin
-  end
-  
   def guest?
     email == "guest@example.com"
   end

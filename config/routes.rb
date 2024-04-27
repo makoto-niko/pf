@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get 'public/searches', to: 'public/searchs#search'
   
   namespace :public, path: '', as: 'public' do
-    resources :users do
+    resources :users, path_names: { edit: 'mypage' } do
       collection do
         get :unsubscribe
         patch :withdraw

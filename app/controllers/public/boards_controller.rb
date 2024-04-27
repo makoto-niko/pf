@@ -29,8 +29,7 @@ class Public::BoardsController < ApplicationController
   def update
     if @board.update(board_params)
        @board.save_tags_new(params[:board][:tag])
-       flash[:notice] = "更新に成功しました。"
-       redirect_to public_group_boards_path(@group) 
+       redirect_to public_group_boards_path(@group) ,notice:"更新に成功しました。"
     else
        render :edit
     end
@@ -55,15 +54,13 @@ class Public::BoardsController < ApplicationController
     else
       @board.save
       @board.save_tags(params[:board][:tags])
-      flash[:notice] = "登録に成功しました。"
-      redirect_to public_group_boards_path(@group)
+      redirect_to public_group_boards_path(@group) ,notice: "登録に成功しました。"
     end
   end
   
   def destroy
     @board = Board.find(params[:id])
-    flash[:notice] = "削除に成功しました。"
-    redirect_to public_group_boards_path(params[:group_id]) 
+    redirect_to public_group_boards_path(params[:group_id]) ,notice: "削除に成功しました。"
   end
     
   private
