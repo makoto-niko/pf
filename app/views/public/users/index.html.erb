@@ -3,9 +3,8 @@
     <%= render "public/searches/form" %>
   </div>
   
-  <% if @records %>
+
     <%= render 'public/searches/index', locals: { users: @records } %>
-  <% end %>
 
   <% if @users.present? %>
     <div class='row mt-5'>

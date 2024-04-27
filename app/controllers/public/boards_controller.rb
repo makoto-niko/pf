@@ -1,7 +1,9 @@
 class Public::BoardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_current_user, only:[:edit,:update,:destroy]
-  before_action :set_group,only:[:index,:show,:create,:is_current_user]
+  before_action :set_board, only:[:show,:destroy, :edit]
+  before_action :ensure_correct_board,only: [:edit, :update, :destroy]
+  before_action :set_group,only:[:index,:show,:create,:edit]
+
   def index
     @board = Board.new
     @boards = @group.boards.public_boards
@@ -16,17 +18,11 @@ class Public::BoardsController < ApplicationController
   end
   
   def show
-    @board = Board.find_by(id: params[:id])
+    @board = Board.find(params[:id])
     #@group = Group.find_by(id: params[:group_id])
-      if @board.nil? || @group.nil?
-       redirect_to root_path
-       return
-      end
-      
       # 非公開の投稿へのアクセス制御
-      if @board.private_status? && @board.user_id != current_user.id && !current_user.is_admin?
+      if @board.private_status? && !@board.written_by?(current_user)
         redirect_to public_group_boards_path(@group), alert: "この投稿は非公開です。"
-        return
       end
   end
   
@@ -66,29 +62,26 @@ class Public::BoardsController < ApplicationController
   
   def destroy
     @board = Board.find(params[:id])
-    tag_ids = @board.tags.ids
-      if  @board.written_by?(current_user)
-         @board.destroy 
-         Tag.where(id: tag_ids).destroy_all
-      end
     flash[:notice] = "削除に成功しました。"
     redirect_to public_group_boards_path(params[:group_id]) 
   end
     
   private
   
-  def set_current_user
+  def set_board
     #@group = Group.find(params[:group_id])
     @board = Board.find(params[:id])
-    unless @board.written_by?(current_user)
-      redirect_to public_group_boards_path(@group), alert: "権限がありません。"
+  end
+  
+  def ensure_correct_board
+    board = Board.find(params[:id])
+    unless board.written_by?(current_user)
+      redirect_to root_path, alert: "権限がありません。"
     end
   end
   
   def set_group
     @group = Group.find(params[:group_id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, alert: "指定されたグループが見つかりません。"
   end
   
   def board_params
