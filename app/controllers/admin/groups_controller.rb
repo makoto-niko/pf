@@ -14,14 +14,13 @@ class Admin::GroupsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
   
   def update
     if @group.update(group_params)
-      redirect_to admin_groups_path ,notice: "グループを更新しました。"
+      redirect_to admin_groups_path ,notice: 'グループを更新しました。'
     else
-      flash.now[:alert] = "グループの更新に失敗しました。"
+      flash.now[:alert] = 'グループの更新に失敗しました。'
       render 'edit'
     end
   end
@@ -31,24 +30,24 @@ class Admin::GroupsController < ApplicationController
     @group.admin_id = current_admin.id
     
     if @group.save
-      redirect_to admin_groups_path ,notice: "グループを作成しました。"
+      redirect_to admin_groups_path ,notice: 'グループを作成しました。'
     else
       @groups = Group.all
-      flash.now[:alert] = "グループの作成に失敗しました。"
+      flash.now[:alert] = 'グループの作成に失敗しました。'
       render :index 
     end
   end
   
   def destroy
     @group.destroy
-     redirect_to admin_groups_path ,notice: "削除に成功しました。"
+     redirect_to admin_groups_path ,notice: '削除に成功しました。'
   end
   
   private
   def set_group
     @group = Group.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    redirect_to admin_groups_path, alert: "指定されたグループが見つかりません。"
+    redirect_to admin_groups_path, alert: '指定されたグループが見つかりません。'
   end
   
   def group_params

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="d-flex justify-content-center mb-2">
-   <div class="row mt-5'">
-    <%= render 'layouts/flash' %>
+   <div class="row mt-5">
+    <%= render "layouts/flash" %>
     <h3>会員一覧</h3>
       <table class="table">
         <thead>
@@ -20,9 +20,9 @@
               <td><%= user.email %></td>
               <td>
                 <% if user.is_active %>
-                  <span class='text-success'>有効</span>
+                  <span class="text-success">有効</span>
                 <% else %>
-                  <span class='text-secondary'>退会</span>
+                  <span class="text-secondary">退会</span>
                 <% end %>
               </td>
             </tr>

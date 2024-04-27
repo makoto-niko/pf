@@ -1,6 +1,6 @@
 <div class="container mt-5">
   
-  <%= render 'public/boards/index', board: @board, group: @group %>
+  <%= render "public/boards/index", board: @board, group: @group %>
   
   <div class="row">
     <div class="col-md-8 offset-md-2">
@@ -22,7 +22,7 @@
   <% if params[:keyword].present? %>
     <% if @boards.present? %>
       <% @boards.each do |board| %>
-        <%= render 'public/boards/board', board: board %>
+        <%= render "public/boards/board", board: board %>
      <% end %>
     <% else %>
       <p>検索結果はありません</p>
@@ -31,10 +31,10 @@
   
   <h3 class="mt-5 mb-3 text-center"><%= @group.name %>の投稿一覧</h3>
   
-  <p><%= render 'layouts/error_messages', model: @comment %></p>
+  <p><%= render "layouts/error_messages", model: @comment %></p>
   
   <% @boards.each do |board| %>
-    <%= render 'public/boards/board', board: board %>
+    <%= render "public/boards/board", board: board %>
   
     <div class="list-group-item">
       <%= render "public/comments/form", board: board, comment: Comment.new %>

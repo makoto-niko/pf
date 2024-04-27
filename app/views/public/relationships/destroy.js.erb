@@ -1,2 +1,2 @@
-$("#follow-form-<%= @user.id %>").html('<%= j(render 'public/relationships/btn', user: @user) %>');
+$("#follow-form-<%= @user.id %>").html("<%= j(render "public/relationships/btn", user: @user) %>");
 $("#success-message").html("フォロー解除しました").fadeIn(500).delay(3000).fadeOut(500);

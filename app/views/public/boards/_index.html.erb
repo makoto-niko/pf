@@ -1,6 +1,6 @@
 <div class="container mt-5">
-  <%= render 'layouts/error_messages', model: @board %>
-  <%= render 'layouts/flash' %>
+  <%= render "layouts/error_messages", model: @board %>
+  <%= render "layouts/flash" %>
   <h4><%= @group.name %>への投稿はこちら！</h4>
   <% unless current_user.email == "guest@example.com" %>
   <%= form_with(model: @board, url: public_group_boards_path(@group), local: true) do |form| %>
@@ -11,19 +11,19 @@
       
       <div class="form-group">
        <div><%= form.label :description, "内容" %></div>
-       <div> <%= form.text_area :description, size: "30x10", class: 'form-control' %></div>
+       <div> <%= form.text_area :description, size: "30x10", class: "form-control" %></div>
       </div>
       
       <div class="form-group">
-       <div><%= form.label :tags, 'タグ' %></div>
-       <div><%= form.text_field :tags, value: @board.tags.pluck(:name), class: 'form-control' %>
+       <div><%= form.label :tags, "タグ" %></div>
+       <div><%= form.text_field :tags, value: @board.tags.pluck(:name), class: "form-control" %>
        <small>スペースで区切ることで複数指定できます。</small>
        </div>
       </div>
       
       <div class="form-group">
        <div><%= form.label :status, "公開状態" %></div>
-       <div><%= form.select :status, Board.statuses.keys.map { |status| [status.gsub('_status', '').humanize, status] }, {}, { class: 'form-control' } %></div>
+       <div><%= form.select :status, Board.statuses.keys.map { |status| [status.gsub("_status", "").humanize, status] }, {}, { class: "form-control" } %></div>
       </div>
 
       <div class="form-group">

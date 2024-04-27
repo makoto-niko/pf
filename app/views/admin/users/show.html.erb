@@ -20,9 +20,9 @@
               <th class="nowrap">会員ステータス</th>
               <td>
                 <% if @user.is_active %>
-                <span class='text-success'>有効</span>
+                <span class="text-success">有効</span>
                 <% else %>
-                <span class='text-secondary'>退会</span>
+                <span class="text-secondary">退会</span>
                 <% end %>
               </td>
             </tr>
@@ -30,7 +30,7 @@
               <th></th>
               <td>
                 <div class="d-grid gap-2 d-md-block">
-                  <%= link_to '編集する', edit_admin_user_path(@user.id), class: "btn btn-success btn-block btn-sm" %>
+                  <%= link_to "編集する", edit_admin_user_path(@user.id), class: "btn btn-success btn-block btn-sm" %>
                 </div>
               </td>
             </tr>

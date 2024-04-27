@@ -1,8 +1,8 @@
 class Public::BoardsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_board, only:[:show,:destroy, :update, :edit]
-  before_action :ensure_correct_board,only: [:edit, :update, :destroy]
-  before_action :set_group,only:[:index,:show,:create,:edit]
+ before_action :authenticate_user!
+ before_action :set_board, only:[:show,:destroy, :update, :edit]
+ before_action :ensure_correct_board,only: [:edit, :update, :destroy]
+ before_action :set_group,only:[:index,:show,:create,:edit,:update]
 
 
   def index
@@ -21,14 +21,14 @@ class Public::BoardsController < ApplicationController
     @board = Board.find(params[:id])
       # 非公開の投稿へのアクセス制御
       if @board.private_status? && !@board.written_by?(current_user)
-        redirect_to public_group_boards_path(@group), alert: "この投稿は非公開です。"
+        redirect_to public_group_boards_path(@group), alert: 'この投稿は非公開です。'
       end
   end
   
   def update
     if @board.update(board_params)
        @board.save_tags_new(params[:board][:tag])
-       redirect_to public_group_boards_path(@group) ,notice: "更新に成功しました。"
+       redirect_to public_group_boards_path(@group) ,notice: '更新に成功しました。'
     else
        render :edit
     end
@@ -52,13 +52,12 @@ class Public::BoardsController < ApplicationController
     else
       @board.save
       @board.save_tags(params[:board][:tags])
-      redirect_to public_group_boards_path(@group) ,notice: "登録に成功しました。"
+      redirect_to public_group_boards_path(@group) ,notice: '登録に成功しました。'
     end
   end
   
   def destroy
-    #@board = Board.find(params[:id])
-    redirect_to public_group_boards_path(params[:group_id]) ,notice: "削除に成功しました。"
+    redirect_to public_group_boards_path(params[:group_id]) ,notice: '削除に成功しました。'
   end
     
   private
@@ -70,7 +69,7 @@ class Public::BoardsController < ApplicationController
   def ensure_correct_board
     board = Board.find(params[:id])
     unless board.written_by?(current_user)
-      redirect_to root_path, alert: "権限がありません。"
+      redirect_to root_path, alert: '権限がありません。'
     end
   end
   

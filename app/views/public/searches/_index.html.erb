@@ -1,8 +1,8 @@
-<% if @model == 'user' %>
+<% if @model == "user" %>
   <% if @records.size > 0 %>
     <h3>Users search for "<%= @content %>"</h3>
     
-    <div class='row mt-5'>
+    <div class="row mt-5">
       <h3>検索結果</h3>
       <div id="success-message" class="alert alert-success" style="display: none;"></div>
 
@@ -19,11 +19,11 @@
           <% @records.each do |user| %>
             <tr>
               <td><%= user.username %></td>
-              <td><%= user.created_at.strftime('%Y/%m/%d') %></td>
+              <td><%= user.created_at.strftime("%Y/%m/%d") %></td>
               <td><%= user.followings.count %></td>
               <td><%= user.followers.count %></td>
               <td id="follow-form-<%= user.id %>">
-                <%= render 'public/relationships/btn', user: user %>
+                <%= render "public/relationships/btn", user: user %>
               </td>
             </tr>
           <% end %>

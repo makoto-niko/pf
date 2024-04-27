@@ -6,13 +6,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <script src="https://kit.fontawesome.com/99f9963ced.js" crossorigin="anonymous"></script>
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'custom_styles', media: 'all' %>
+    <%= stylesheet_pack_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag "application", "data-turbolinks-track": "reload" %>
+    <%= stylesheet_link_tag "custom_styles", media: "all" %>
   </head>
 
   <body class="d-flex flex-column h-100">
-    <%= render 'layouts/header' %>
+    <%= render "layouts/header" %>
 
     <main class="flex-shrink-0">
       <div class="container">
@@ -20,6 +20,6 @@
       </div>
     </main>
     
-    <%= render 'layouts/footer' %>
+    <%= render "layouts/footer" %>
   </body>
 </html>

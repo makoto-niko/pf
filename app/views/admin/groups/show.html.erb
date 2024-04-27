@@ -1,33 +1,33 @@
 <div class="container text-center">
   <h3 class="py-4">グループ詳細画面</h3>
-  <%= render 'layouts/error_messages', model: @group %>
-  <%= render 'layouts/flash' %>
+  <%= render "layouts/error_messages", model: @group %>
+  <%= render "layouts/flash" %>
 
   <%= form_with(model: @group, url: admin_group_path(@group), local: true, html: { class: "needs-validation", novalidate: "" }) do |f| %>
     <div class="row justify-content-center mb-3">
       <div class="col-md-6">
         <%= f.label :name, "グループ名:", class: "form-label" %>
-        <%= f.text_field :name, class: 'form-control' %>
+        <%= f.text_field :name, class: "form-control" %>
       </div>
     </div>
     
     <div class="row justify-content-center mb-3">
       <div class="col-md-6">
         <%= f.label :description, "説明:", class: "form-label" %>
-        <%= f.text_area :description, class: 'form-control', rows: 5 %>
+        <%= f.text_area :description, class: "form-control", rows: 5 %>
       </div>
     </div>
     
     <div class="row justify-content-center mb-3">
       <div class="col-md-auto">
-        <%= f.submit '更新', class: "btn btn-success mr-2" %>
-        <%= link_to '削除', admin_group_path(@group), method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'btn btn-danger' %>
+        <%= f.submit "更新", class: "btn btn-success mr-2" %>
+        <%= link_to "削除", admin_group_path(@group), method: :delete, data: { confirm: "本当に削除しますか?" }, class: "btn btn-danger" %>
       </div>
     </div>
   <% end %>
 
   <% @boards.each do |board| %>
-    <%= render 'public/boards/board', board: board %>
+    <%= render "public/boards/board", board: board %>
   <% end %>
 </div>
 

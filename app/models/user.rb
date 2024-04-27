@@ -4,7 +4,13 @@ class User < ApplicationRecord
          
   has_many :comments, dependent: :destroy
   has_many :boards, dependent: :destroy
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :followings, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
   
+  validates :email, presence: true
+  validates :username, presence: true, length: { maximum: 20 }
   GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest
@@ -13,10 +19,7 @@ class User < ApplicationRecord
       user.username = "guestuser"
     end
   end
-  
-  validates :email, presence: true
-  validates :username, presence: true, length: { maximum: 20 }
- 
+
   def full_name
     username
   end
@@ -40,11 +43,6 @@ class User < ApplicationRecord
   def guest?
     email == "guest@example.com"
   end
-  
-  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  has_many :followings, through: :active_relationships, source: :followed
-  has_many :followers, through: :passive_relationships, source: :follower
   
   def follow(user)
     return if user == self

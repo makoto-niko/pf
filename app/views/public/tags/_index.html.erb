@@ -14,7 +14,7 @@
                 <td><%= board.title %></td>
                 <td>
                   <% if board.user_id == current_user.id || board.public_status? %>
-                    <%= link_to '掲示板へ', public_group_boards_path(board.group_id), class: "btn btn-link" %>
+                    <%= link_to "掲示板へ", public_group_boards_path(board.group_id), class: "btn btn-link" %>
                   <% else %>
                     非公開です
                   <% end %>

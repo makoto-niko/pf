@@ -1,28 +1,28 @@
 <div class="container">
   <h3 class="text-center py-4">掲示板詳細</h3>
-  <%= render 'layouts/error_messages', model: @board %>
+  <%= render "layouts/error_messages", model: @board %>
   
   <%= form_with model: [@group, @board], url: public_group_board_path(@group, @board), method: :patch, html: { class: "row justify-content-center" } do |f| %>
   <div class="col-md-8">
       <div class="row mb-3">
         <%= f.label :title, "タイトル:", class: "col-sm-3 col-form-label text-sm-end" %>
         <div class="col-sm-9">
-          <%= f.text_field :title, class: 'form-control' %>
+          <%= f.text_field :title, class: "form-control" %>
         </div>
       </div>
 
       <div class="row mb-3">
         <%= f.label :description, "説明:", class: "col-sm-3 col-form-label text-sm-end" %>
         <div class="col-sm-9">
-          <%= f.text_area :description, rows: 5, class: 'form-control' %>
+          <%= f.text_area :description, rows: 5, class: "form-control" %>
         </div>
       </div>
       
       <div class="row mb-3">
-        <%= f.label :tag, 'タグ', class: "col-sm-3 col-form-label text-sm-end" %>
+        <%= f.label :tag, "タグ", class: "col-sm-3 col-form-label text-sm-end" %>
       <%# Edit用に@board.tags.pluck(:name)でタグの配列を取得 %>
         <div class="col-sm-9">
-          <%= f.text_field :tag, value: @board.tags.pluck(:name), class: 'form-control' %><br>
+          <%= f.text_field :tag, value: @board.tags.pluck(:name), class: "form-control" %><br>
           <small>スペースで区切ることで複数指定できます。</small><br>
         </div>
       </div>

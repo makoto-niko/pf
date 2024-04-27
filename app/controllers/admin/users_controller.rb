@@ -12,12 +12,11 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
-       redirect_to admin_users_path, notice: "会員情報が正常に更新されました"
+       redirect_to admin_users_path, notice: '会員情報が正常に更新されました'
     else
       render :edit
     end
@@ -27,7 +26,7 @@ class Admin::UsersController < ApplicationController
   
   def set_user
     @user = User.find(params[:id])
-    redirect_to admin_users_path, alert: "指定された会員が見つかりません。"
+    redirect_to admin_users_path, alert: '指定された会員が見つかりません。'
   end
   
   def user_params
