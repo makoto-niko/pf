@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <%= render 'layouts/error_messages', model: @board %>
+  <%= render 'layouts/flash' %>
+  <h4><%= @group.name %>への投稿はこちら！</h4>
+  <% unless current_user.email == "guest@example.com" %>
+  <%= form_with(model: @board, url: public_group_boards_path(@group), local: true) do |form| %>
+      <div><%= form.label :title, "タイトル" %></div>
+      <div><%= form.text_area :title, size: "10x5", class: "form-control" %></div>
+      <div><%= form.label :description, "内容" %></div>
+      <div> <%= form.text_area :description, size: "30x10", class: 'form-control' %></div>
+      <div><%= form.label :tags, 'タグ' %></div>
+      <div><%= form.text_field :tags, value: @board.tags.pluck(:name) %><br>
+      <small>スペースで区切ることで複数指定できます。</small><br>
+      </div>
+      <div><%= form.label :status, "公開状態" %></div>
+      <div><%= form.select :status, Board.statuses.keys.map { |status| [status.gsub('_status', '').humanize, status] }, {}, { class: 'form-control' } %></div>
+      <div><%= form.submit "投稿", class:"btn btn-success mt-2" %></div>
+  <% end %>
+   <% else %>
+    <p>ゲストユーザーは投稿できません。</p>
+  <% end %>
+</div>
