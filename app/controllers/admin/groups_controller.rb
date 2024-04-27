@@ -7,7 +7,6 @@ class Admin::GroupsController < ApplicationController
   end
  
   def show
-    #@group = Group.find_by(id: params[:id])
     if @group.nil?
       redirect_to root_path
     else
@@ -16,14 +15,11 @@ class Admin::GroupsController < ApplicationController
   end
 
   def edit
-    #@group = Group.find(params[:id])
   end
   
   def update
-    #@group = Group.find(params[:id])
     if @group.update(group_params)
-      flash[:notice] = "グループを更新しました。"
-      redirect_to admin_groups_path
+      redirect_to admin_groups_path ,notice: "グループを更新しました。"
     else
       flash.now[:alert] = "グループの更新に失敗しました。"
       render 'edit'
@@ -35,8 +31,7 @@ class Admin::GroupsController < ApplicationController
     @group.admin_id = current_admin.id
     
     if @group.save
-      flash[:notice] = "グループを作成しました。"
-      redirect_to admin_groups_path
+      redirect_to admin_groups_path ,notice: "グループを作成しました。"
     else
       @groups = Group.all
       flash.now[:alert] = "グループの作成に失敗しました。"
@@ -45,17 +40,8 @@ class Admin::GroupsController < ApplicationController
   end
   
   def destroy
-    #@group = Group.find_by(id: params[:id])
-    #if @group
-      @group.destroy
-      flash[:notice] = "削除に成功しました。"
-      redirect_to admin_groups_path
-    #else
-      #flash[:alert] = "指定されたボードは見つかりませんでした。"
-      #@group = Group.new
-      #@groups = Group.all
-      #render :index
-    #end
+    @group.destroy
+     redirect_to admin_groups_path ,notice: "削除に成功しました。"
   end
   
   private

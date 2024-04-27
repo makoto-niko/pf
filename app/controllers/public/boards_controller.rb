@@ -1,8 +1,9 @@
 class Public::BoardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_board, only:[:show,:destroy, :edit]
+  before_action :set_board, only:[:show,:destroy, :update, :edit]
   before_action :ensure_correct_board,only: [:edit, :update, :destroy]
   before_action :set_group,only:[:index,:show,:create,:edit]
+
 
   def index
     @board = Board.new
@@ -19,7 +20,6 @@ class Public::BoardsController < ApplicationController
   
   def show
     @board = Board.find(params[:id])
-    #@group = Group.find_by(id: params[:group_id])
       # 非公開の投稿へのアクセス制御
       if @board.private_status? && !@board.written_by?(current_user)
         redirect_to public_group_boards_path(@group), alert: "この投稿は非公開です。"
@@ -29,14 +29,13 @@ class Public::BoardsController < ApplicationController
   def update
     if @board.update(board_params)
        @board.save_tags_new(params[:board][:tag])
-       redirect_to public_group_boards_path(@group) ,notice:"更新に成功しました。"
+       redirect_to public_group_boards_path(@group) ,notice: "更新に成功しました。"
     else
        render :edit
     end
   end
   
   def create
-    #@group = Group.find(params[:group_id])
     @board = Board.new(board_params)
     @board.user_id = current_user.id
     @board.group_id = @group.id
@@ -59,14 +58,13 @@ class Public::BoardsController < ApplicationController
   end
   
   def destroy
-    @board = Board.find(params[:id])
+    #@board = Board.find(params[:id])
     redirect_to public_group_boards_path(params[:group_id]) ,notice: "削除に成功しました。"
   end
     
   private
   
   def set_board
-    #@group = Group.find(params[:group_id])
     @board = Board.find(params[:id])
   end
   

@@ -4,9 +4,6 @@ class Public::GroupsController < ApplicationController
     @groups = Group.all
   end
   
-  #def create
-  #end
-
   private
 
   def group_params
