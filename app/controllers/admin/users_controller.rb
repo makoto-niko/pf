@@ -26,6 +26,7 @@ class Admin::UsersController < ApplicationController
   
   def set_user
     @user = User.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
     redirect_to admin_users_path, alert: '指定された会員が見つかりません。'
   end
   

@@ -4,27 +4,27 @@
  <%= render "layouts/flash" %>
   <%= form_with model: @group, url: admin_group_path(@group), method: :patch, html: { class: "row justify-content-center" } do |f| %>
   
-    <div class="col-md-8">
-      <div class="row mb-3">
-        <%= f.label :name, "グループ名:", class: "col-sm-3 col-form-label text-sm-end" %>
-        <div class="col-sm-9">
-          <%= f.text_field :name, class: "form-control" %>
-        </div>
-      </div>
-
-      <div class="row mb-3">
-        <%= f.label :description, "説明:", class: "col-sm-3 col-form-label text-sm-end" %>
-        <div class="col-sm-9">
-          <%= f.text_area :description, rows: 5, class: "form-control" %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-9 offset-sm-3">
-          <%= f.submit "更新", class: "btn btn-success" %>
-        </div>
+  <div class="col-md-8">
+    <div class="row mb-3">
+      <%= f.label :name, "グループ名:", class: "col-sm-3 col-form-label text-sm-end" %>
+      <div class="col-sm-9">
+        <%= f.text_field :name, class: "form-control" %>
       </div>
     </div>
+
+    <div class="row mb-3">
+        <%= f.label :description, "説明:", class: "col-sm-3 col-form-label text-sm-end" %>
+      <div class="col-sm-9">
+        <%= f.text_area :description, rows: 5, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-9 offset-sm-3">
+        <%= f.submit "更新", class: "btn btn-success" %>
+      </div>
+    </div>
+  </div>
   <% end %>
 </div>
 

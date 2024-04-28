@@ -2,18 +2,18 @@
   <div class="row mt-5">
     <h3>グループ一覧</h3>
       <table class="table">
-       <tr>
-        <th>グループ名</th>
-        <th>説明</th>
-         <th></th>
-        </tr>
-       <% @groups.each do |group| %>
          <tr>
-           <td><%= group.name %></td>
-           <td><%= group.description %></td>
-          <td><%= link_to "掲示板へ", public_group_boards_path(group) %></td>
+          <th>グループ名</th>
+          <th>説明</th>
+          <th></th>
         </tr>
-      <% end %>
-    </table>
-   </div>
+           <% @groups.each do |group| %>
+        <tr>
+          <td><%= group.name %></td>
+          <td><%= group.description %></td>
+          <td><%= link_to "掲示板へ", public_group_boards_path(group) %></td>
+       </tr>
+          <% end %>
+      </table>
+  </div>
 </div>

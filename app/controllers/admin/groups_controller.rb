@@ -44,6 +44,7 @@ class Admin::GroupsController < ApplicationController
   end
   
   private
+  
   def set_group
     @group = Group.find(params[:id])
   rescue ActiveRecord::RecordNotFound

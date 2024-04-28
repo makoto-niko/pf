@@ -3,13 +3,15 @@ class Public::RelationshipsController < ApplicationController
   before_action :set_user, only: [:create, :destroy, :followings, :followers]
 
   def create
+    @following_user = current_user
     # 安全策（自分自身のフォローはしないように。view側で制限はかけている）
-    redirect_to request.referer && return if current_user == @user
+    redirect_to request.referer && return if @following_user == @user
     current_user.follow(@user)
   end
   
   def destroy
-    current_user.unfollow(@user)
+    @following_user = current_user
+    @following_user.unfollow(@user)
   end
   
   def followings

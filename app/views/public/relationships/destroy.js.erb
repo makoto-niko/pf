@@ -1,4 +1,4 @@
 $("#follow-form-<%= @user.id %>").html("<%= j(render "public/relationships/btn", user: @user) %>");
-$("#followings-count-<%= @user.id %>").text('<%= @user.followings.count %>');
+$("#followings-count-<%= @following_user.id %>").text('<%= @following_user.followings.count %>');
 $("#followers-count-<%= @user.id %>").text('<%= @user.followers.count %>');
 $("#success-message").html("フォロー解除しました").fadeIn(500).delay(3000).fadeOut(500);

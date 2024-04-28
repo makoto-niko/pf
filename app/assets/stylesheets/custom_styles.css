@@ -94,6 +94,9 @@ main {
     background-image: none; /* 画像を使用しない */
     background-color: #007bff; /* 青色を指定 */
 }
+.nowrap{
+  white-space: nowrap;
+}
 /* テーブルの基本スタイル */
 .table {
     border: 1px solid #858585;

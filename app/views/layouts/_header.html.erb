@@ -6,7 +6,9 @@
      <span class="navbar-toggler-icon"></span>
     </button>
       <% if user_signed_in? %>
-          <span class="text-black mr-12"><%= current_user.username %> さま</span>
+          <span class="text-black mr-12"><%= current_user.username %>
+            <span class= "nowrap">さま</span>
+          </span>
         <% elsif admin_signed_in? %>
           <span class="text-black mr-12">Admin</span>
       <% end %>
@@ -15,22 +17,26 @@
           <ul class="navbar-nav ml-auto">  
             <li class="nav-item">
               <%= link_to admin_users_path, class: "nav-link text-blue" do %>
-                <i class="fa-solid fa-users"></i> 会員一覧
+                <i class="fa-solid fa-users"></i> 
+                <span class="nowrap">会員一覧</span>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to admin_comments_path, class: "nav-link text-blue" do %>
-                <i class="fa-solid fa-comments"></i> コメント一覧
+                <i class="fa-solid fa-comments"></i>
+                <span class="nowrap">コメント一覧</span>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to admin_groups_path, class: "nav-link text-blue" do %>
-                <i class="fa-solid fa-users"></i> グループ一覧
+                <i class="fa-solid fa-users"></i>
+                <span class="nowrap">グループ一覧</span>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-blue" do %>
-                <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="nowrap">ログアウト</span>
               <% end %>
             </li>
           </ul>
@@ -48,22 +54,26 @@
             </li>
             <li class="nav-item">
               <%= link_to public_groups_path, class: "nav-link text-blue" do %>
-                <i class="fa-solid fa-book-open"></i> テーマ一覧
+                <i class="fa-solid fa-book-open"></i>
+                <span class="nowrap">テーマ一覧</span>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to public_users_path, class: "nav-link text-blue" do %>
-                <i class="fa-solid fa-users"></i> 会員一覧
+                <i class="fa-solid fa-users"></i> 
+                <span class="nowrap">会員一覧</span>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to new_public_contact_path, class: "nav-link text-blue" do %>
-                <i class="fa-solid fa-envelope"></i> お問い合わせ
+                <i class="fa-solid fa-envelope"></i> 
+                <span class="nowrap">お問い合わせ</span>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-blue" do %>
-                <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="nowrap">ログアウト</span>
               <% end %>
             </li>
           </ul>

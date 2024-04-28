@@ -25,8 +25,8 @@
             <tr>
               <td><%= user.username %></td>
               <td><%= user.created_at.strftime("%Y/%m/%d") %></td>
-               <td id="followings-count-<%= user.id %>"><%= user.followings.count %></td>
-               <td id="followers-count-<%= user.id %>"><%= user.followers.count %></td>
+              <td id="followings-count-<%= user.id %>"><%= user.followings.count %></td>
+              <td id="followers-count-<%= user.id %>"><%= user.followers.count %></td>
               <td id="follow-form-<%= user.id %>">
                 <%= render "public/relationships/btn", user: user %>
               </td>
