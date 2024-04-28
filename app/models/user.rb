@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   
   validates :email, presence: true
-  validates :username, presence: true, length: { maximum: 20 }
+  validates :username, presence: true, length: { maximum: 20 }, uniqueness: true
   GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest
