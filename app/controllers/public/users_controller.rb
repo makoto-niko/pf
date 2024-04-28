@@ -43,11 +43,9 @@ class Public::UsersController < ApplicationController
   
   def ensure_guest_user
     @user = User.find(params[:id])
+    redirect_to root_path(@user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。" if @user.guest?
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
-    if @user.guest?
-      redirect_to root_path(@user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
-    end
   end 
   
 end
