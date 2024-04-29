@@ -57,6 +57,7 @@ class Public::BoardsController < ApplicationController
   end
   
   def destroy
+    @board.destroy
     redirect_to public_group_boards_path(params[:group_id]) ,notice: '削除に成功しました。'
   end
     
