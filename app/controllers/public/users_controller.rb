@@ -6,7 +6,8 @@ class Public::UsersController < ApplicationController
     @users = User.active.page(params[:page])
   end
   
-  def show; end
+  def show
+  end
   
   def edit
     redirect_to public_user_path(current_user) unless current_user.id == params[:id].to_i

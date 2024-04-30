@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'chats/show'
   devise_for :admin, controllers: {
     registrations: "admin/registrations",
     sessions: "admin/sessions"
@@ -48,6 +49,9 @@ Rails.application.routes.draw do
     resources :tags, only: [:index, :show, :destroy]
   end
   
+   get 'chat/:id', to: 'chats#show', as: 'chat'
+   resources :chats, only: [:create]
+   
   namespace :admin do
     root to: 'admin/homes#top'
     resources :comments, only: [:index, :destroy]
