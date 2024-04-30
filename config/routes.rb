@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'chats/show'
   devise_for :admin, controllers: {
     registrations: "admin/registrations",
     sessions: "admin/sessions"
@@ -23,6 +22,7 @@ Rails.application.routes.draw do
         get :unsubscribe
         patch :withdraw
       end
+      resource :chats, only: [:create, :show]
       resource :relationships, only: [:create, :destroy] do
         post 'follow', to: 'relationships#create', on: :member, as: 'follow'
         delete 'unfollow', to: 'relationships#destroy', on: :member, as: 'unfollow'
@@ -48,9 +48,6 @@ Rails.application.routes.draw do
     end
     resources :tags, only: [:index, :show, :destroy]
   end
-  
-   get 'chat/:id', to: 'chats#show', as: 'chat'
-   resources :chats, only: [:create]
    
   namespace :admin do
     root to: 'admin/homes#top'
@@ -60,6 +57,4 @@ Rails.application.routes.draw do
     end
     resources :users, only: [:index, :show, :edit, :update]
   end
-
- #match '*path', to: redirect('/'), via: :all
 end
