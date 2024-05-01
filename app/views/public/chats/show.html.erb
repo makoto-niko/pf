@@ -30,7 +30,6 @@
                 <% end %>
               <% end %>
             </table>
-
            <%= form_with model: @chat, url: public_user_chats_path, local: false do |f| %>
               <%= f.text_field :message %>
               <%= f.hidden_field :room_id %>
