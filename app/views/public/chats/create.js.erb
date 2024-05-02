@@ -1,4 +1,2 @@
-$("#follow-form-<%= @user.id %>").html("<%= j(render "public/relationships/btn", user: @user) %>");
-$("#message').append("<p style='text-align: left;'><%= @chat.message %></p>");
-
+$("#message-<%= @chat.id %>").html("<%= j(@chat.message) %>
 $('input[type=text]').val("")
