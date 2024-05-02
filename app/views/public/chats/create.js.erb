@@ -1,2 +1,2 @@
-$("#message-<%= @chat.id %>").html("<%= j(@chat.message) %>
-$('input[type=text]').val("")
+$('#messages').append('<%= j(render 'message', chat: @chat) %>')
+$('#chat_message').val('')
