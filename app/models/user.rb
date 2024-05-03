@@ -10,6 +10,13 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
+  has_many :notifications, dependent: :destroy
+    
+    after_create do
+    user.chats.each do |chat|
+      notifications.create(user_id: chat.user_id)
+    end
+  end  
   
   validates :email, presence: true
   validates :username, presence: true, length: { maximum: 20 }, uniqueness: true
