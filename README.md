@@ -43,7 +43,20 @@
 
 <img width="612" alt="スクリーンショット 2024-04-27 22 44 04" src="https://github.com/makoto-niko/pf/assets/156491237/22133ce3-4284-44f7-8f80-573dde295209">
 
+##使用GEM
+- gem 'devise'
+- gem "enum_help"
+- gem 'kaminari','~> 1.2.1'
+- gem 'dotenv-rails'
+- gem 'rails-i18n'
 
+##使用方法
+インストール方法
+1.gitからアプリをクローン
+2.bundle install
+3.yarn install
+4.データベースをマイグレートする
+5.シードデータをインストール
 ## 開発環境
 
 - OS: Linux(CentOS)
