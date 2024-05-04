@@ -17,9 +17,11 @@
               </tbody>
             </table>
            <%= form_with model: @chat, url: public_user_chats_path, local: false do |f| %>
-              <%= f.text_field :message %>
+             <div class="arrow_box">
+                <%= f.text_field :message %>
+              </div>
               <%= f.hidden_field :room_id %>
-              <%= f.submit "SEND", class:"btn btn-sm btn-success chat-btn" %>
+              <button type="submit" class="btn btn-sm btn-success chat-btn">SEND</button>
             <% end %>
         </div>
     </div>

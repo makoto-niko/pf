@@ -1,13 +1,13 @@
 <tr>
     <% if chat.user == current_user %>
         <th>
-          <p style="text-align: left;" class="m-0"><%= chat.message %></p>
+          <p style="text-align: left;" class="m-0 arrow_box"><%= chat.message %></p>
         </th>
         <th></th>
     <% else %>
         <th></th>
         <th>
-            <p style="text-align: right;" class="m-0"><%= chat.message %></p>
+            <p style="text-align: right;" class="m-0 arrow_box"><%= chat.message %></p>
         </th>
     <% end %>
 </tr>
