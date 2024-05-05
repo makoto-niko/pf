@@ -47,9 +47,9 @@ Rails.application.routes.draw do
       end
     end
     resources :tags, only: [:index, :show, :destroy]
+   resources :notifications, only: [:update]
   end
   
-  resources :notifications, only: [:update]
   
   namespace :admin do
     root to: 'admin/homes#top'
