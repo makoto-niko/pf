@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-6">
-            <h2>CHAT ROOM <!--%= @user.username %--></h2>
+            <h2>CHAT ROOM </h2>
 
             <table class="table">
               <thead>
@@ -17,7 +17,7 @@
               </tbody>
             </table>
            <%= form_with model: @chat, url: public_user_chats_path, local: false do |f| %>
-             <div class="arrow_box">
+              <div class="arrow_box">
                 <%= f.text_field :message %>
               </div>
               <%= f.hidden_field :room_id %>
