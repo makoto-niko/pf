@@ -3,7 +3,7 @@ module Public::NotificationsHelper
     # self.user_id は、このチャットを作成したユーザーのIDです。
    case notification.notifiable_type
     when "Chat"
-       "フォローしている#{notification.notifiable.user.username}さんが#{notification.notifiable.message}をメッセージを送信しました"
+       "#{notification.notifiable.user.username}さんが#{notification.notifiable.message}をメッセージを送信しました"
    end
   end
 end
