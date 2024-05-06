@@ -1,31 +1,39 @@
 class Public::ChatsController < ApplicationController
   before_action :authenticate_user!
-   def show
-    @user = User.find(params[:user_id])
-    rooms = current_user.user_rooms.pluck(:room_id)
-    user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
-  
-    if user_rooms.nil?
-     @room = Room.new
-     @room.save
-     UserRoom.create(user_id: @user.id, room_id: @room.id)
-     UserRoom.create(user_id: current_user.id, room_id: @room.id)
-    else
-     @room = user_rooms.room
-    end
-  
+  before_action :set_user_and_room, only: [:show]
+
+  def show
     @chats = @room.chats
     @chat = Chat.new(room_id: @room.id)
-   end
-  
-   def create
+  end
+
+  def create
     @chat = current_user.chats.new(chat_params)
     @chat.save
-   end
-  
-   private
-  
-   def chat_params
+  end
+
+  private
+
+  def set_user_and_room
+    @user = User.find(params[:user_id])
+    @room = find_or_create_room
+  end
+
+  def find_or_create_room
+    rooms = current_user.user_rooms.pluck(:room_id)
+    user_room = UserRoom.find_by(user_id: @user.id, room_id: rooms)
+    return user_room.room if user_room
+    create_new_room
+  end
+
+  def create_new_room
+    room = Room.create
+    UserRoom.create(user_id: @user.id, room_id: room.id)
+    UserRoom.create(user_id: current_user.id, room_id: room.id)
+    room
+  end
+
+  def chat_params
     params.require(:chat).permit(:message, :room_id)
-   end
+  end
 end
