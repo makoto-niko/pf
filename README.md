@@ -43,14 +43,14 @@
 
 <img width="612" alt="スクリーンショット 2024-04-27 22 44 04" src="https://github.com/makoto-niko/pf/assets/156491237/22133ce3-4284-44f7-8f80-573dde295209">
 
-##使用GEM
+## 使用GEM
 - gem 'devise'
 - gem "enum_help"
 - gem 'kaminari','~> 1.2.1'
 - gem 'dotenv-rails'
 - gem 'rails-i18n'
 
-##使用方法
+## 使用方法
 インストール方法
 ```
 $ git clone git@github.com:makoto-niko/pf.git
