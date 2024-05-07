@@ -54,7 +54,7 @@
 インストール方法
 ```
 $ git clone git@github.com:makoto-niko/pf.git
-$ cd nagano_cake
+$ cd pf
 $ rails db:migrate
 $ bundle install
 $ rails db:seed
