@@ -82,13 +82,12 @@ main {
   padding-left: 0;
 }
 
-.background-image {
+.swiper {
   position: fixed; 
   top: 0; 
   left: 0; 
   width: 100%; 
   height: 100%; 
-  background-image: url('rainbow.jpg'); 
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat; 
@@ -225,4 +224,7 @@ main {
     border-left-color:#3DE680;
     left:100%;
     top:50%;
+}
+.p1{
+  color: white; 
 }
