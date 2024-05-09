@@ -14,7 +14,10 @@ import "bootstrap";
 import "../stylesheets/application";
 import "./script.js";
 import Swiper from 'swiper/swiper-bundle.js';
-import 'swiper/swiper-bundle.css';　　　　　
+import 'swiper/swiper-bundle.css';　
+window.Swiper = Swiper
+
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

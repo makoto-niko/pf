@@ -1,29 +1,26 @@
-<div class="content">
-  <h1>このサイトの参加にあたってのルール</h1>
-  <p class="p1">管理人が提示しているテーマに入って掲示板でお話ししてください</p>
-  <p class="p1">掲示板等に投稿する際は、マナーを守ってください</p>
-  <p class="p1">人に不愉快にさせる言葉は記載しないこと</p>
-  <p class="p1">メッセージ等送る際も不愉快にならないよう注意してください</p>
-  <p class="p1">提示されているテーマに自分の目的としたものがない場合、お問いあわせで管理者まで！</p>
-</div>
-<div class="swiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
-       <%= image_tag 'nature3.jpg' %>
-    </div>
-    <div class="swiper-slide">
-       <%= image_tag 'nature2.jpg' %>
-    </div>
-    <div class="swiper-slide">
-       <%= image_tag 'nature3.jpg' %>
-    </div>
-    <div class="swiper-slide">
-       <%= image_tag 'nature4.jpg' %>
+<div class="position-relative w-100">
+  <div class="position-absolute" style="z-index: 100;">
+    <h1>このサイトの参加にあたってのルール</h1>
+    <p class="p1">管理人が提示しているテーマに入って掲示板でお話ししてください</p>
+    <p class="p1">掲示板等に投稿する際は、マナーを守ってください</p>
+    <p class="p1">人に不愉快にさせる言葉は記載しないこと</p>
+    <p class="p1">メッセージ等送る際も不愉快にならないよう注意してください</p>
+    <p class="p1">提示されているテーマに自分の目的としたものがない場合、お問いあわせで管理者まで！</p>
+  </div>
+  <div class="swiper position-absolute w-100">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+         <%= image_tag 'nature.jpg', class: 'swiper__img' %>
+      </div>
+      <div class="swiper-slide">
+         <%= image_tag 'nature1.jpg', class: 'swiper__img' %>
+      </div>
+      <div class="swiper-slide">
+         <%= image_tag 'nature2.jpg', class: 'swiper__img' %>
+      </div>
+      <div class="swiper-slide">
+         <%= image_tag 'nature3.jpg', class: 'swiper__img' %>
+      </div>
     </div>
   </div>
-  <!-- ページネーションの要素 -->
-  <div class="swiper-pagination"></div>
-  <!-- ナビゲーションボタン （前、次） -->
-  <div class="swiper-button-prev"></div>
-  <div class="swiper-button-next"></div>
 </div>
