@@ -41,8 +41,11 @@ body {
   justify-content: center; 
   align-items: center; 
   text-align: center; 
-  height: 100vh; 
+  height: 110vh; 
   z-index: 100;
+  position: absolute;
+  top: 00px;
+  right:350px;
 }
 .p2 {
   color: red;
