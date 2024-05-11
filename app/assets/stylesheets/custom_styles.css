@@ -41,10 +41,9 @@ body {
   justify-content: center; 
   align-items: center; 
   text-align: center; 
-  height: 110vh; 
+  height: 50vh; 
   z-index: 100;
   position: absolute;
-  top: 00px;
   right:350px;
 }
 .p2 {
