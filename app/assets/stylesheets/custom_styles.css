@@ -34,7 +34,7 @@ body {
   background-image: linear-gradient(to bottom, #e0f7fa,#b2ebf2,#80deea, #b3e5fc, #e1f5fe);
   background-size: 100% 100%;
 }
-/* aboutページの文字指定 */
+/* aboutページの指定 */
 .content {
   display: flex;
   flex-direction: column; 
