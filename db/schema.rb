@@ -92,15 +92,6 @@ ActiveRecord::Schema.define(version: 2024_05_03_035714) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "group_members", force: :cascade do |t|
-    t.integer "group_member_id"
-    t.integer "group_id", null: false
-    t.integer "member_user_id", null: false
-    t.boolean "is_group_admin"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
