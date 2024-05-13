@@ -108,127 +108,127 @@ main {
   color: #007bff; 
 }
 @media (max-width: 768px) {
-    .navbar-nav .nav-link {
-        font-size: 14px; 
-    }
-    .navbar-brand {
-        font-size: 18px; 
-    }
-    .navbar-toggler {
-        font-size: 12px; 
-    }
+  .navbar-nav .nav-link {
+  font-size: 14px; 
+}
+  .navbar-brand {
+  font-size: 18px; 
+}
+  .navbar-toggler {
+  font-size: 12px;  
+}
 }
 /* ヘッダーのハンバーガーの色指定 */
 .navbar-toggler .navbar-toggler-icon {
-    background-image: none; /* 画像を使用しない */
-    background-color: #007bff; /* 青色を指定 */
+  background-image: none; /* 画像を使用しない */
+  background-color: #007bff; /* 青色を指定 */
 }
 .nowrap{
   white-space: nowrap;
 }
 /* テーブルの基本スタイル */
 .table {
-    border: 1px solid #858585;
+  border: 1px solid #858585;
 }
 
 /* スマートフォン用のスタイル */
 @media screen and (max-width: 767px) {
-    .table thead {
-        display: none;
-    }
-    .table tbody tr {
-        display: block;
-        border-bottom: 1px solid #858585;
-    }
-    .table tbody th,
-    .table tbody td {
-        display: list-item;
-        list-style: none;
-        border-bottom: none;
-    }
+  .table thead {
+    display: none;
+  }
+  .table tbody tr {
+    display: block;
+    border-bottom: 1px solid #858585;
+   }
+  .table tbody th,
+  .table tbody td {
+   display: list-item;
+   list-style: none;
+   border-bottom: none;
+  }
 }
 
 /* タブレット以上の画面サイズでのスタイル */
 @media screen and (min-width: 768px) {
-    .table {
-        border-bottom: 1px solid #ddd;
-        border-left: 1px solid #ddd;
-        border-right: 1px solid #ddd;
-        border-top: 1px solid #ddd
-    }
-    .table tbody tr {
-        display: table-row;
-    }
-    .table tbody th,
-    .table tbody td {
-        border-right: none;
-        border-left: none;
-        display: table-cell;
-        border-bottom: none;
-    }
+  .table {
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+     border-top: 1px solid #ddd
+  }
+  .table tbody tr {
+    display: table-row;
+  }
+  .table tbody th,
+  .table tbody td {
+    border-right: none;
+    border-left: none;
+    display: table-cell;
+    border-bottom: none;
+  }
 }
 
 .arrow_box{
-    position:relative;
-    width:100px;
-    height:70px;
-    background:#3FE6DA;
-    padding:20px;
-    text-align:left;
-    color:#333333;
-    font-size:14px;
-    font-weight:bold;
-    border-radius:15px;
-    -webkit-border-radius:15px;
-    -moz-border-radius:15px;
+  position:relative;
+  width:100px;
+  height:70px;
+  background:#3FE6DA;
+  padding:20px;
+  text-align:left;
+  color:#333333;
+  font-size:14px;
+  font-weight:bold;
+  border-radius:15px;
+  -webkit-border-radius:15px;
+  -moz-border-radius:15px;
 }
 .arrow_box:after{
-    border: solid transparent;
-    content:'';
-    height:0;
-    width:0;
-    pointer-events:none;
-    position:absolute;
-    border-color: rgba(63, 230, 218, 0);
-    border-top-width:10px;
-    border-bottom-width:10px;
-    border-left-width:30px;
-    border-right-width:30px;
-    margin-top: -10px;
-    border-right-color:#3FE6DA;
-    right:100%;
-    top:50%;
+  border: solid transparent;
+  content:'';
+  height:0;
+  width:0;
+  pointer-events:none;
+  position:absolute;
+  border-color: rgba(63, 230, 218, 0);
+  border-top-width:10px;
+  border-bottom-width:10px;
+  border-left-width:30px;
+  border-right-width:30px;
+  margin-top: -10px;
+  border-right-color:#3FE6DA;
+  right:100%;
+  top:50%;
 }
 .arrow_box2{
-    position:relative;
-    width:100px;
-    height:70px;
-    background:#3DE680;
-    padding:20px;
-    text-align:left;
-    color:#333333;
-    font-size:14px;
-    font-weight:bold;
-    border-radius:15px;
-    -webkit-border-radius:15px;
-    -moz-border-radius:15px;
+  position:relative;
+  width:100px;
+  height:70px;
+  background:#3DE680;
+  padding:20px;
+  text-align:left;
+  color:#333333;
+  font-size:14px;
+  font-weight:bold;
+  border-radius:15px;
+  -webkit-border-radius:15px;
+  -moz-border-radius:15px;
 }
 .arrow_box2:after{
-    border: solid transparent;
-    content:'';
-    height:0;
-    width:0;
-    pointer-events:none;
-    position:absolute;
-    border-color: rgba(61, 230, 128, 0);
-    border-top-width:10px;
-    border-bottom-width:10px;
-    border-left-width:30px;
-    border-right-width:30px;
-    margin-top: -10px;
-    border-left-color:#3DE680;
-    left:100%;
-    top:50%;
+  border: solid transparent;
+  content:'';
+  height:0;
+  width:0;
+  pointer-events:none;
+  position:absolute;
+  border-color: rgba(61, 230, 128, 0);
+  border-top-width:10px;
+  border-bottom-width:10px;
+  border-left-width:30px;
+  border-right-width:30px;
+  margin-top: -10px;
+  border-left-color:#3DE680;
+  left:100%;
+  top:50%;
 }
 .p1{
   color: #3626E0; 
