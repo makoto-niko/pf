@@ -8,6 +8,11 @@ class Public::UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    unless current_user == @user
+      redirect_to root_path, alert: "アクセス権限がありません。"
+    end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: "ユーザーが見つかりません。"
   end
   
   def edit
@@ -27,7 +32,7 @@ class Public::UsersController < ApplicationController
   def withdraw
     if current_user.update(is_active: false)
       reset_session
-      redirect_to root_path, notice: "退会処理を実行し、ユーザーとその関連データを削除しました。"
+      redirect_to root_path, notice: "退会処理を実行し、ユーザーを削除しました。"
     else
       flash[:alert] = "退会処理に失敗しました。"
       render 'edit' 
