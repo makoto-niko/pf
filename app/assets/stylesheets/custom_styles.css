@@ -169,66 +169,66 @@ main {
 }
 
 .arrow_box{
-  position:relative;
-  width:100px;
-  height:70px;
-  background:#3FE6DA;
-  padding:20px;
-  text-align:left;
-  color:#333333;
-  font-size:14px;
-  font-weight:bold;
-  border-radius:15px;
-  -webkit-border-radius:15px;
-  -moz-border-radius:15px;
+  position: relative;
+  width: 100px;
+  height: 70px;
+  background: #3FE6DA;
+  padding: 20px;
+  text-align: left;
+  color: #333333;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
 }
 .arrow_box:after{
   border: solid transparent;
-  content:'';
-  height:0;
-  width:0;
-  pointer-events:none;
-  position:absolute;
+  content: '';
+  height: 0;
+  width: 0;
+  pointer-events: none;
+  position: absolute;
   border-color: rgba(63, 230, 218, 0);
-  border-top-width:10px;
-  border-bottom-width:10px;
-  border-left-width:30px;
-  border-right-width:30px;
+  border-top-width: 10px;
+  border-bottom-width: 10px;
+  border-left-width: 30px;
+  border-right-width: 30px;
   margin-top: -10px;
-  border-right-color:#3FE6DA;
-  right:100%;
-  top:50%;
+  border-right-color: #3FE6DA;
+  right: 100%;
+  top: 50%;
 }
 .arrow_box2{
-  position:relative;
-  width:100px;
-  height:70px;
-  background:#3DE680;
-  padding:20px;
-  text-align:left;
-  color:#333333;
-  font-size:14px;
-  font-weight:bold;
-  border-radius:15px;
+  position: relative;
+  width: 100px;
+  height: 70px;
+  background: #3DE680;
+  padding: 20px;
+  text-align: left;
+  color: #333333;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 15px;
   -webkit-border-radius:15px;
-  -moz-border-radius:15px;
+  -moz-border-radius: 15px;
 }
 .arrow_box2:after{
   border: solid transparent;
-  content:'';
-  height:0;
-  width:0;
-  pointer-events:none;
-  position:absolute;
+  content: '';
+  height: 0;
+  width: 0;
+  pointer-events: none;
+  position: absolute;
   border-color: rgba(61, 230, 128, 0);
-  border-top-width:10px;
-  border-bottom-width:10px;
-  border-left-width:30px;
-  border-right-width:30px;
+  border-top-width: 10px;
+  border-bottom-width: 10px;
+  border-left-width: 30px;
+  border-right-width: 30px;
   margin-top: -10px;
-  border-left-color:#3DE680;
-  left:100%;
-  top:50%;
+  border-left-color: #3DE680;
+  left: 100%;
+  top: 50%;
 }
 .p1{
   color: #3626E0; 
