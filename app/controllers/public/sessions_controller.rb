@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-
+before_action :prohibit_multiple_login, if: :admin_signed_in?
    def guest_sign_in
     user = User.guest
     pp "hoge", user
@@ -10,6 +10,12 @@ class Public::SessionsController < Devise::SessionsController
    end
   # before_action :configure_sign_in_params, only: [:create]
 
+
+    protected
+     def prohibit_multiple_login
+     
+     redirect_to admin_root_path
+    end
   # GET /resource/sign_in
   # def new
   #   super

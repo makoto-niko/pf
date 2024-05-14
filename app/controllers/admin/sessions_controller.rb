@@ -2,11 +2,11 @@
 
 class Admin::SessionsController < Devise::SessionsController
  before_action :authenticate_admin!
+ before_action :prohibit_multiple_login, if: :user_signed_in?
 
   def after_sign_in_path_for(resource)
     admin_users_path
   end
-end
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -24,7 +24,11 @@ end
   #   super
   # end
 
-  #protected
+  protected
+    def prohibit_multiple_login
+    
+      redirect_to root_path
+    end
   
   #def update_resource(resource, params)
     #if params[:password].blank? && params[:password_confirmation].blank?
@@ -42,4 +46,4 @@ end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
+end
