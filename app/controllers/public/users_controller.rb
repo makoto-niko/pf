@@ -1,18 +1,18 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
   before_action :ensure_guest_user, only: [:edit, :update]
+  before_action :set_user, only: [:show, :ensure_guest_user]
   
   def index
     @users = User.active.page(params[:page])
   end
   
   def show
-    @user = User.find(params[:id])
     unless current_user == @user
       redirect_to root_path, alert: "アクセス権限がありません。"
     end
   rescue ActiveRecord::RecordNotFound
-    redirect_to root_path, alert: "ユーザーが見つかりません。"
+      redirect_to root_path, alert: "ユーザーが見つかりません。"
   end
   
   def edit
@@ -48,11 +48,13 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:username, :email)
   end
   
+  def set_user
+   @user = User.find(params[:id])
+  end
   def ensure_guest_user
-    @user = User.find(params[:id])
     redirect_to root_path(@user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。" if @user.guest?
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
   end 
   
-end
+  end
