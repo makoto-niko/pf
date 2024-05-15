@@ -15,7 +15,7 @@ before_action :prohibit_multiple_login, if: :admin_signed_in?
      def prohibit_multiple_login
      
      redirect_to admin_root_path
-    end
+     end
   # GET /resource/sign_in
   # def new
   #   super

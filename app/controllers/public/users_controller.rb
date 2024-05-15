@@ -39,8 +39,7 @@ class Public::UsersController < ApplicationController
     end
   end
   
-  def unsubscribe
-  end
+  def unsubscribe ;end
   
   private
   
