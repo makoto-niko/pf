@@ -44,22 +44,54 @@
 <img width="612" alt="スクリーンショット 2024-04-27 22 44 04" src="https://github.com/makoto-niko/pf/assets/156491237/22133ce3-4284-44f7-8f80-573dde295209">
 
 ## 使用GEM
-- gem 'devise'
-- gem "enum_help"
-- gem 'kaminari','~> 1.2.1'
-- gem 'dotenv-rails'
-- gem 'rails-i18n'
+- [devise](https://github.com/heartcombo/devise)
+- [enum_help](https://github.com/zmbacker/enum_help)
+- [kaminari](https://github.com/kaminari/kaminari)
+- [dotenv-rails](https://github.com/bkeepers/dotenv)
+- [rails-i18n](https://github.com/svenfuchs/rails-i18n)
 
 ## 使用方法
-インストール方法
-```
-$ git clone git@github.com:makoto-niko/pf.git
-$ cd pf
-$ rails db:migrate
-$ bundle install
-$ rails db:seed
-```
+
+### インストール方法
+
+1. gitからアプリをクローン
+
+    ```
+    $ git clone git@github.com:makoto-niko/pf.git
+    ```
+
+2. bundle install
+
+    ```
+    $ bundle install
+    ```
+
+3. yarn install
+
+    ```
+    $ yarn install
+    ```
+
+4. データベースをマイグレートする
+
+    ```
+    $ rails db:migrate
+    ```
+
+5. 管理者用にシードデータをインストール
+
+    ```
+    $ rails db:seed
+    ```
+
 ## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+
+### 使用技術
 ![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/20f0ab96-f3ef-400c-a475-5afa6c44d465)
 ![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/c5376540-d329-4dae-b997-eb4a6d164489)
 ![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/820ad9e9-4c2f-489a-8434-ff6e81f02db2)

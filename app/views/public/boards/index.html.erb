@@ -34,12 +34,11 @@
   <p><%= render "layouts/error_messages", model: @comment %></p>
   
   <% @boards.each do |board| %>
-    <%= render "public/boards/board", board: board %>
-  
-    <div class="list-group-item">
+    <div class="mt-5">
+      <%= render "public/boards/board", board: board %>
       <%= render "public/comments/form", board: board, comment: Comment.new %>
+      <%= render "public/comments/index", board: board %>
     </div>
-    <%= render "public/comments/index", board: board %>
   <% end %>
   <span id="back">
     <a href="#">
