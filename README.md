@@ -57,31 +57,31 @@
 1. gitからアプリをクローン
 
     ```
-    $ git clone git@github.com:makoto-niko/pf.git
+     git clone git@github.com:makoto-niko/pf.git
     ```
 
 2. bundle install
 
     ```
-    $ bundle install
+    bundle install
     ```
 
 3. yarn install
 
     ```
-    $ yarn install
+    yarn install
     ```
 
 4. データベースをマイグレートする
 
     ```
-    $ rails db:migrate
+    rails db:migrate
     ```
 
 5. 管理者用にシードデータをインストール
 
     ```
-    $ rails db:seed
+     rails db:seed
     ```
 
 ## 開発環境
