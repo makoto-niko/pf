@@ -39,9 +39,7 @@
 - 関連書籍やコラムの紹介コーナーの設置
 
 ## 設計書
-<img width="572" alt="スクリーンショット 2024-04-27 23 00 48" src="https://github.com/makoto-niko/pf/assets/156491237/de2c364c-6c68-45ab-aa5f-cc6e96047f18">
 
-<img width="612" alt="スクリーンショット 2024-04-27 22 44 04" src="https://github.com/makoto-niko/pf/assets/156491237/22133ce3-4284-44f7-8f80-573dde295209">
 
 ## 使用GEM
 - [devise](https://github.com/heartcombo/devise)
@@ -51,6 +49,8 @@
 - [rails-i18n](https://github.com/svenfuchs/rails-i18n)
 
 ## 使用方法
+<img width="616" alt="スクリーンショット 2024-05-16 16 25 56" src="https://github.com/makoto-niko/pf/assets/156491237/5b6b375b-5735-4464-b464-7dacb35b693e">
+<img width="613" alt="スクリーンショット 2024-05-14 11 00 54" src="https://github.com/makoto-niko/pf/assets/156491237/48dc68ac-799d-431a-b817-0f4aa0fb47ed">
 
 ### インストール方法
 
