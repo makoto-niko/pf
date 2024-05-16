@@ -92,12 +92,17 @@
 - IDE：Cloud9
 
 ### 使用技術
-![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/20f0ab96-f3ef-400c-a475-5afa6c44d465)
-![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/c5376540-d329-4dae-b997-eb4a6d164489)
-![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/820ad9e9-4c2f-489a-8434-ff6e81f02db2)
-![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/21570ae0-f3ed-4179-a330-9c16da6b62e6)
-![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/20407384-322d-446c-93b5-bb02c840d805)
-![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/f1c3fa28-1a9e-4ee9-8d41-3887f1dbd55c)
-![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/0cfad73c-915a-434c-b503-0ddba352ddc6)
-![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/f10b9e02-8159-4f18-909b-b5e8ca52bf1e)
-<img src="https://img.shields.io/badge/-Bootstrap-563D7C.svg?logo=bootstrap&style=flat">
+
+​[![](https://img.shields.io/badge/Ruby-CC342D?style=flat&logo=ruby&logoColor=white)](https://www.ruby-lang.org/)
+[![](https://img.shields.io/badge/Ruby_on_Rails-CC0000?style=flat&logo=ruby-on-rails&logoColor=white)](https://rubyonrails.org/)
+[![](https://img.shields.io/badge/HTML-1572B6?style=flat&logo=html5&logoColor=white&color=orange)](https://example.com)
+[![](https://img.shields.io/badge/CSS-1572B6?style=flat&logo=css3&logoColor=white)](https://www.w3.org/Style/CSS/Overview.en.html)
+[![](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![](https://img.shields.io/badge/Bootstrap-563D7C?style=flat&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
+[![](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/)
+[![](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)](https://git-scm.com/)
+[![](https://img.shields.io/badge/Amazon_AWS-232F3E?style=flat&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
+[![](https://img.shields.io/badge/Amazon_EC2-232F3E?style=flat&logo=amazon-ec2&logoColor=white)](https://aws.amazon.com/ec2/)
+[![](https://img.shields.io/badge/Amazon_RDS-232F3E?style=flat&logo=amazon-rds&logoColor=white)](https://aws.amazon.com/rds/)
+[![](https://img.shields.io/badge/Nginx-009639?style=flat&logo=nginx&logoColor=white)](https://nginx.org/)
+[![](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white)](https://www.mysql.com/)
