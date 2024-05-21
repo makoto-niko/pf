@@ -44,11 +44,12 @@ class Public::BoardsController < ApplicationController
     @board.errors.add(:title, 'が入力されていません。') unless board_params[:title].present?
     @board.errors.add(:description, 'が入力されていません。') unless board_params[:description].present?
       
-    if @board.errors.any? || @board.invalid?# 手動バリデートでエラーがあれば または (モデル定義)のバリデーションに引っかかっていれば
-      @boards = @group.boards
+    if @board.errors.any? || @board.invalid?
+      @boards = @group.boards.public_boards
+      @boards = @boards.or(@group.boards.user_boards(current_user.id)) if user_signed_in?
       @tags = Tag.all
       @comment = Comment.new
-       render :index 
+      render :index
     else
       @board.save
       @board.save_tags(params[:board][:tags])

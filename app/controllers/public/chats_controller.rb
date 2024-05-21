@@ -11,11 +11,11 @@ class Public::ChatsController < ApplicationController
     @chat = current_user.chats.new(chat_params)
     @chat.created_at = Time.current
     if @chat.save
-    @chats = current_user.chats.order(created_at: :desc) # チャットの一覧を取得
-   redirect_to public_user_chat_path(other_user, @chat), notice: "投稿に成功しました"
+      @chats = current_user.chats.order(created_at: :desc) # チャットの一覧を取得
+     redirect_to public_user_chat_path(other_user, @chat), notice: "投稿に成功しました"
     else
-    @chats = current_user.chats.order(created_at: :desc) # チャットの一覧を取得
-    render 'public/chats/show'
+      @chats = current_user.chats.order(created_at: :desc) # チャットの一覧を取得
+      render 'public/chats/show'
     end
   end
 
