@@ -1,13 +1,15 @@
 <tr>
     <% if chat.user == current_user %>
         <th>
-          <p style="text-align: left;" class="m-0 arrow_box"><%= chat.message %></p>
+            <p style="text-align: left;" class="m-0 arrow_box"><%= chat.message %></p>
+            <small style="text-align: left;"><%= l chat.created_at, format: :short %></small>
         </th>
         <th></th>
     <% else %>
         <th></th>
         <th>
             <p style="text-align: right;" class="m-0 arrow_box2"><%= chat.message %></p>
+            <small style="text-align: right;"><%= l chat.created_at, format: :short %></small>
         </th>
     <% end %>
 </tr>

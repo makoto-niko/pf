@@ -9,6 +9,7 @@ class Public::ChatsController < ApplicationController
 
   def create
     @chat = current_user.chats.new(chat_params)
+    @chat.created_at = Time.current
     @chat.save
   end
 
