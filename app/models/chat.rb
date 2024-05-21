@@ -2,6 +2,9 @@ class Chat < ApplicationRecord
 belongs_to :user
 belongs_to :room
 has_many :notifications, as: :notifiable, dependent: :destroy
+
+validates :message, presence: true
+
 after_create_commit :create_notifications
 
   def create_notifications
