@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :ensure_guest_user]
   before_action :ensure_guest_user, only: [:edit, :update]
-  before_action :set_user, only: [:show, :ensure_guest_user]
   
   def index
     @users = User.active.page(params[:page])
@@ -42,18 +42,22 @@ class Public::UsersController < ApplicationController
   def unsubscribe ;end
   
   private
-  
+
   def user_params
     params.require(:user).permit(:username, :email)
   end
-  
+
   def set_user
-   @user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
+
   def ensure_guest_user
-    redirect_to root_path(@user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。" if @user.guest?
+    if @user.guest?
+      redirect_to root_path, notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+    end
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
-  end 
+  end
+
   
 end
