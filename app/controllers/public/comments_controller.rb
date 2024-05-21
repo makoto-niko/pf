@@ -5,6 +5,7 @@ class Public::CommentsController < ApplicationController
     @board = Board.find(params[:board_id])
     @comment = @board.comments.build(comment_params)
     @comment.user = current_user
+    @comment.created_at = Time.current
     if @comment.save
        redirect_to public_group_boards_path(@board.group), notice: 'コメントを投稿しました。'
     else
