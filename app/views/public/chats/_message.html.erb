@@ -1,4 +1,6 @@
+    <% unless chat.errors.any? %>
 <tr>
+    
     <% if chat.user == current_user %>
         <th>
             <p style="text-align: left;" class="m-0 arrow_box"><%= chat.message %></p>
@@ -13,3 +15,4 @@
         </th>
     <% end %>
 </tr>
+<% end %>

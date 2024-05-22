@@ -35,8 +35,7 @@ class Public::BoardsController < ApplicationController
   end
   
   def create
-    @board = Board.new(board_params)
-    @board.user_id = current_user.id
+    @board = current_user.boards.new(board_params)
     @board.group_id = @group.id
 
     # タグのバリデーションのため、手動でバリデート。モデルで定義試みたができなかったため
