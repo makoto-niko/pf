@@ -14,6 +14,7 @@ class User < ApplicationRecord
   
   validates :email, presence: true
   validates :username, presence: true, length: { maximum: 20 }, uniqueness: true
+  
   GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest
