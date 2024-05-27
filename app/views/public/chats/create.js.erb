@@ -1,4 +1,4 @@
 $('#messages').append('<%= j(render 'message', chat: @chat) %>')
 
 $('#chat_message').val('')
- $('#chaterror').html(' <%= j(render "layouts/error_messages", model: @chat) %>')
+$('#chaterror').html(' <%= j(render "layouts/error_messages", model: @chat) %>')
